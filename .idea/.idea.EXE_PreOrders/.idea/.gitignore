@@ -1,13 +1,77 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Rider ignored files
-/modules.xml
-/contentModel.xml
-/projectSettingsUpdater.xml
-/.idea.EXE_PreOrders.iml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+###############
+# IDE CONFIG  #
+###############
+
+# VSCode
+.vscode/
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+###################
+# BUILD ARTIFACTS #
+###################
+
+# Build folders
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# Test results
+TestResults/
+*.TestResults
+
+# Publish
+*.publishsettings
+*.pubxml
+*.pubxml.user
+
+# Dotnet CLI
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+###############
+# NUGET CACHE #
+###############
+
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+**/packages/*
+*.nuget.info
+
+##################
+# LOGS & TEMP    #
+##################
+
+*.log
+*.tlog
+*.tmp
+*.bak
+*.cache
+*.nlog.txt
+internal-nlog.txt
+
+###########################
+# RIDER & RESHARPER CACHE #
+###########################
+
+_ReSharper*/
+*.DotSettings.user
+rider.project.model.nuget.info
+
+###########################
+# OS GENERATED FILES      #
+##################
