@@ -110,7 +110,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -123,10 +123,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
@@ -175,7 +171,7 @@
               "RelativeDocumentMoniker": "WebApi\\Startup.cs",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Startup.cs",
               "RelativeToolTip": "WebApi\\Startup.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAuwBwAAAALAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAkwB8AAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T04:18:55.965Z",
               "EditorCaption": ""
@@ -357,7 +353,7 @@
               "RelativeDocumentMoniker": "Infrastructure.Persistence\\Infrastructure.Persistence.csproj",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Infrastructure.Persistence.csproj",
               "RelativeToolTip": "Infrastructure.Persistence\\Infrastructure.Persistence.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAA5AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-05-08T07:29:19.556Z",
               "EditorCaption": ""
@@ -372,7 +368,8 @@
               "RelativeToolTip": "Infrastructure.Shared\\ServiceRegistration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T07:18:53.593Z"
+              "WhenOpened": "2025-05-08T07:18:53.593Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -384,7 +381,8 @@
               "RelativeToolTip": "Infrastructure.Shared\\Services\\DateTimeService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T07:18:30.005Z"
+              "WhenOpened": "2025-05-08T07:18:30.005Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -394,9 +392,10 @@
               "RelativeDocumentMoniker": "Infrastructure.Shared\\Services\\EmailService.cs",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Shared\\Services\\EmailService.cs",
               "RelativeToolTip": "Infrastructure.Shared\\Services\\EmailService.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAA6wAUAAAAXAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA4wAUAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:00:25.034Z"
+              "WhenOpened": "2025-05-04T04:00:25.034Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -421,7 +420,8 @@
               "RelativeToolTip": "Infrastructure.Identity\\Contexts\\IdentityContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T07:13:13.445Z"
+              "WhenOpened": "2025-05-08T07:13:13.445Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -433,7 +433,8 @@
               "RelativeToolTip": "Infrastructure.Identity\\Services\\AccountService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:00:03.034Z"
+              "WhenOpened": "2025-05-04T04:00:03.034Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -445,7 +446,8 @@
               "RelativeToolTip": "Infrastructure.Identity\\Models\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T03:59:53.842Z"
+              "WhenOpened": "2025-05-04T03:59:53.842Z",
+              "EditorCaption": ""
             }
           ]
         },

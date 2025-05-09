@@ -16,3 +16,5 @@ D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\bin\Deb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\bin\Debug\net8.0\Domain.pdb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\obj\Debug\net8.0\Infrastructure.Persistence.csproj.AssemblyReference.cache
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\obj\Debug\net8.0\Infrastr.56C47081.Up2Date
+D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\bin\Debug\net8.0\Infrastructure.Persistence.runtimeconfig.json
+D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Persistence\obj\Debug\net8.0\Infrastructure.Persistence.genruntimeconfig.cache
