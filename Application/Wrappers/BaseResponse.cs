@@ -1,4 +1,5 @@
-﻿namespace Application.Wrappers;
+﻿using System.Collections.Generic;
+namespace Application.Wrappers;
 
 public class BaseResponse<T>
 {

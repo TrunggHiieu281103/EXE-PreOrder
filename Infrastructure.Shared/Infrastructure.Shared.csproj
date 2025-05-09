@@ -12,10 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="ILogger.Moq" Version="2.0.0" />
       <PackageReference Include="MailKit" Version="4.12.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.7" />
       <PackageReference Include="MimeKit" Version="4.12.0" />
-    </ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.7" />
+	</ItemGroup>
 
 </Project>

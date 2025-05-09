@@ -1,22 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{39CEBEDB-B0E8-490A-9AD2-13F3425CC547}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{0A85E39E-8FD8-49EA-B302-50D0471181D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{0AFFC75D-B14E-460C-BB1F-A3DE6569EF15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Identity", "Infrastructure.Identity\Infrastructure.Identity.csproj", "{A5BC94ED-5382-4E28-9921-D92AE5D2BDBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Identity", "Infrastructure.Identity\Infrastructure.Identity.csproj", "{A5BC94ED-5382-4E28-9921-D92AE5D2BDBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence", "Infrastructure.Persistence\Infrastructure.Persistence.csproj", "{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Persistence", "Infrastructure.Persistence\Infrastructure.Persistence.csproj", "{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Shared", "Infrastructure.Shared\Infrastructure.Shared.csproj", "{96C28D32-A296-46D9-B476-8DEDC018B421}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Shared", "Infrastructure.Shared\Infrastructure.Shared.csproj", "{96C28D32-A296-46D9-B476-8DEDC018B421}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6345EF33-4330-4E9D-A4BC-FB19A91A0D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{EBC2F8F4-F403-471A-B30E-1F587253DBCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{EBC2F8F4-F403-471A-B30E-1F587253DBCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{43F91496-36B3-426D-906D-2FA49E5B30AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,13 +47,23 @@ Global
 		{EBC2F8F4-F403-471A-B30E-1F587253DBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC2F8F4-F403-471A-B30E-1F587253DBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC2F8F4-F403-471A-B30E-1F587253DBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F91496-36B3-426D-906D-2FA49E5B30AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F91496-36B3-426D-906D-2FA49E5B30AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F91496-36B3-426D-906D-2FA49E5B30AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F91496-36B3-426D-906D-2FA49E5B30AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FB90E427-33DF-4E57-98EF-D4B5CC9958BA} = {39CEBEDB-B0E8-490A-9AD2-13F3425CC547}
 		{A5BC94ED-5382-4E28-9921-D92AE5D2BDBC} = {0A85E39E-8FD8-49EA-B302-50D0471181D9}
 		{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0} = {0A85E39E-8FD8-49EA-B302-50D0471181D9}
 		{96C28D32-A296-46D9-B476-8DEDC018B421} = {0A85E39E-8FD8-49EA-B302-50D0471181D9}
-		{6345EF33-4330-4E9D-A4BC-FB19A91A0D61} = {0A85E39E-8FD8-49EA-B302-50D0471181D9}
 		{EBC2F8F4-F403-471A-B30E-1F587253DBCC} = {39CEBEDB-B0E8-490A-9AD2-13F3425CC547}
+		{43F91496-36B3-426D-906D-2FA49E5B30AB} = {0AFFC75D-B14E-460C-BB1F-A3DE6569EF15}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {866A0EEE-FA64-45DF-BA3B-B61DB20FC8AE}
 	EndGlobalSection
 EndGlobal
