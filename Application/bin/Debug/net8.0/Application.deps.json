@@ -9,6 +9,7 @@
       "Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "14.0.0",
+          "Domain": "1.0.0",
           "FluentValidation": "12.0.0-preview1",
           "FluentValidation.DependencyInjectionExtensions": "12.0.0-preview1",
           "MediatR": "12.5.0",
@@ -154,6 +155,11 @@
             "fileVersion": "10.0.25.17105"
           }
         }
+      },
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
+        }
       }
     }
   },
@@ -253,6 +259,11 @@
       "sha512": "sha512-c3nnICP57xotpRgKYwRAWtpvY1mEZ98aaBsSntt0TxrgOvwLndaJoN08XtnUqJKmgJFYW272tXsu2g2SHmHUmg==",
       "path": "system.text.json/10.0.0-preview.3.25171.5",
       "hashPath": "system.text.json.10.0.0-preview.3.25171.5.nupkg.sha512"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
