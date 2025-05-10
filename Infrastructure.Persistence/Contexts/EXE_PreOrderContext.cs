@@ -1,8 +1,9 @@
 ﻿using System;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Persistence.Models
+namespace Persistence.Contexts
 {
     public partial class EXE_PreOrderContext : DbContext
     {

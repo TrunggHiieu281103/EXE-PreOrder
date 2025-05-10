@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Models
+namespace Domain.Entities
 {
-    public partial class ProductCommentAssets
+    public partial class UserRoles
     {
         public long Id { get; set; }
-        public string MediaKey { get; set; }
-        public long ProductCommentId { get; set; }
-        public string PublicId { get; set; }
+        public long UserId { get; set; }
+        public long RoleId { get; set; }
         public bool? IsActive { get; set; }
         public int Version { get; set; }
         public long CreatedAt { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Models
+namespace Domain.Entities
 {
     public partial class Users
     {

@@ -8,9 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Contexts\" />
       <Folder Include="Migrations\" />
-      <Folder Include="Repositories\" />
     </ItemGroup>
 
 	<ItemGroup>
