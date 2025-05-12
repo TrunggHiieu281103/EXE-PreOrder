@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class UserRoles
+    public partial class UserRoles : BaseEntity
     {
         public long Id { get; set; }
         public long UserId { get; set; }
         public long RoleId { get; set; }
-        public bool? IsActive { get; set; }
-        public int Version { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public virtual Users User { get; set; }
+        public virtual Roles Role { get; set; }
+
     }
 }
