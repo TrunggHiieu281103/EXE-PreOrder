@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class OrderProducts
+    public partial class OrderProducts : BaseEntity
     {
         public long Id { get; set; }
         public long OrderId { get; set; }
@@ -11,9 +12,8 @@ namespace Domain.Entities
         public decimal? DepositPrice { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public int Version { get; set; }
-        public bool? IsActive { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public virtual Orders Order { get; set; }
+        public virtual Products Product { get; set; }
+
     }
 }

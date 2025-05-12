@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Products
+    public partial class Products : BaseEntity
     {
         public long Id { get; set; }
         public string ProductCode { get; set; }
@@ -18,9 +19,11 @@ namespace Domain.Entities
         public decimal Price { get; set; }
         public long? OpenedAt { get; set; }
         public bool IsPreOrder { get; set; }
-        public int Version { get; set; }
-        public bool? IsActive { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public virtual Categories Category { get; set; }
+        public virtual Brands Brand { get; set; }
+        public virtual ICollection<ProductAssets> ProductAssets { get; set; }
+        public virtual ICollection<ProductComments> ProductComments { get; set; }
+        public virtual ICollection<OrderProducts> OrderProducts { get; set; }
+
     }
 }

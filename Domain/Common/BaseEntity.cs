@@ -2,12 +2,8 @@
 
 public class BaseEntity
 {
-    public int Id { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-    public bool IsDeleted { get; set; } = false;
-    public DateTime? DeletedAt { get; set; } = null;
-    public string CreatedBy { get; set; } = null;
-    public string UpdatedBy { get; set; } = null;
-    public string DeletedBy { get; set; } = null;
+    public int Version { get; set; }
+    public bool? IsActive { get; set; }
+    public long CreatedAt { get; set; }
+    public long UpdatedAt { get; set; }
 }

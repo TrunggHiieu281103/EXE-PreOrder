@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Users
+    public partial class Users : BaseEntity
     {
         public long Id { get; set; }
         public string Email { get; set; }
@@ -17,9 +18,11 @@ namespace Domain.Entities
         public long DateOfBirth { get; set; }
         public bool? IsFirstLogin { get; set; }
         public bool? IsEnableTwoFactor { get; set; }
-        public bool? IsActive { get; set; }
-        public int Version { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<ProductComments> ProductComments { get; set; }
+        public virtual ICollection<UserAddresses> UserAddresses { get; set; }
+        public virtual ICollection<UserRoles> UserRoles { get; set; }
+        public virtual ICollection<RefreshTokens> RefreshTokens { get; set; }
+
     }
 }
