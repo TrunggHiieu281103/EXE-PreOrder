@@ -75,7 +75,7 @@ namespace Persistence.Contexts
                 .HasOne(ua => ua.User)
                 .WithMany(u => u.UserAddresses)
                 .HasForeignKey(ua => ua.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // ROLES
             modelBuilder.Entity<Roles>()
@@ -87,20 +87,20 @@ namespace Persistence.Contexts
                 .HasOne(ur => ur.User)
                 .WithMany(u => u.UserRoles)
                 .HasForeignKey(ur => ur.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserRoles>()
                 .HasOne(ur => ur.Role)
                 .WithMany(r => r.UserRoles)
                 .HasForeignKey(ur => ur.RoleId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // REFRESH TOKENS
             modelBuilder.Entity<RefreshTokens>()
                 .HasOne(rt => rt.User)
                 .WithMany(u => u.RefreshTokens)
                 .HasForeignKey(rt => rt.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // PRODUCTS
             modelBuilder.Entity<Products>()
@@ -121,7 +121,7 @@ namespace Persistence.Contexts
                 .HasOne(pa => pa.Product)
                 .WithMany(p => p.ProductAssets)
                 .HasForeignKey(pa => pa.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // PRODUCT_COMMENTS
             modelBuilder.Entity<ProductComments>()
@@ -144,7 +144,7 @@ namespace Persistence.Contexts
                 .HasOne(pca => pca.ProductComment)
                 .WithMany(pc => pc.ProductCommentAssets)
                 .HasForeignKey(pca => pca.ProductCommentId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // ORDERS
             modelBuilder.Entity<Orders>()

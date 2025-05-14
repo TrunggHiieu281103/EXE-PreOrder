@@ -736,7 +736,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Products", "Product")
                         .WithMany("ProductAssets")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -745,7 +745,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.ProductComments", "ProductComment")
                         .WithMany("ProductCommentAssets")
                         .HasForeignKey("ProductCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -780,7 +780,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Users", "User")
                         .WithMany("RefreshTokens")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -798,7 +798,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Users", "User")
                         .WithMany("UserAddresses")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -807,13 +807,13 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Roles", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Users", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
