@@ -18,7 +18,7 @@
           }
         }
       },
-      "FluentValidation/12.0.0-preview1": {
+      "FluentValidation/11.9.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/FluentValidation.dll": {
@@ -31,19 +31,19 @@
           }
         }
       },
-      "FluentValidation.DependencyInjectionExtensions/12.0.0-preview1": {
+      "FluentValidation.DependencyInjectionExtensions/11.9.0": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "12.0.0-preview1",
+          "FluentValidation": "11.9.0",
           "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
         },
         "compile": {
-          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "related": ".xml"
           }
         }
@@ -155,23 +155,7 @@
           }
         }
       },
-      "System.IO.Pipelines/10.0.0-preview.3.25171.5": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/System.IO.Pipelines.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/System.IO.Pipelines.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net8.0/_._": {}
-        }
-      },
-      "System.Text.Encodings.Web/10.0.0-preview.3.25171.5": {
+      "System.Text.Encodings.Web/8.0.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
@@ -184,7 +168,7 @@
           }
         },
         "build": {
-          "buildTransitive/net8.0/_._": {}
+          "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll": {
@@ -193,11 +177,10 @@
           }
         }
       },
-      "System.Text.Json/10.0.0-preview.3.25171.5": {
+      "System.Text.Json/8.0.2": {
         "type": "package",
         "dependencies": {
-          "System.IO.Pipelines": "10.0.0-preview.3.25171.5",
-          "System.Text.Encodings.Web": "10.0.0-preview.3.25171.5"
+          "System.Text.Encodings.Web": "8.0.0"
         },
         "compile": {
           "lib/net8.0/System.Text.Json.dll": {
@@ -210,7 +193,7 @@
           }
         },
         "build": {
-          "buildTransitive/net8.0/System.Text.Json.targets": {}
+          "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
       "Domain/1.0.0": {
@@ -241,34 +224,46 @@
         "lib/net8.0/AutoMapper.xml"
       ]
     },
-    "FluentValidation/12.0.0-preview1": {
-      "sha512": "sFp+S7r98V0RQd6Ws9ecFTneWGGMK69XA4Wq+2ZxuNzoRTcs6AbZFyb+pfCwOUx4zgJiKf6BjcFSQrrAaxn+Dw==",
+    "FluentValidation/11.9.0": {
+      "sha512": "VneVlTvwYDkfHV5av3QrQ0amALgrLX6LV94wlYyEsh0B/klJBW7C8y2eAtj5tOZ3jH6CAVpr4s1ZGgew/QWyig==",
       "type": "package",
-      "path": "fluentvalidation/12.0.0-preview1",
+      "path": "fluentvalidation/11.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.12.0.0-preview1.nupkg.sha512",
+        "fluentvalidation.11.9.0.nupkg.sha512",
         "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.xml",
         "lib/net8.0/FluentValidation.dll",
-        "lib/net8.0/FluentValidation.xml"
+        "lib/net8.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
-    "FluentValidation.DependencyInjectionExtensions/12.0.0-preview1": {
-      "sha512": "5MGzsWERL7C+bbsVW2rZhYpPv+e3Tpy5w+BcHaSN4ziuM9qkWJd7Of0v5naYJxewEbpZ3oT3WbBO+WikxO9irQ==",
+    "FluentValidation.DependencyInjectionExtensions/11.9.0": {
+      "sha512": "Ko++xvN7HUf4WlHJL6bhsybUj/uho8ApOYIdxGjpF8Ot7Fukz6LRfRJ06H0KXhWqmMHWEbu89hJbjKJHtg7b9g==",
       "type": "package",
-      "path": "fluentvalidation.dependencyinjectionextensions/12.0.0-preview1",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.dependencyinjectionextensions.12.0.0-preview1.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
         "fluentvalidation.dependencyinjectionextensions.nuspec",
-        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll",
-        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.xml"
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
     "MediatR/11.0.0": {
@@ -453,78 +448,45 @@
         "packageIcon.png"
       ]
     },
-    "System.IO.Pipelines/10.0.0-preview.3.25171.5": {
-      "sha512": "IsB1ZmnYDbXmlHLqF903monA1j21+dVdky2wfPaB04wXMOj1sRhPfGexWvAk1dTy892+mSqfE4W9XNYK0dtwmw==",
+    "System.Text.Encodings.Web/8.0.0": {
+      "sha512": "yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
       "type": "package",
-      "path": "system.io.pipelines/10.0.0-preview.3.25171.5",
+      "path": "system.text.encodings.web/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/net461/System.IO.Pipelines.targets",
-        "buildTransitive/net462/_._",
-        "buildTransitive/net8.0/_._",
-        "buildTransitive/netcoreapp2.0/System.IO.Pipelines.targets",
-        "lib/net10.0/System.IO.Pipelines.dll",
-        "lib/net10.0/System.IO.Pipelines.xml",
-        "lib/net462/System.IO.Pipelines.dll",
-        "lib/net462/System.IO.Pipelines.xml",
-        "lib/net8.0/System.IO.Pipelines.dll",
-        "lib/net8.0/System.IO.Pipelines.xml",
-        "lib/net9.0/System.IO.Pipelines.dll",
-        "lib/net9.0/System.IO.Pipelines.xml",
-        "lib/netstandard2.0/System.IO.Pipelines.dll",
-        "lib/netstandard2.0/System.IO.Pipelines.xml",
-        "system.io.pipelines.10.0.0-preview.3.25171.5.nupkg.sha512",
-        "system.io.pipelines.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Text.Encodings.Web/10.0.0-preview.3.25171.5": {
-      "sha512": "NUjLF0b9nlu6bYO21SQwkd+olJJArGy/71LNs5KAXjbE8aYywTxIuhzVyRikR6M9mHQrRhtvQaWTCo3frnBZMw==",
-      "type": "package",
-      "path": "system.text.encodings.web/10.0.0-preview.3.25171.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/System.Text.Encodings.Web.targets",
         "buildTransitive/net462/_._",
-        "buildTransitive/net8.0/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
-        "lib/net10.0/System.Text.Encodings.Web.dll",
-        "lib/net10.0/System.Text.Encodings.Web.xml",
         "lib/net462/System.Text.Encodings.Web.dll",
         "lib/net462/System.Text.Encodings.Web.xml",
+        "lib/net6.0/System.Text.Encodings.Web.dll",
+        "lib/net6.0/System.Text.Encodings.Web.xml",
+        "lib/net7.0/System.Text.Encodings.Web.dll",
+        "lib/net7.0/System.Text.Encodings.Web.xml",
         "lib/net8.0/System.Text.Encodings.Web.dll",
         "lib/net8.0/System.Text.Encodings.Web.xml",
-        "lib/net9.0/System.Text.Encodings.Web.dll",
-        "lib/net9.0/System.Text.Encodings.Web.xml",
         "lib/netstandard2.0/System.Text.Encodings.Web.dll",
         "lib/netstandard2.0/System.Text.Encodings.Web.xml",
-        "runtimes/browser/lib/net10.0/System.Text.Encodings.Web.dll",
-        "runtimes/browser/lib/net10.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
-        "runtimes/wasi/lib/net10.0/System.Text.Encodings.Web.dll",
-        "runtimes/wasi/lib/net10.0/System.Text.Encodings.Web.xml",
-        "runtimes/win/lib/net9.0/System.Text.Encodings.Web.dll",
-        "runtimes/win/lib/net9.0/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.10.0.0-preview.3.25171.5.nupkg.sha512",
+        "system.text.encodings.web.8.0.0.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/10.0.0-preview.3.25171.5": {
-      "sha512": "c3nnICP57xotpRgKYwRAWtpvY1mEZ98aaBsSntt0TxrgOvwLndaJoN08XtnUqJKmgJFYW272tXsu2g2SHmHUmg==",
+    "System.Text.Json/8.0.2": {
+      "sha512": "29KA2StjWDYp32FvREifawRtNpTziLE1xyuDV9pVQ+MsaE9bIcIieP0io/eZZeLMxR+Nx9zI55RtUtpVpEIdeg==",
       "type": "package",
-      "path": "system.text.json/10.0.0-preview.3.25171.5",
+      "path": "system.text.json/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -576,20 +538,20 @@
         "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
         "buildTransitive/net461/System.Text.Json.targets",
         "buildTransitive/net462/System.Text.Json.targets",
-        "buildTransitive/net8.0/System.Text.Json.targets",
+        "buildTransitive/net6.0/System.Text.Json.targets",
         "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
         "buildTransitive/netstandard2.0/System.Text.Json.targets",
-        "lib/net10.0/System.Text.Json.dll",
-        "lib/net10.0/System.Text.Json.xml",
         "lib/net462/System.Text.Json.dll",
         "lib/net462/System.Text.Json.xml",
+        "lib/net6.0/System.Text.Json.dll",
+        "lib/net6.0/System.Text.Json.xml",
+        "lib/net7.0/System.Text.Json.dll",
+        "lib/net7.0/System.Text.Json.xml",
         "lib/net8.0/System.Text.Json.dll",
         "lib/net8.0/System.Text.Json.xml",
-        "lib/net9.0/System.Text.Json.dll",
-        "lib/net9.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.10.0.0-preview.3.25171.5.nupkg.sha512",
+        "system.text.json.8.0.2.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -604,11 +566,11 @@
     "net8.0": [
       "AutoMapper >= 14.0.0",
       "Domain >= 1.0.0",
-      "FluentValidation >= 12.0.0-preview1",
-      "FluentValidation.DependencyInjectionExtensions >= 12.0.0-preview1",
+      "FluentValidation >= 11.8.2",
+      "FluentValidation.DependencyInjectionExtensions >= 11.8.2",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0",
       "Newtonsoft.Json >= 13.0.3",
-      "System.Text.Json >= 10.0.0-preview.3.25171.5"
+      "System.Text.Json >= 8.0.2"
     ]
   },
   "packageFolders": {
@@ -670,11 +632,11 @@
           },
           "FluentValidation": {
             "target": "Package",
-            "version": "[12.0.0-preview1, )"
+            "version": "[11.8.2, )"
           },
           "FluentValidation.DependencyInjectionExtensions": {
             "target": "Package",
-            "version": "[12.0.0-preview1, )"
+            "version": "[11.8.2, )"
           },
           "MediatR.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
@@ -686,7 +648,7 @@
           },
           "System.Text.Json": {
             "target": "Package",
-            "version": "[10.0.0-preview.3.25171.5, )"
+            "version": "[8.0.2, )"
           }
         },
         "imports": [
@@ -708,5 +670,47 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Application depends on FluentValidation (>= 11.8.2) but FluentValidation 11.8.2 was not found. An approximate best match of FluentValidation 11.9.0 was resolved.",
+      "libraryId": "FluentValidation",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Application depends on FluentValidation.DependencyInjectionExtensions (>= 11.8.2) but FluentValidation.DependencyInjectionExtensions 11.8.2 was not found. An approximate best match of FluentValidation.DependencyInjectionExtensions 11.9.0 was resolved.",
+      "libraryId": "FluentValidation.DependencyInjectionExtensions",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.Json' 8.0.2 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.Json' 8.0.2 has a known high severity vulnerability, https://github.com/advisories/GHSA-hh2w-p6rv-4g7w",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

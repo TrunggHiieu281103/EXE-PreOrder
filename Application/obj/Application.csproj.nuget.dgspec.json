@@ -59,11 +59,11 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[12.0.0-preview1, )"
+              "version": "[11.8.2, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[12.0.0-preview1, )"
+              "version": "[11.8.2, )"
             },
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -75,7 +75,7 @@
             },
             "System.Text.Json": {
               "target": "Package",
-              "version": "[10.0.0-preview.3.25171.5, )"
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
