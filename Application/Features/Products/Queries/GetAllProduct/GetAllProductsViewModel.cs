@@ -21,5 +21,11 @@ namespace Application.Features.Products.Queries.GetAllProduct
         public decimal Price { get; set; }
         public long? OpenedAt { get; set; }
         public bool IsPreOrder { get; set; }
+
+        //Base entity property
+        public int Version { get; set; }
+        public bool? IsActive { get; set; }
+        public long CreatedAt { get; set; }
+        public long UpdatedAt { get; set; }
     }
 }
