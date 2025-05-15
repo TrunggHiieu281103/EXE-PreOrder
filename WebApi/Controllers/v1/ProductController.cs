@@ -1,4 +1,5 @@
-﻿using Application.Features.Products.Queries.GetAllProduct;
+﻿using Application.Features.Products.Commands.CreateProduct;
+using Application.Features.Products.Queries.GetAllProduct;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,13 +23,13 @@ namespace WebApi.Controllers.v1
         //    return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
         //}
 
-        //// POST api/<controller>
-        //[HttpPost]
+        // POST api/<controller>
+        [HttpPost]
         //[Authorize]
-        //public async Task<IActionResult> Post(CreateProductCommand command)
-        //{
-        //    return Ok(await Mediator.Send(command));
-        //}
+        public async Task<IActionResult> Post(CreateProductCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
 
         //// PUT api/<controller>/5
         //[HttpPut("{id}")]
