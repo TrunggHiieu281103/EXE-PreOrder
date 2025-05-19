@@ -19,6 +19,18 @@ namespace Persistence.Repositories
             _products = dbContext.Set<Products>();
         }
 
+        public async Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(int pageNumber, int pageSize)
+        {
+            return await _products
+                .Include(p => p.ProductAssets)
+                /*.Where(p => p.IsActive == true)*/ // Nếu bạn muốn chỉ lấy sản phẩm còn hoạt động
+                .OrderBy(p => p.Id)             // Có thể thay đổi thứ tự sắp xếp tùy yêu cầu
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+
         //public Task<bool> IsUniqueBarcodeAsync(string barcode)
         //{
         //    return _products
