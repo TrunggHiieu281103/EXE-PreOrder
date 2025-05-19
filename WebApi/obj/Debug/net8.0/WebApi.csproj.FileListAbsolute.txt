@@ -318,3 +318,4 @@ D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\WebApi\obj\Debug\net8.0\refint\Web
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\WebApi\obj\Debug\net8.0\WebApi.pdb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\WebApi\obj\Debug\net8.0\ref\WebApi.dll
+D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\WebApi\bin\Debug\net8.0\CloudinaryDotNet.dll

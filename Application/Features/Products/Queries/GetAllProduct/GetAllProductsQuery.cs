@@ -28,9 +28,9 @@ namespace Application.Features.Products.Queries.GetAllProduct
         public async Task<PageResponse<IEnumerable<GetAllProductsViewModel>>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var validFilter = _mapper.Map<GetAllProductsParameter>(request);
-            var product = await _productRepository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
+            var products = await _productRepository.GetProductPagedReponseWithAssetsAsync(validFilter.PageNumber, validFilter.PageSize);
 
-            var productViewModel = _mapper.Map<IEnumerable<GetAllProductsViewModel>>(product);
+            var productViewModel = _mapper.Map<IEnumerable<GetAllProductsViewModel>>(products);
             return new PageResponse<IEnumerable<GetAllProductsViewModel>>(productViewModel, validFilter.PageNumber, validFilter.PageSize);
         }
     }

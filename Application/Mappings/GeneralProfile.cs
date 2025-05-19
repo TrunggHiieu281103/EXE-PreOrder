@@ -13,7 +13,8 @@ public class GeneralProfile : Profile
         CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
         // Map domain Product entity to ViewModel for output
         CreateMap<Products, GetAllProductsViewModel>();
-        CreateMap<CreateProductCommand, Products >().ReverseMap();
+        CreateMap<Products, GetAllProductsViewModel>();
+        CreateMap<ProductAssets, ProductAssetViewModel>();
     }
 }
 
