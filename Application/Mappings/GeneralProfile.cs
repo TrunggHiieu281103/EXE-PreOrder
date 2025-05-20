@@ -15,6 +15,7 @@ public class GeneralProfile : Profile
         CreateMap<Products, GetAllProductsViewModel>();
         CreateMap<Products, GetAllProductsViewModel>();
         CreateMap<ProductAssets, ProductAssetViewModel>();
+        CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
     }
 }
 
