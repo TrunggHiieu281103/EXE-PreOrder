@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Application.Features.Products.Queries.GetAllProduct;
 
 namespace Application.Interfaces.Repositories
 {
@@ -12,6 +13,9 @@ namespace Application.Interfaces.Repositories
     {
         //Task<bool> IsUniqueBarcodeAsync(string barcode);
         Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(int pageNumber, int pageSize);
+
+        Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter);
+
 
     }
 }

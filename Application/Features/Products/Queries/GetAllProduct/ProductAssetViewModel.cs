@@ -8,11 +8,10 @@ namespace Application.Features.Products.Queries.GetAllProduct
 {
     public class ProductAssetViewModel
     {
+        public long Id { get; set; }
         public string MediaKey { get; set; }
         public string PublicId { get; set; }
-        public int MyProperty { get; set; }
-        // Tùy nếu bạn có URL từ Cloudinary
-        //public string ImageUrl => $"https://res.cloudinary.com/<ten_cloud>/image/upload/{PublicId}.jpg";
+        public string ImageUrl { get; set; }
     }
 
 }
