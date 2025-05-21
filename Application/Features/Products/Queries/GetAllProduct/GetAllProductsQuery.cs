@@ -47,12 +47,13 @@ namespace Application.Features.Products.Queries.GetAllProduct
             // Gán ImageUrl cho từng asset
             foreach (var product in productViewModels)
             {
-                if (product.ProductAssets != null)
+                if (product.ProductAssets != null && product.ProductAssets.Any())
                 {
-                    foreach (var asset in product.ProductAssets)
-                    {
-                        asset.ImageUrl = $"https://res.cloudinary.com/{_cloudinarySettings.Value.CloudName}/image/upload/{asset.PublicId}.jpg";
-                    }
+                    var first = product.ProductAssets.First();
+                    first.ImageUrl = $"https://res.cloudinary.com/{_cloudinarySettings.Value.CloudName}/image/upload/{first.PublicId}.jpg";
+
+                    // Chỉ giữ lại 1 asset
+                    product.ProductAssets = new List<ProductAssetViewModel> { first };
                 }
             }
 

@@ -9,13 +9,13 @@ public class GeneralProfile : Profile
 {
     public GeneralProfile()
     {
-        // Map query request to paging parameter
+        // Product mapping
         CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
-        // Map domain Product entity to ViewModel for output
-        CreateMap<Products, GetAllProductsViewModel>();
         CreateMap<Products, GetAllProductsViewModel>();
         CreateMap<ProductAssets, ProductAssetViewModel>();
         CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
+        //create 
+        CreateMap<CreateProductCommand, Products>();
     }
 }
 
