@@ -14,3 +14,19 @@ D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Application\obj\Debug\net8.0\Appli
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Application\obj\Debug\net8.0\refint\Application.dll
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Application\obj\Debug\net8.0\Application.pdb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Application\obj\Debug\net8.0\ref\Application.dll
+D:\F\EXE\EXE-PreOrder\Application\bin\Debug\net8.0\Application.deps.json
+D:\F\EXE\EXE-PreOrder\Application\bin\Debug\net8.0\Application.dll
+D:\F\EXE\EXE-PreOrder\Application\bin\Debug\net8.0\Application.pdb
+D:\F\EXE\EXE-PreOrder\Application\bin\Debug\net8.0\Domain.dll
+D:\F\EXE\EXE-PreOrder\Application\bin\Debug\net8.0\Domain.pdb
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.sourcelink.json
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.dll
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\refint\Application.dll
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\Application.pdb
+D:\F\EXE\EXE-PreOrder\Application\obj\Debug\net8.0\ref\Application.dll

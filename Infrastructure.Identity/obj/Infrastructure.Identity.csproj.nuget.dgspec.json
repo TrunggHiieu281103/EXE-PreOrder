@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj": {}
+    "D:\\F\\EXE\\EXE-PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj": {}
   },
   "projects": {
-    "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj": {
+    "D:\\F\\EXE\\EXE-PreOrder\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\F\\EXE\\EXE-PreOrder\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\obj\\",
+        "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
+        "outputPath": "D:\\F\\EXE\\EXE-PreOrder\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj"
+              "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj"
               }
             }
           }
@@ -94,24 +94,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj": {
+    "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\obj\\",
+        "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
+        "outputPath": "D:\\F\\EXE\\EXE-PreOrder\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -158,24 +158,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj": {
+    "D:\\F\\EXE\\EXE-PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj",
+        "projectUniqueName": "D:\\F\\EXE\\EXE-PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj",
         "projectName": "Infrastructure.Identity",
-        "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj",
-        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\obj\\",
+        "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj",
+        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
+        "outputPath": "D:\\F\\EXE\\EXE-PreOrder\\Infrastructure.Identity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -190,11 +190,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj": {
-                "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj"
+              "D:\\F\\EXE\\EXE-PreOrder\\Application\\Application.csproj": {
+                "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Application\\Application.csproj"
               },
-              "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj"
+              "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\F\\EXE\\EXE-PreOrder\\Domain\\Domain.csproj"
               }
             }
           }
@@ -273,7 +273,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
