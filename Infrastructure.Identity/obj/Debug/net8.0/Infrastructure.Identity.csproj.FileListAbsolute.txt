@@ -18,23 +18,3 @@ D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Identity\obj\Debug\
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.pdb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.genruntimeconfig.cache
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Infrastructure.Identity\obj\Debug\net8.0\ref\Infrastructure.Identity.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Infrastructure.Identity.deps.json
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Infrastructure.Identity.runtimeconfig.json
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Infrastructure.Identity.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Infrastructure.Identity.pdb
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Application.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Domain.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Application.pdb
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\bin\Debug\net8.0\Domain.pdb
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.csproj.AssemblyReference.cache
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.GeneratedMSBuildEditorConfig.editorconfig
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.AssemblyInfoInputs.cache
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.AssemblyInfo.cs
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.csproj.CoreCompileInputs.cache
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.sourcelink.json
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastr.1C2BEB3C.Up2Date
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\refint\Infrastructure.Identity.dll
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.pdb
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\Infrastructure.Identity.genruntimeconfig.cache
-D:\F\EXE\EXE-PreOrder\Infrastructure.Identity\obj\Debug\net8.0\ref\Infrastructure.Identity.dll

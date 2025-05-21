@@ -16,11 +16,11 @@ namespace Application.Features.Products.Commands.CreateProduct
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public long? CategoryId { get; set; }
-        public long? BrandId { get; set; }
+        public long CategoryId { get; set; }
+        public long BrandId { get; set; }
         public string Type { get; set; }
         public string Size { get; set; }
-        public int? StockQuantity { get; set; }
+        public int StockQuantity { get; set; }
         public string ProductDetails { get; set; }
         public decimal Price { get; set; }
         public long? OpenedAt { get; set; }
@@ -41,12 +41,8 @@ namespace Application.Features.Products.Commands.CreateProduct
                 var nowMilliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
                 var product = _mapper.Map<Domain.Entities.Products>(request);
 
-                product.CreatedAt = nowMilliseconds;
-                product.UpdatedAt = nowMilliseconds;
-                product.IsActive = true;
-
             await _productRepository.AddAsync(product);
-                return new BaseResponse<long>(product.Id, "Product created successfully");
+                return new BaseResponse<long>(product.Id, $"Product created successfully with id: {product.Id}");
             }
            
         }
