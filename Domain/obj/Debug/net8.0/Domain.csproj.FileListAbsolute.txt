@@ -10,15 +10,3 @@ D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Domain\obj\Debug\net8.0\Domain.dll
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Domain\obj\Debug\net8.0\Domain.pdb
 D:\EXE PreOrder\tmp EXE_PreOrder\EXE_PreOrder\Domain\obj\Debug\net8.0\ref\Domain.dll
-D:\F\EXE\EXE-PreOrder\Domain\bin\Debug\net8.0\Domain.deps.json
-D:\F\EXE\EXE-PreOrder\Domain\bin\Debug\net8.0\Domain.dll
-D:\F\EXE\EXE-PreOrder\Domain\bin\Debug\net8.0\Domain.pdb
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.dll
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\refint\Domain.dll
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\Domain.pdb
-D:\F\EXE\EXE-PreOrder\Domain\obj\Debug\net8.0\ref\Domain.dll
