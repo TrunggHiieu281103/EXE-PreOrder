@@ -1,27 +1,14 @@
-Ignore user-specific files,
-*.user
-.suo
-
-IDE settings,
-.idea/
+# Visual Studio
 .vs/
-.vscode/
+*.user
+*.suo
 
-Build output,
-/bin/
-/obj/
+# Build folders
+**/bin/
+**/obj/
 
-Logs,
-**/.log
-/*.txt
-/internal-nlog.txt
-
-Test results,
+# Others
+*.dll
+*.pdb
+*.cache
 TestResults/
-test//bin/
-test//obj/
-
-NuGet,
-*.nupkg
-*.snupkg
-packages/
