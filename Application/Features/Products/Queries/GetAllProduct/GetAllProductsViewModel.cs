@@ -29,6 +29,6 @@ namespace Application.Features.Products.Queries.GetAllProduct
         public long UpdatedAt { get; set; }
 
         //
-        public ICollection<ProductAssetViewModel> ProductAssets { get; set; } 
+        public ICollection<ProductAssetViewModel> ProductAssets { get; set; }
     }
 }
