@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\infrastructure.persistence\\repositories\\productrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|solutionrelative:infrastructure.persistence\\repositories\\productrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\queries\\getallproduct\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\queries\\getallproduct\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\queries\\getallproduct\\getallproductsparameter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\queries\\getallproduct\\getallproductsparameter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{43F91496-36B3-426D-906D-2FA49E5B30AB}|WebApi\\WebApi.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\webapi\\controllers\\v1\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +15,16 @@
       "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repositories\\iproductrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\mappings\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\mappings\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\infrastructure.persistence\\repositories\\productrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|solutionrelative:infrastructure.persistence\\repositories\\productrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\commands\\createproduct\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\commands\\createproduct\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\queries\\getallproduct\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\queries\\getallproduct\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\queries\\getallproduct\\getallproductsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,24 +47,12 @@
       "RelativeMoniker": "D:0:0:{43F91496-36B3-426D-906D-2FA49E5B30AB}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\queries\\getallproduct\\productassetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\queries\\getallproduct\\productassetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{43F91496-36B3-426D-906D-2FA49E5B30AB}|WebApi\\WebApi.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{43F91496-36B3-426D-906D-2FA49E5B30AB}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EBC2F8F4-F403-471A-B30E-1F587253DBCC}|Domain\\Domain.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\domain\\settings\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBC2F8F4-F403-471A-B30E-1F587253DBCC}|Domain\\Domain.csproj|solutionrelative:domain\\settings\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\infrastructure.persistence\\repositories\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|solutionrelative:infrastructure.persistence\\repositories\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5BC94ED-5382-4E28-9921-D92AE5D2BDBC}|Infrastructure.Identity\\Infrastructure.Identity.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\infrastructure.identity\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -117,14 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\application\\features\\products\\commands\\createproduct\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB90E427-33DF-4E57-98EF-D4B5CC9958BA}|Application\\Application.csproj|solutionrelative:application\\features\\products\\commands\\createproduct\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBC2F8F4-F403-471A-B30E-1F587253DBCC}|Domain\\Domain.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\domain\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBC2F8F4-F403-471A-B30E-1F587253DBCC}|Domain\\Domain.csproj|solutionrelative:domain\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0A62C9DF-1648-4111-9DB3-D2A4152B1DC0}|Infrastructure.Persistence\\Infrastructure.Persistence.csproj|d:\\exe preorder\\tmp exe_preorder\\exe_preorder\\infrastructure.persistence\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -258,7 +238,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -274,81 +254,76 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetAllProductsQuery.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
-              "RelativeToolTip": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAswC8AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T08:21:28.083Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IProductRepositoryAsync.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
-              "RelativeToolTip": "Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T09:29:23.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GetAllProductsParameter.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsParameter.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsParameter.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsParameter.cs",
-              "RelativeToolTip": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsParameter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T02:09:14.933Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ProductRepositoryAsync.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Repositories\\ProductRepositoryAsync.cs",
               "RelativeDocumentMoniker": "Infrastructure.Persistence\\Repositories\\ProductRepositoryAsync.cs",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Repositories\\ProductRepositoryAsync.cs",
               "RelativeToolTip": "Infrastructure.Persistence\\Repositories\\ProductRepositoryAsync.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAQwCIAAAAIAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAQwEQAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T09:26:46.56Z",
+              "WhenOpened": "2025-05-21T03:39:33.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateProductCommand.cs",
+              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "RelativeToolTip": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAowCEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T02:34:35.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "IProductRepositoryAsync.cs",
+              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
+              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repositories\\IProductRepositoryAsync.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T03:48:34.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Controllers\\v1\\ProductController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\v1\\ProductController.cs",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Controllers\\v1\\ProductController.cs",
               "RelativeToolTip": "WebApi\\Controllers\\v1\\ProductController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABQAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwCcAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T01:25:14.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T01:25:14.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateProductCommandValidator.cs",
+              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
+              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
+              "RelativeToolTip": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAD4AAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T02:34:54.503Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "GeneralProfile.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Mappings\\GeneralProfile.cs",
-              "RelativeDocumentMoniker": "Application\\Mappings\\GeneralProfile.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Mappings\\GeneralProfile.cs",
-              "RelativeToolTip": "Application\\Mappings\\GeneralProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Title": "GetAllProductsQuery.cs",
+              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
+              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
+              "RelativeToolTip": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsQuery.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAqwDcAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T08:28:47.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T08:21:28.083Z"
             },
             {
               "$type": "Document",
@@ -358,10 +333,9 @@
               "RelativeDocumentMoniker": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsViewModel.cs",
               "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsViewModel.cs",
               "RelativeToolTip": "Application\\Features\\Products\\Queries\\GetAllProduct\\GetAllProductsViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T01:56:12.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T01:56:12.674Z"
             },
             {
               "$type": "Document",
@@ -414,30 +388,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "CreateProductCommand.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
-              "RelativeToolTip": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwCYAAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T02:34:35.032Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ProductAssetViewModel.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\ProductAssetViewModel.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\Products\\Queries\\GetAllProduct\\ProductAssetViewModel.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Queries\\GetAllProduct\\ProductAssetViewModel.cs",
-              "RelativeToolTip": "Application\\Features\\Products\\Queries\\GetAllProduct\\ProductAssetViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T01:13:50.949Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.json",
@@ -449,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "CloudinarySettings.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Settings\\CloudinarySettings.cs",
               "RelativeDocumentMoniker": "Domain\\Settings\\CloudinarySettings.cs",
@@ -461,19 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "GenericRepositoryAsync.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Repositories\\GenericRepositoryAsync.cs",
-              "RelativeDocumentMoniker": "Infrastructure.Persistence\\Repositories\\GenericRepositoryAsync.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Repositories\\GenericRepositoryAsync.cs",
-              "RelativeToolTip": "Infrastructure.Persistence\\Repositories\\GenericRepositoryAsync.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T09:24:22.128Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 14,
               "Title": "AuthenticationRequest.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\DTOs\\Account\\AuthenticationRequest.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Account\\AuthenticationRequest.cs",
@@ -485,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 13,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "Infrastructure.Identity\\Services\\AccountService.cs",
@@ -497,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 15,
               "Title": "AuthenticationResponse.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\DTOs\\Account\\AuthenticationResponse.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Account\\AuthenticationResponse.cs",
@@ -509,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 16,
               "Title": "EmailRequest.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\DTOs\\Email\\EmailRequest.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Email\\EmailRequest.cs",
@@ -521,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 17,
               "Title": "Users.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Users.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Users.cs",
@@ -533,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 19,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Shared\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "Infrastructure.Shared\\ServiceRegistration.cs",
@@ -545,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 18,
               "Title": "ProductComments.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\ProductComments.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\ProductComments.cs",
@@ -557,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 20,
               "Title": "JWTSettings.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Settings\\JWTSettings.cs",
               "RelativeDocumentMoniker": "Domain\\Settings\\JWTSettings.cs",
@@ -569,7 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 21,
               "Title": "MailSettings.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Settings\\MailSettings.cs",
               "RelativeDocumentMoniker": "Domain\\Settings\\MailSettings.cs",
@@ -581,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 22,
               "Title": "AuthenticatedUserService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Services\\AuthenticatedUserService.cs",
               "RelativeDocumentMoniker": "WebApi\\Services\\AuthenticatedUserService.cs",
@@ -593,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 23,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Shared\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "Infrastructure.Shared\\Services\\EmailService.cs",
@@ -605,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 24,
               "Title": "DateTimeService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Shared\\Services\\DateTimeService.cs",
               "RelativeDocumentMoniker": "Infrastructure.Shared\\Services\\DateTimeService.cs",
@@ -617,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 25,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Application\\ServiceExtensions.cs",
@@ -629,31 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "CreateProductCommandValidator.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
-              "RelativeToolTip": "Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommandValidator.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAIBZwBYAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T02:34:54.503Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Common\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Domain\\Common\\BaseEntity.cs",
-              "ToolTip": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Common\\BaseEntity.cs",
-              "RelativeToolTip": "Domain\\Common\\BaseEntity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T01:16:45.712Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 26,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "Infrastructure.Persistence\\ServiceRegistration.cs",
@@ -665,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 27,
               "Title": "BaseResponse.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Wrappers\\BaseResponse.cs",
               "RelativeDocumentMoniker": "Application\\Wrappers\\BaseResponse.cs",
@@ -677,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 28,
               "Title": "AppExtensions.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Extensions\\AppExtensions.cs",
               "RelativeDocumentMoniker": "WebApi\\Extensions\\AppExtensions.cs",
@@ -689,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 29,
               "Title": "PageResponse.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Wrappers\\PageResponse.cs",
               "RelativeDocumentMoniker": "Application\\Wrappers\\PageResponse.cs",
@@ -701,7 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 30,
               "Title": "WebApi.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\WebApi.csproj",
               "RelativeDocumentMoniker": "WebApi\\WebApi.csproj",
@@ -713,7 +627,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 31,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Infrastructure.Identity\\ServiceExtensions.cs",
@@ -725,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 32,
               "Title": "MetaController.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Controllers\\MetaController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\MetaController.cs",
@@ -737,7 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 33,
               "Title": "ErrorHandlerMiddleware.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Middlewares\\ErrorHandlerMiddleware.cs",
               "RelativeDocumentMoniker": "WebApi\\Middlewares\\ErrorHandlerMiddleware.cs",
@@ -749,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 37,
               "Title": "Infrastructure.Persistence.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Persistence\\Infrastructure.Persistence.csproj",
               "RelativeDocumentMoniker": "Infrastructure.Persistence\\Infrastructure.Persistence.csproj",
@@ -761,7 +675,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 34,
               "Title": "Metadata.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\Models\\Metadata.cs",
               "RelativeDocumentMoniker": "WebApi\\Models\\Metadata.cs",
@@ -773,7 +687,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 35,
               "Title": "Infrastructure.Identity.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Infrastructure.Identity.csproj",
               "RelativeDocumentMoniker": "Infrastructure.Identity\\Infrastructure.Identity.csproj",
@@ -785,7 +699,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 36,
               "Title": "Infrastructure.Shared.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Shared\\Infrastructure.Shared.csproj",
               "RelativeDocumentMoniker": "Infrastructure.Shared\\Infrastructure.Shared.csproj",
@@ -797,7 +711,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 38,
               "Title": "Domain.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
@@ -809,7 +723,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 39,
               "Title": "Application.csproj",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Application.csproj",
               "RelativeDocumentMoniker": "Application\\Application.csproj",
@@ -821,7 +735,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 40,
               "Title": "IdentityContext.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Contexts\\IdentityContext.cs",
               "RelativeDocumentMoniker": "Infrastructure.Identity\\Contexts\\IdentityContext.cs",
@@ -833,7 +747,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 41,
               "Title": "Orders.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Orders.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Orders.cs",
@@ -845,7 +759,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 42,
               "Title": "CleanArchitecture.WebApi.xml",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\CleanArchitecture.WebApi.xml",
               "RelativeDocumentMoniker": "WebApi\\CleanArchitecture.WebApi.xml",
@@ -857,7 +771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 43,
               "Title": "Shippings.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Shippings.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Shippings.cs",
@@ -869,7 +783,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 44,
               "Title": "Brands.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Brands.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Brands.cs",
@@ -881,7 +795,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 45,
               "Title": "Categories.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Categories.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Categories.cs",
@@ -893,7 +807,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 46,
               "Title": "RefreshTokens.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\RefreshTokens.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\RefreshTokens.cs",
@@ -905,7 +819,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 47,
               "Title": "Roles.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Roles.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Roles.cs",
@@ -917,7 +831,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 48,
               "Title": "UserRoles.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\UserRoles.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserRoles.cs",
@@ -929,7 +843,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 49,
               "Title": "Payments.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\Payments.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Payments.cs",
@@ -941,7 +855,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 50,
               "Title": "OrderProducts.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\OrderProducts.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderProducts.cs",
@@ -953,7 +867,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 51,
               "Title": "ProductCommentAssets.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Domain\\Entities\\ProductCommentAssets.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\ProductCommentAssets.cs",
@@ -965,7 +879,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 52,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Infrastructure.Identity\\Models\\User.cs",
               "RelativeDocumentMoniker": "Infrastructure.Identity\\Models\\User.cs",
@@ -977,7 +891,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 53,
               "Title": "IAuthenticatedUserService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\IAuthenticatedUserService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IAuthenticatedUserService.cs",
@@ -989,7 +903,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 54,
               "Title": "IAccountService.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Interfaces\\IAccountService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IAccountService.cs",
@@ -1001,7 +915,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 55,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\WebApi\\appsettings.Development.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.Development.json",
@@ -1013,7 +927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 56,
               "Title": "ValidationException.cs",
               "DocumentMoniker": "D:\\EXE PreOrder\\tmp EXE_PreOrder\\EXE_PreOrder\\Application\\Exceptions\\ValidationException.cs",
               "RelativeDocumentMoniker": "Application\\Exceptions\\ValidationException.cs",

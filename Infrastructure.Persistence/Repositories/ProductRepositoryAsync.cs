@@ -14,21 +14,14 @@ namespace Persistence.Repositories
     public class ProductRepositoryAsync : GenericRepositoryAsync<Products>, IProductRepositoryAsync
     {
         private readonly DbSet<Products> _products;
+        private readonly DbSet<Categories> _categories;
+        private readonly DbSet<Brands> _brands;
 
         public ProductRepositoryAsync(EXE_PreOrderContext dbContext) : base(dbContext)
         {
             _products = dbContext.Set<Products>();
-        }
-
-        public async Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(int pageNumber, int pageSize)
-        {
-            return await _products
-                .Include(p => p.ProductAssets)
-                /*.Where(p => p.IsActive == true)*/ // Nếu bạn muốn chỉ lấy sản phẩm còn hoạt động
-                .OrderBy(p => p.Id)             // Có thể thay đổi thứ tự sắp xếp tùy yêu cầu
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            _brands = dbContext.Set<Brands>();
+            _categories = dbContext.Set<Categories>();
         }
 
         public async Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter)
@@ -56,6 +49,38 @@ namespace Persistence.Repositories
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+        }
+
+        public async Task<Products?> FindDuplicateProductAsync(string productCode, string productName, long brandId, long categoryId)
+        {
+            return await _products
+                .FirstOrDefaultAsync(p =>
+                    p.ProductCode == productCode &&
+                    p.ProductName == productName &&
+                    p.BrandId == brandId &&
+                    p.CategoryId == categoryId);
+        }
+
+        public async Task<Products?> IsUniqueProductNameAsync(string productName)
+        {
+            return await _products.FirstOrDefaultAsync(p => p.ProductName == productName);
+        }
+
+        public async Task<Products?> IsUniqueProductCodeAsync(string productCode)
+        {
+            return await _products.FirstOrDefaultAsync(p => p.ProductCode == productCode);
+        }
+
+        public async Task<bool> FindBrandIdAsync(long brandId)
+        {
+            var brand =  await _brands.FindAsync(brandId);
+            return brand != null;
+        }
+
+        public async Task<bool> FindCategoryIdAsync(long categoryId)
+        {
+            var category = await _categories.FindAsync(categoryId);
+            return category != null;
         }
 
 
