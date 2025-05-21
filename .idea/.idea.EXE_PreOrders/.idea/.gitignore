@@ -1,77 +1,27 @@
-###############
-# IDE CONFIG  #
-###############
+Ignore user-specific files,
+*.user
+.suo
 
-# VSCode
+IDE settings,
+.idea/
+.vs/
 .vscode/
 
-# JetBrains Rider / IntelliJ
-.idea/
-*.sln.iml
+Build output,
+/bin/
+/obj/
 
-# Visual Studio
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-.vs/
+Logs,
+**/.log
+/*.txt
+/internal-nlog.txt
 
-###################
-# BUILD ARTIFACTS #
-###################
-
-# Build folders
-bin/
-obj/
-out/
-Debug/
-Release/
-
-# Test results
+Test results,
 TestResults/
-*.TestResults
+test//bin/
+test//obj/
 
-# Publish
-*.publishsettings
-*.pubxml
-*.pubxml.user
-
-# Dotnet CLI
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-###############
-# NUGET CACHE #
-###############
-
+NuGet,
 *.nupkg
 *.snupkg
 packages/
-.nuget/
-**/packages/*
-*.nuget.info
-
-##################
-# LOGS & TEMP    #
-##################
-
-*.log
-*.tlog
-*.tmp
-*.bak
-*.cache
-*.nlog.txt
-internal-nlog.txt
-
-###########################
-# RIDER & RESHARPER CACHE #
-###########################
-
-_ReSharper*/
-*.DotSettings.user
-rider.project.model.nuget.info
-
-###########################
-# OS GENERATED FILES      #
-##################
