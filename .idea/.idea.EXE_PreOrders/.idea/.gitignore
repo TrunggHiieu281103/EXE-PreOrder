@@ -20,30 +20,32 @@
 # BUILD ARTIFACTS #
 ###################
 
-# Build folders
+# Build folders (Visual Studio/.NET Core)
 bin/
 obj/
 out/
 Debug/
 Release/
+Application/bin/
+Application/obj/
 
 # Test results
 TestResults/
 *.TestResults
 
-# Publish
+# Publish profiles
 *.publishsettings
 *.pubxml
 *.pubxml.user
 
-# Dotnet CLI
+# Dotnet CLI artifacts
 project.lock.json
 project.fragment.lock.json
 artifacts/
 
-###############
-# NUGET CACHE #
-###############
+#################
+# NUGET CACHES  #
+#################
 
 *.nupkg
 *.snupkg
@@ -74,4 +76,25 @@ rider.project.model.nuget.info
 
 ###########################
 # OS GENERATED FILES      #
-##################
+###########################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+###########################
+# OTHERS (SAFE TO IGNORE) #
+###########################
+
+*.pdb
+*.dll
+*.bin
