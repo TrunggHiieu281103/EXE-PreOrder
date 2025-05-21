@@ -1,10 +1,8 @@
 ﻿using Application;
 using Application.Interfaces;
-using Application.Interfaces.Repositories;
 using Identity;
 using Infrastructure.Shared;
 using Persistence;
-using Persistence.Repositories;
 using WebApi.Extensions;
 using WebApi.Services;
 
@@ -28,8 +26,6 @@ namespace WebApi
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
-            services.AddTransient<IBrandRepositoryAsync, BrandRepositoryAsync>();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
