@@ -1,4 +1,6 @@
 ﻿using Application.Features.Products.Commands.CreateProduct;
+using Application.Features.Products.Commands.DeleteProduct;
+using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProduct;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -42,24 +44,24 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        //// PUT api/<controller>/5
-        //[HttpPut("{id}")]
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
         //[Authorize]
-        //public async Task<IActionResult> Put(int id, UpdateProductCommand command)
-        //{
-        //    if (id != command.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    return Ok(await Mediator.Send(command));
-        //}
+        public async Task<IActionResult> Put(long id, UpdateProductCommand command)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest($"Id from paramet not match Id from json.");
+            }
+            return Ok(await Mediator.Send(command));
+        }
 
-        //// DELETE api/<controller>/5
-        //[HttpDelete("{id}")]
+        // delete api/<controller>/5
+        [HttpDelete("{id}")]
         //[Authorize]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));
-        //}
+        public async Task<IActionResult> delete(long id)
+        {
+            return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));
+        }
     }
 }

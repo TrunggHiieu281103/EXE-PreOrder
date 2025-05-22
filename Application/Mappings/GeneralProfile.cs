@@ -16,6 +16,7 @@ public class GeneralProfile : Profile
         CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
         //create 
         CreateMap<CreateProductCommand, Products>();
+
     }
 }
 
