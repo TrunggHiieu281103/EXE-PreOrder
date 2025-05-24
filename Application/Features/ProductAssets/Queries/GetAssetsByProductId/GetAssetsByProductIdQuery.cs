@@ -17,8 +17,8 @@ namespace Application.Features.ProductAssets.Queries.GetAssetsByProductId
     public class GetAssetsByProductIdQuery : IRequest<BaseResponse<IReadOnlyList<ProductAssetViewModel>>>
     {
         public long Id { get; set; }
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
+        //public int PageNumber { get; set; }
+        //public int PageSize { get; set; }
 
         public class GetAssetsByProductIdQueryHandler : IRequestHandler<GetAssetsByProductIdQuery, BaseResponse<IReadOnlyList<ProductAssetViewModel>>>
         {
