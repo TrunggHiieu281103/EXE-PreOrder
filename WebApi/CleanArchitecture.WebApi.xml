@@ -6,10 +6,17 @@
     <members>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
-            Gets all product assets for a specific product ID.
+            Lấy ảnh theo product Id
             </summary>
             <param name="productId">The ID of the product.</param>
             <returns>List of product assets.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetById(System.Int64)">
+            <summary>
+            Lấy ảnh theo Id
+            </summary>
+            <param name="id">The ID of the asset.</param>
+            <returns>The asset.</returns>
         </member>
     </members>
 </doc>

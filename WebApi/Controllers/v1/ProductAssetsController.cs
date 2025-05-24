@@ -1,4 +1,7 @@
-﻿using Application.Features.ProductAssets.Queries.GetAssetById;
+﻿using Application.Features.ProductAssets.Commands.DeleteProductAsset;
+using Application.Features.ProductAssets.Commands.UpdateProductAsset;
+using Application.Features.ProductAssets.Commands.UploadProductAsset;
+using Application.Features.ProductAssets.Queries.GetAssetById;
 using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
 using Application.Features.Products.Queries.GetAllProduct;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +37,25 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> GetById(long id)
         {
             return Ok(await Mediator.Send(new GetAssetByIdQuery { Id = id }));
+        }
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadAsset([FromForm] UploadProductAssetCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpPut("update/{assetId}")]
+        public async Task<IActionResult> UpdateAsset(long assetId, [FromForm] UpdateProductAssetCommand command)
+        {
+            command.Id = assetId;
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpDelete("delete/{assetId}")]
+        public async Task<IActionResult> DeleteAsset(long assetId)
+        {
+            return Ok(await Mediator.Send(new DeleteProductAssetCommand { Id = assetId }));
         }
     }
 }
