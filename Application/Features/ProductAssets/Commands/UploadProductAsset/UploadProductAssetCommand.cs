@@ -13,27 +13,33 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Domain.Entities;
+using AutoMapper;
+using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
 
 namespace Application.Features.ProductAssets.Commands.UploadProductAsset
 {
-    public class UploadProductAssetCommand : IRequest<BaseResponse<string>>
+    public class UploadProductAssetCommand : IRequest<BaseResponse<ProductAssetViewModel>>
     {
         public long ProductId { get; set; }
         public IFormFile File { get; set; }
 
 
-        public class UploadProductAssetCommandHandler : IRequestHandler<UploadProductAssetCommand, BaseResponse<string>>
+        public class UploadProductAssetCommandHandler : IRequestHandler<UploadProductAssetCommand, BaseResponse<ProductAssetViewModel>>
         {
             private readonly IProductAssetsRepositoryAsync _productAssetsRepository;
+            private readonly IMapper _mapper;
             private readonly Account _cloudinaryAccount;
+            private readonly IOptions<CloudinarySettings> _cloudinarySettings;
 
-            public UploadProductAssetCommandHandler(IProductAssetsRepositoryAsync productAssetsRepository, IOptions<CloudinarySettings> cloudinarySettings)
+            public UploadProductAssetCommandHandler(IProductAssetsRepositoryAsync productAssetsRepository, IOptions<CloudinarySettings> cloudinarySettings, IMapper mapper)
             {
                 _productAssetsRepository = productAssetsRepository;
                 _cloudinaryAccount = new Account(cloudinarySettings.Value.CloudName, cloudinarySettings.Value.ApiKey, cloudinarySettings.Value.ApiSecret);
+                _mapper = mapper;
+                _cloudinarySettings = cloudinarySettings;
             }
 
-            public async Task<BaseResponse<string>> Handle(UploadProductAssetCommand request, CancellationToken cancellationToken)
+            public async Task<BaseResponse<ProductAssetViewModel>> Handle(UploadProductAssetCommand request, CancellationToken cancellationToken)
             {
                 var uploadParams = new ImageUploadParams
                 {
@@ -52,7 +58,9 @@ namespace Application.Features.ProductAssets.Commands.UploadProductAsset
                 };
 
                 await _productAssetsRepository.AddAsync(asset);
-                return new BaseResponse<string>("Upload success!");
+                var assetViewModel = _mapper.Map<ProductAssetViewModel>(asset);
+                assetViewModel.ImageUrl = $"https://res.cloudinary.com/{_cloudinarySettings.Value.CloudName}/image/upload/{assetViewModel.PublicId}.jpg";
+                return new BaseResponse<ProductAssetViewModel>(assetViewModel ,"Upload success!");
             }
         }
 
