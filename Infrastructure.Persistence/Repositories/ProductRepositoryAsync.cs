@@ -83,6 +83,11 @@ namespace Persistence.Repositories
             return category != null;
         }
 
+        public async Task<Products?> GetProductByIdAsync(long productId)
+        {
+            return await _products.Include(p => p.ProductAssets).FirstOrDefaultAsync(p => p.Id == productId);
+        }
+
 
         //public Task<bool> IsUniqueBarcodeAsync(string barcode)
         //{

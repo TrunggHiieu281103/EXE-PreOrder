@@ -19,4 +19,10 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\ProductAssets\Commands\CreateProductAsset\" />
+      <Folder Include="Features\ProductAssets\Commands\DeleteProductAsset\" />
+      <Folder Include="Features\ProductAssets\Commands\UpdateProductAsset\" />
+    </ItemGroup>
+
 </Project>

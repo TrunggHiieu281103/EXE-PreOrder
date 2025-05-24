@@ -32,6 +32,7 @@ namespace Persistence
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
+            services.AddTransient<IProductAssetsRepositoryAsync, ProductAssetsRepositoryAsync>();
             #endregion
         }
     }
