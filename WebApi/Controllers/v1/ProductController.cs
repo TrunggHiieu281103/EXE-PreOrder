@@ -2,6 +2,7 @@
 using Application.Features.Products.Commands.DeleteProduct;
 using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProduct;
+using Application.Features.Products.Queries.GetProductById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,12 +30,12 @@ namespace WebApi.Controllers.v1
             }));
         }
 
-        //// GET api/<controller>/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(int id)
-        //{
-        //    return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
-        //}
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(long id)
+        {
+            return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
+        }
 
         // POST api/<controller>
         [HttpPost]

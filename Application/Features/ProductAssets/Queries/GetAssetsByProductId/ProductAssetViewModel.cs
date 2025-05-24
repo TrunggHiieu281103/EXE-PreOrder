@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Application.Features.Products.Queries.GetAllProduct;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Queries.GetAllProduct
+namespace Application.Features.ProductAssets.Queries.GetAssetsByProductId
 {
     public class ProductAssetViewModel
     {
@@ -13,5 +14,4 @@ namespace Application.Features.Products.Queries.GetAllProduct
         public string PublicId { get; set; }
         public string ImageUrl { get; set; }
     }
-
 }
