@@ -29,7 +29,7 @@ namespace WebApi.Controllers.v1
 
         // GET api/<controller>/5
         /// <summary>
-        /// Lấy ảnh theo Id
+        /// Lấy ảnh theo Id (kể cả ảnh IsActive false)
         /// </summary>
         /// <param name="id">The ID of the asset.</param>
         /// <returns>The asset.</returns>
@@ -45,10 +45,9 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        [HttpPut("update/{assetId}")]
-        public async Task<IActionResult> UpdateAsset(long assetId, [FromForm] UpdateProductAssetCommand command)
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateAsset([FromForm] UpdateProductAssetCommand command)
         {
-            command.Id = assetId;
             return Ok(await Mediator.Send(command));
         }
 
@@ -58,4 +57,5 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(new DeleteProductAssetCommand { Id = assetId }));
         }
     }
+
 }

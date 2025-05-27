@@ -1,0 +1,31 @@
+﻿using Application.Interfaces.Repositories;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Persistence.Contexts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Persistence.Repositories
+{
+    public class UserRepositoryAsync : GenericRepositoryAsync<Users>, IUserRepositoryAsync
+    {
+        private readonly DbSet<Users> _user;
+   
+       
+        public UserRepositoryAsync(EXE_PreOrderContext dbContext) : base(dbContext)
+        {
+            _user = dbContext.Set<Users>();
+        }
+        public async Task<Users> GetUserWithRolesAsync(string email, string phone)
+        {
+            return await _user
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Email == email || u.Phone == phone) ?? new Users {FirstName = "Unknow" };
+        }
+
+    }
+}

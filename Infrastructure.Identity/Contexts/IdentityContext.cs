@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Contexts;
 
-public class IdentityContext : IdentityDbContext<User>
+public class IdentityContext : IdentityDbContext<Account>
 {
     public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
     {
@@ -15,7 +15,7 @@ public class IdentityContext : IdentityDbContext<User>
     {
         base.OnModelCreating(builder);
         builder.HasDefaultSchema("Identity");
-        builder.Entity<User>(entity =>
+        builder.Entity<Account>(entity =>
         {
             entity.ToTable(name: "User");
         });

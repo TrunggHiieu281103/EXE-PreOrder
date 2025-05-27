@@ -1,4 +1,5 @@
-﻿using Application.Features.Brands.Commands.CreateBrand;
+﻿using Application.DTOs.Auth;
+using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Brands.Queries.GetAllBrand;
 using Application.Features.Brands.Queries.GetBrandById;
 using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
@@ -26,6 +27,13 @@ public class GeneralProfile : Profile
         CreateMap<CreateBrandCommand, Brands>();
         CreateMap<Brands, GetAllBrandsViewModel>();
         CreateMap<Brands, GetBrandByIdViewModel>();
+        //User
+        CreateMap<Users, UserDto>()
+            .ForMember(dest => dest.Roles, opt => opt.MapFrom(src =>
+                src.UserRoles != null
+                    ? src.UserRoles.Select(ur => ur.Role != null ? ur.Role.RoleName : null).Where(r => r != null).ToList()
+                    : new List<string>()
+            ));
     }
 }
 
