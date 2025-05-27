@@ -4,6 +4,20 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="M:WebApi.Controllers.v1.AuthController.Login(Application.DTOs.Auth.Login.LoginRequest)">
+            <summary>
+            Đăng nhập bằng email hoặc số điện thoại
+            </summary>
+            <param name="request">Thông tin đăng nhập</param>
+            <returns>Thông tin người dùng và token</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.Register(Application.DTOs.Auth.Register.RegisterRequest)">
+            <summary>
+            Đăng ký người dùng mới
+            </summary>
+            <param name="request">Thông tin đăng ký</param>
+            <returns>Kết quả đăng ký</returns>
+        </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
             Lấy ảnh theo product Id
@@ -13,7 +27,7 @@
         </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetById(System.Int64)">
             <summary>
-            Lấy ảnh theo Id
+            Lấy ảnh theo Id (kể cả ảnh IsActive false)
             </summary>
             <param name="id">The ID of the asset.</param>
             <returns>The asset.</returns>

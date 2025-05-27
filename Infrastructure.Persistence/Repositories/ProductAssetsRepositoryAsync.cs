@@ -25,7 +25,7 @@ namespace Persistence.Repositories
         public async Task<IReadOnlyList<ProductAssets>> GetProductAssetsPagedReponse(long productId)
         {
             return await _productAssets
-        .Where(pa => pa.ProductId == productId)
+        .Where(pa => pa.ProductId == productId && pa.IsActive == true)
         .ToListAsync();
         }
     }

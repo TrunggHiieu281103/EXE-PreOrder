@@ -1,6 +1,6 @@
 ﻿namespace Application.Enums;
 
-public enum Roles
+public enum RolesEnum
 {
     USER,
     ADMIN
