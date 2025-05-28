@@ -12,5 +12,6 @@ namespace Application.Interfaces.Repositories
     {
         Task<Users> GetUserWithRolesAsync(string email, string phone);
         Task<Users> GetUserByEmailAsync(string email);
+        Task<Users> GetUserByPhoneAsync(string phone);
     }
 }

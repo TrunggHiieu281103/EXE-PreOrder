@@ -34,5 +34,13 @@ namespace Persistence.Repositories
                     .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(u => (u.Email == email && u.IsActive == true));
         }
+
+        public async Task<Users> GetUserByPhoneAsync(string phone)
+        {
+            return await _user
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => (u.Phone == phone && u.IsActive == true));
+        }
     }
 }

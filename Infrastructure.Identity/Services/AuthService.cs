@@ -87,8 +87,7 @@ namespace Identity.Services
 
         public async Task<BaseResponse<string>> RegisterAsync(RegisterRequest request)
         {
-            var existingUser = (await _userRepository.GetAllAsync())
-                .FirstOrDefault(x => x.Email == request.Email || x.Phone == request.Phone);
+            var existingUser = await _userRepository.GetUserWithRolesAsync(request.Email, request.Phone);
 
             if (existingUser != null)
                  return new BaseResponse<string>("Email or phone number is already registered.");
