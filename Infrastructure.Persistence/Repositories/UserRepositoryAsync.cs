@@ -24,8 +24,15 @@ namespace Persistence.Repositories
             return await _user
                 .Include(u => u.UserRoles)
                     .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => u.Email == email || u.Phone == phone) ?? new Users {FirstName = "Unknow" };
+                .FirstOrDefaultAsync(u => ((u.Email == email || u.Phone == phone) && u.IsActive == true));
         }
 
+        public async Task<Users> GetUserByEmailAsync(string email)
+        {
+            return await _user
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => (u.Email == email && u.IsActive == true));
+        }
     }
 }

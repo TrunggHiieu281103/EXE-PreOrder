@@ -11,5 +11,6 @@ namespace Application.Interfaces.Repositories
     public interface IUserRepositoryAsync : IGenericRepositoryAsync<Users>
     {
         Task<Users> GetUserWithRolesAsync(string email, string phone);
+        Task<Users> GetUserByEmailAsync(string email);
     }
 }

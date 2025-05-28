@@ -1,6 +1,8 @@
 ﻿using Application.DTOs.Auth;
 using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
+using Application.Enums;
+using Application.Exceptions;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
 using Application.Repository;
@@ -8,6 +10,7 @@ using Application.Wrappers;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto.Generators;
 using Persistence.Repositories;
 using System;
@@ -26,14 +29,17 @@ namespace Identity.Services
         private readonly ITokenService _tokenService;
         private readonly IPasswordHasher<Users> _passwordHasher;
         private readonly IMapper _mapper;
-
+        private readonly IEmailService _emailService;
+        private readonly IOTPService _otpService;
         public AuthService(
             IUserRepositoryAsync userRepository,
             ITokenService tokenService,
             IPasswordHasher<Users> passwordHasher,
             IMapper mapper,
             IRoleRepositoryAsync roleRepository,
-            IUserRoleRepositoryAsync userRoleRepository)
+            IUserRoleRepositoryAsync userRoleRepository,
+            IEmailService emailService,
+            IOTPService oTPService)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
@@ -41,6 +47,8 @@ namespace Identity.Services
             _mapper = mapper;
             _roleRepository = roleRepository;
             _userRoleRepository = userRoleRepository;
+            _emailService = emailService;
+            _otpService = oTPService;
         }
 
         public async Task<BaseResponse<LoginResponse>> LoginAsync(LoginRequest request)
@@ -54,6 +62,16 @@ namespace Identity.Services
 
             if (passwordVerification == PasswordVerificationResult.Failed)
                 return new BaseResponse<LoginResponse>("Password incorrect.");
+
+            if (user.IsFirstLogin)
+            {
+                var otp = _emailService.GenerateRandomNumber();
+                await _otpService.StoreOTPAsync(user.Email, otp);
+                await _emailService.SendOtpMail(user.Email, _emailService._mailSettings.EmailFrom, otp);
+
+                return new BaseResponse<LoginResponse>(null, "OTP sent successful");
+            }
+
 
             var token = await _tokenService.CreateToken(user);
 
@@ -116,6 +134,67 @@ namespace Identity.Services
             return new BaseResponse<string>(newUser.FirstName, "User registered successfully.");
         }
 
+        public async Task<BaseResponse<LoginResponse>> VerifyOTPAsync(string email, string inputOtp)
+        {
+            var key = email;
+            var storedOtp = await _otpService.GetOTPAsync(key);
+
+            if (string.IsNullOrEmpty(storedOtp))
+            {
+                throw new ApiException(ErrorMessage.Otp_Expried.GetMessage());
+            }
+
+            if (storedOtp != inputOtp)
+            {
+                throw new ApiException("OTP incorrect.");
+            }
+
+            // Nếu OTP đúng
+            await _otpService.DeleteOTPAsync(key);
+
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                throw new ApiException("User not found.");
+            }
+
+            if (user.IsFirstLogin)
+            {
+                user.IsFirstLogin = false;
+                await _userRepository.UpdateAsync(user);
+            }
+
+            var token = await _tokenService.CreateToken(user);
+
+            var response = new LoginResponse
+            {
+                AccessToken = token,
+                User = _mapper.Map<UserDto>(user)
+
+            };
+            return new BaseResponse<LoginResponse>(response, "Login successful");
+        }
+
+        public async Task<BaseResponse<string>> ResendOTPAsync(string email)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                throw new ApiException("User not found.");
+            }
+
+            var otp = _emailService.GenerateRandomNumber();
+
+            var isStored = await _otpService.StoreOTPAsync(email, otp);
+            if (!isStored)
+            {
+                throw new ApiException(ErrorMessage.Redis_Connection_Failed.GetMessage());
+            }
+
+            await _emailService.SendOtpMail(email, _emailService._mailSettings.EmailFrom, otp);
+
+            return new BaseResponse<string>("OTP resend successful.");
+        }
 
     }
 

@@ -33,8 +33,8 @@ namespace Identity.Services
                 new Claim("Id", user.Id.ToString()),
                 new Claim("FullName", $"{user.FirstName} {user.LastName}".Trim()),
                 new Claim("Phone", user.Phone ?? ""),
-                new Claim("isActive", "true"),
-                new Claim("isFirstLogin", user.IsFirstLogin?.ToString() ?? "false"),
+                new Claim("isActive", user.IsActive.ToString()),
+                new Claim("isFirstLogin", user.IsFirstLogin.ToString()),
                 new Claim("createdAt", user.CreatedAt.ToString()),
                 new Claim("updatedAt", user.UpdatedAt.ToString()),
                 new Claim("token", "access_token")

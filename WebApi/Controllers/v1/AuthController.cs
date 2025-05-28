@@ -46,5 +46,30 @@ namespace WebApi.Controllers.v1
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// Xác thực OTP khi đăng nhập lần đầu
+        /// </summary>
+        /// <param name="email">Email người dùng</param>
+        /// <param name="otp">Mã OTP người dùng nhập</param>
+        /// <returns>Thông tin đăng nhập và token nếu thành công</returns>
+        [HttpPost("verify-otp")]
+        public async Task<IActionResult> VerifyOtp([FromQuery] string email, [FromQuery] string otp)
+        {
+            var result = await _authService.VerifyOTPAsync(email, otp);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Gửi lại mã OTP khi mã cũ hết hạn
+        /// </summary>
+        /// <param name="email">Email người dùng</param>
+        /// <returns>Kết quả gửi lại OTP</returns>
+        [HttpPost("resend-otp")]
+        public async Task<IActionResult> ResendOtp([FromQuery] string email)
+        {
+            var result = await _authService.ResendOTPAsync(email);
+            return Ok(result);
+        }
     }
 }
