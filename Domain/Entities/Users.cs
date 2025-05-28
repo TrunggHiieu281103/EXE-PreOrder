@@ -16,8 +16,8 @@ namespace Domain.Entities
         public string? AvatarPublicId { get; set; } = "samples/man-portrait";
         public string Phone { get; set; }
         public long? DateOfBirth { get; set; } = 0;
-        public bool? IsFirstLogin { get; set; }
-        public bool? IsEnableTwoFactor { get; set; }
+        public bool IsFirstLogin { get; set; }
+        public bool IsEnableTwoFactor { get; set; }
         public virtual ICollection<Orders>? Orders { get; set; }
         public virtual ICollection<ProductComments>? ProductComments { get; set; }
         public virtual ICollection<UserAddresses>? UserAddresses { get; set; }

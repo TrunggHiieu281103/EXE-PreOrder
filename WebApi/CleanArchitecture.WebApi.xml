@@ -18,6 +18,21 @@
             <param name="request">Thông tin đăng ký</param>
             <returns>Kết quả đăng ký</returns>
         </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.VerifyOtp(System.String,System.String)">
+            <summary>
+            Xác thực OTP khi đăng nhập lần đầu
+            </summary>
+            <param name="email">Email người dùng</param>
+            <param name="otp">Mã OTP người dùng nhập</param>
+            <returns>Thông tin đăng nhập và token nếu thành công</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.ResendOtp(System.String)">
+            <summary>
+            Gửi lại mã OTP khi mã cũ hết hạn
+            </summary>
+            <param name="email">Email người dùng</param>
+            <returns>Kết quả gửi lại OTP</returns>
+        </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
             Lấy ảnh theo product Id

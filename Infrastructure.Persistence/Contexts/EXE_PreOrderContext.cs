@@ -46,7 +46,7 @@ namespace Persistence.Contexts
                         entry.Entity.CreatedAt = currentTimeMillis;
                         entry.Entity.UpdatedAt = currentTimeMillis;
                         entry.Entity.Version = 1; // Khởi tạo version = 1
-                        entry.Entity.IsActive ??= true; // Mặc định là true nếu chưa được gán
+                        entry.Entity.IsActive = true; // Mặc định là true nếu chưa được gán
                         break;
 
                     case EntityState.Modified:

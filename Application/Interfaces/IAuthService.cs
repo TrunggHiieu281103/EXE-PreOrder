@@ -13,6 +13,7 @@ namespace Application.Interfaces
     {
         Task<BaseResponse<LoginResponse>> LoginAsync(LoginRequest request);
         Task<BaseResponse<string>> RegisterAsync(RegisterRequest request);
-
+        Task<BaseResponse<LoginResponse>> VerifyOTPAsync(string email, string inputOtp);
+        Task<BaseResponse<string>> ResendOTPAsync(string email);
     }
 }
