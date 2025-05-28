@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
+using Application.DTOs.OTP;
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -54,9 +55,9 @@ namespace WebApi.Controllers.v1
         /// <param name="otp">Mã OTP người dùng nhập</param>
         /// <returns>Thông tin đăng nhập và token nếu thành công</returns>
         [HttpPost("verify-otp")]
-        public async Task<IActionResult> VerifyOtp([FromQuery] string email, [FromQuery] string otp)
+        public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpRequest request)
         {
-            var result = await _authService.VerifyOTPAsync(email, otp);
+            var result = await _authService.VerifyOTPAsync(request.Email, request.Otp);
             return Ok(result);
         }
 
@@ -66,9 +67,9 @@ namespace WebApi.Controllers.v1
         /// <param name="email">Email người dùng</param>
         /// <returns>Kết quả gửi lại OTP</returns>
         [HttpPost("resend-otp")]
-        public async Task<IActionResult> ResendOtp([FromQuery] string email)
+        public async Task<IActionResult> ResendOtp([FromBody] ResendOtpRequest request)
         {
-            var result = await _authService.ResendOTPAsync(email);
+            var result = await _authService.ResendOTPAsync(request.Email);
             return Ok(result);
         }
     }
