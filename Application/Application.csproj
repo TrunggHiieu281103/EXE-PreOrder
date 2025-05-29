@@ -11,7 +11,9 @@
 		<PackageReference Include="CloudinaryDotNet" Version="1.27.5" />
 		<PackageReference Include="FluentValidation" Version="11.8.2" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.2" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.69.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.16" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Text.Json" Version="8.0.2" />

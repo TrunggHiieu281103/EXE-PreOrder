@@ -18,7 +18,7 @@
             <param name="request">Thông tin đăng ký</param>
             <returns>Kết quả đăng ký</returns>
         </member>
-        <member name="M:WebApi.Controllers.v1.AuthController.VerifyOtp(System.String,System.String)">
+        <member name="M:WebApi.Controllers.v1.AuthController.VerifyOtp(Application.DTOs.OTP.VerifyOtpRequest)">
             <summary>
             Xác thực OTP khi đăng nhập lần đầu
             </summary>
@@ -26,7 +26,7 @@
             <param name="otp">Mã OTP người dùng nhập</param>
             <returns>Thông tin đăng nhập và token nếu thành công</returns>
         </member>
-        <member name="M:WebApi.Controllers.v1.AuthController.ResendOtp(System.String)">
+        <member name="M:WebApi.Controllers.v1.AuthController.ResendOtp(Application.DTOs.OTP.ResendOtpRequest)">
             <summary>
             Gửi lại mã OTP khi mã cũ hết hạn
             </summary>
