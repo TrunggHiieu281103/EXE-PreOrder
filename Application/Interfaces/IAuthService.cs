@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
+using Application.DTOs.Google;
 using Application.Wrappers;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace Application.Interfaces
         Task<BaseResponse<string>> RegisterAsync(RegisterRequest request);
         Task<BaseResponse<LoginResponse>> VerifyOTPAsync(string email, string inputOtp);
         Task<BaseResponse<string>> ResendOTPAsync(string email);
+        Task<BaseResponse<LoginResponse>> GoogleLoginAsync(GoogleLoginRequest request);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
+using Application.DTOs.Google;
 using Application.DTOs.OTP;
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Interfaces;
@@ -70,6 +71,13 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> ResendOtp([FromBody] ResendOtpRequest request)
         {
             var result = await _authService.ResendOTPAsync(request.Email);
+            return Ok(result);
+        }
+
+        [HttpPost("google-login")]
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest request)
+        {
+            var result = await _authService.GoogleLoginAsync(request);
             return Ok(result);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Auth;
 using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
+using Application.DTOs.Google;
 using Application.Enums;
 using Application.Exceptions;
 using Application.Interfaces;
@@ -9,6 +10,7 @@ using Application.Repository;
 using Application.Wrappers;
 using AutoMapper;
 using Domain.Entities;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto.Generators;
@@ -193,6 +195,71 @@ namespace Identity.Services
             await _emailService.SendOtpMail(email, _emailService._mailSettings.EmailFrom, otp);
 
             return new BaseResponse<string>("OTP resend successful.");
+        }
+
+        public async Task<BaseResponse<LoginResponse>> GoogleLoginAsync(GoogleLoginRequest request)
+        {
+            GoogleJsonWebSignature.Payload payload;
+            try
+            {
+                payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken);
+            }
+            catch (Exception)
+            {
+                return new BaseResponse<LoginResponse>("Invalid Google token.");
+            }
+
+            var existingUser = await _userRepository.GetUserByEmailAsync(payload.Email);
+
+            if (existingUser == null)
+            {
+                var newUser = new Users
+                {
+                    Email = payload.Email,
+                    Phone = "NONE",
+                    FirstName = payload.GivenName ?? "Google",
+                    LastName = payload.FamilyName ?? "User",
+                    Gender = "NONE",
+                    IsFirstLogin = true,
+                    IsEnableTwoFactor = false,
+                    IsActive = true // đảm bảo được lọc bởi GetUserByEmailAsync
+                };
+
+                newUser.Password = _passwordHasher.HashPassword(newUser, "1234567890");
+
+                // 1. Thêm user mới
+                await _userRepository.AddAsync(newUser);
+
+                // 2. Lấy lại user vừa thêm để có Id
+                var createdUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
+
+                // 3. Gán role mặc định
+                var defaultRole = await _roleRepository.GetByIdAsync(1);
+                if (defaultRole != null)
+                {
+                    await _userRoleRepository.AddAsync(new UserRoles
+                    {
+                        UserId = createdUser.Id,
+                        RoleId = defaultRole.Id
+                    });
+                }
+
+                // ✅ 4. Gọi lại GetUserByEmailAsync để lấy đầy đủ thông tin user + role
+                existingUser = await _userRepository.GetUserByEmailAsync(createdUser.Email);
+            }
+
+            // 5. Tạo Access Token
+            var token = await _tokenService.CreateToken(existingUser);
+
+            // 6. Map sang DTO
+            var userDto = _mapper.Map<UserDto>(existingUser);
+
+            // 7. Trả kết quả
+            return new BaseResponse<LoginResponse>(new LoginResponse
+            {
+                AccessToken = token,
+                User = userDto
+            });
         }
 
     }
