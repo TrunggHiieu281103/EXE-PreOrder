@@ -2,12 +2,19 @@
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Brands.Queries.GetAllBrand;
 using Application.Features.Brands.Queries.GetBrandById;
+
+using Application.Features.Categories.Commands.CreateCategory;
+using Application.Features.Categories.Queries.GetAllCategory;
+using Application.Features.Categories.Queries.GetCategoryById;
+
 using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
+
 using Application.Features.Products.Commands.CreateProduct;
 using Application.Features.Products.Queries.GetAllProduct;
 using Application.Features.Products.Queries.GetProductById;
 using AutoMapper;
 using Domain.Entities;
+using Application.Dtos; // Thêm dòng này
 
 namespace Application.Mappings;
 
@@ -34,6 +41,11 @@ public class GeneralProfile : Profile
                     ? src.UserRoles.Select(ur => ur.Role != null ? ur.Role.RoleName : null).Where(r => r != null).ToList()
                     : new List<string>()
             ));
+        // Map domain Category entity
+        CreateMap<CreateCategoryCommand, Categories>();
+        CreateMap<Categories, GetAllCategoryViewModel>();
+        CreateMap<GetAllCategoryQuery, GetAllCategoryParameter>();
+        CreateMap<Categories, GetCategoryByIdViewModel>();
+
     }
 }
-

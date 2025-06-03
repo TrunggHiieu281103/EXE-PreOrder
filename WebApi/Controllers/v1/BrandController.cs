@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     {
         // GET: api/brand
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAllBrandsParameters filter)
+        public async Task<IActionResult> Get([FromQuery] GetAllBrandsParameter filter)
         {
             var query = new GetAllBrandsQuery
             {

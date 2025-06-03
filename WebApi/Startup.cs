@@ -35,6 +35,7 @@ namespace WebApi
             services.AddScoped<IBrandRepositoryAsync, BrandRepositoryAsync>();
 
             services.AddScoped<IPasswordHasher<Users>, PasswordHasher<Users>>();
+            services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
 
         }
 
