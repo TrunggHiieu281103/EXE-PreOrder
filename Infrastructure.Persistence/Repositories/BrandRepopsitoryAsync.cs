@@ -28,7 +28,7 @@ namespace Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameters filter)
+        public async Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter)
         {
             var query = _brands.AsQueryable();
 

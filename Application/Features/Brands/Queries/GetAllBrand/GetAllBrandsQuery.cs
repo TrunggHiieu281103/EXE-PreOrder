@@ -29,7 +29,7 @@ namespace Application.Features.Brands.Queries.GetAllBrand
         public async Task<PageResponse<IEnumerable<GetAllBrandsViewModel>>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
         {
             // Map request sang parameter filter nếu cần, hoặc dùng chính request
-            var filter = new GetAllBrandsParameters
+            var filter = new GetAllBrandsParameter
             {
                 PageNumber = request.PageNumber,
                 PageSize = request.PageSize,
