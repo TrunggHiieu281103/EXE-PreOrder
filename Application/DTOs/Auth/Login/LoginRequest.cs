@@ -9,7 +9,6 @@ namespace Application.DTOs.Auth.Login
     public class LoginRequest
     {
         public string Email { get; set; } // Email or Phone
-        public string Phone { get; set; } 
         public string Password { get; set; }
     }
 }

@@ -55,7 +55,7 @@ namespace Identity.Services
 
         public async Task<BaseResponse<LoginResponse>> LoginAsync(LoginRequest request)
         {
-            var user = (await _userRepository.GetUserWithRolesAsync(request.Email, request.Phone));
+            var user = (await _userRepository.GetUserByEmailAsync(request.Email));
 
             if (user == null)
                 return new BaseResponse<LoginResponse>("Email or phone number not found. ");

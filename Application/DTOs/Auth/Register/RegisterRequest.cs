@@ -9,6 +9,7 @@ namespace Application.DTOs.Auth.Register
 {
     public class RegisterRequest
     {
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }

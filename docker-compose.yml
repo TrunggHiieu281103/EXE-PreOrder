@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "MyStrongPassword123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./sql-scripts:/scripts
+    networks:
+      - app-network
+
+  sql-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./sql-scripts:/scripts
+    networks:
+      - app-network
+    entrypoint: >
+      /bin/bash -c "
+      echo 'Chờ SQL Server khởi động...';
+      sleep 60;
+      echo 'Tạo database MyStore...';
+      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -Q \"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'MyStore') CREATE DATABASE [MyStore]\" ;
+      echo 'Chạy script khởi tạo...';
+      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -d MyStore -i /scripts/init.sql;
+      echo 'Database đã được khởi tạo xong!';
+      "
+
+  dotnet-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dotnet-app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=MyStore;User Id=sa;Password=MyStrongPassword123!;TrustServerCertificate=True;
+    ports:
+      - "5190:5190"
+    depends_on:
+      - sql-init
+    networks:
+      - app-network
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: eCommerce
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
