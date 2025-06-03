@@ -25,7 +25,7 @@ namespace WebApi
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    var userManager = services.GetRequiredService<UserManager<Account>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
                     Log.Information("Finished Seeding Default Data");

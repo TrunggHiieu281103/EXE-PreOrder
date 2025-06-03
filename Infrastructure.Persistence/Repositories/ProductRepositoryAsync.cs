@@ -83,6 +83,34 @@ namespace Persistence.Repositories
             return category != null;
         }
 
+        public async Task<Products?> GetProductByIdAsync(long productId)
+        {
+            return await _products
+        .Where(p => p.Id == productId)
+        .Select(p => new Products
+        {
+            Id = p.Id,
+            ProductCode = p.ProductCode,
+            ProductName = p.ProductName,
+            Description = p.Description,
+            CategoryId = p.CategoryId,
+            BrandId = p.BrandId,
+            Type = p.Type,
+            Size = p.Size,
+            StockQuantity = p.StockQuantity,
+            ProductDetails = p.ProductDetails,
+            Price = p.Price,
+            OpenedAt = p.OpenedAt,
+            IsPreOrder = p.IsPreOrder,
+            Version = p.Version,
+            IsActive = p.IsActive,
+            CreatedAt = p.CreatedAt,
+            UpdatedAt = p.UpdatedAt,
+            ProductAssets = p.ProductAssets.Where(a => a.IsActive == true).ToList()
+        })
+        .FirstOrDefaultAsync();
+        }
+
 
         //public Task<bool> IsUniqueBarcodeAsync(string barcode)
         //{

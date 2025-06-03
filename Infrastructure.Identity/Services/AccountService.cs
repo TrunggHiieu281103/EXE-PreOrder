@@ -9,14 +9,14 @@ using Application.Interfaces;
 
 public class AccountService : IAccountService
 {
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<Account> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly SignInManager<User> _signInManager;
+    private readonly SignInManager<Account> _signInManager;
     private readonly IEmailService _emailService;
     
-    public AccountService(UserManager<User> userManager, 
+    public AccountService(UserManager<Account> userManager, 
         RoleManager<IdentityRole> roleManager, 
-        SignInManager<User> signInManager,
+        SignInManager<Account> signInManager,
         IEmailService emailService)
     {
         _userManager = userManager;
