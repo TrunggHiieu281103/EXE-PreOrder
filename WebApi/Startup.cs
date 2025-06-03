@@ -1,8 +1,10 @@
 ﻿using Application;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
+using Domain.Entities;
 using Identity;
 using Infrastructure.Shared;
+using Microsoft.AspNetCore.Identity;
 using Persistence;
 using Persistence.Repositories;
 using WebApi.Extensions;
@@ -29,7 +31,8 @@ namespace WebApi
             services.AddHealthChecks();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<IBrandRepositoryAsync, BrandRepositoryAsync>();
-
+            services.AddScoped<IPasswordHasher<Users>, PasswordHasher<Users>>();
+            services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
