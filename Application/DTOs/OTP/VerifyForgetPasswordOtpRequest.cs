@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs.OTP
 {
-    public class VerifyOtpRequest
+    public class VerifyForgetPasswordOtpRequest
     {
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "The email format is incorrect.")]

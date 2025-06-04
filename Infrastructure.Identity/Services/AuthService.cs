@@ -1,7 +1,10 @@
 ﻿using Application.DTOs.Auth;
+using Application.DTOs.Auth.ChangePassword;
+using Application.DTOs.Auth.ForgetPassword;
 using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
 using Application.DTOs.Google;
+using Application.DTOs.OTP;
 using Application.Enums;
 using Application.Exceptions;
 using Application.Interfaces;
@@ -18,6 +21,7 @@ using Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,49 +59,47 @@ namespace Identity.Services
 
         public async Task<BaseResponse<LoginResponse>> LoginAsync(LoginRequest request)
         {
-            var user = (await _userRepository.GetUserWithRolesAsync(request.Email, request.Phone));
-
+            var user = await _userRepository.GetUserByEmailAsync(request.Email);
             if (user == null)
-                return new BaseResponse<LoginResponse>("Email or phone number not found. ");
+                throw new ApiException("Email not found.");
 
             var passwordVerification = _passwordHasher.VerifyHashedPassword(user, user.Password, request.Password);
-
             if (passwordVerification == PasswordVerificationResult.Failed)
-                return new BaseResponse<LoginResponse>("Password incorrect.");
+                throw new ApiException("Incorrect password.");
 
+            // Nếu user chưa xác thực OTP
             if (user.IsFirstLogin)
             {
                 var otp = _emailService.GenerateRandomNumber();
-                await _otpService.StoreOTPAsync(user.Email, otp);
-                await _emailService.SendOtpMail(user.Email, _emailService._mailSettings.EmailFrom, otp);
+                var isStored = await _otpService.StoreOTPAsync(user.Email, otp);
+                if (!isStored)
+                    throw new ApiException("Failed to store OTP for verification.");
 
-                return new BaseResponse<LoginResponse>(null, "OTP sent successful");
+                await _emailService.SendOtpMail(user.Email, _emailService._mailSettings.EmailFrom, otp);
+                return new BaseResponse<LoginResponse>(null, "Your account is not verified. OTP has been sent to your email.");
             }
 
-
+            // Nếu đã xác thực
             var token = await _tokenService.CreateToken(user);
-
             var response = new LoginResponse
             {
                 AccessToken = token,
                 User = _mapper.Map<UserDto>(user)
-                
             };
 
-            return new BaseResponse<LoginResponse>(response, "Login successful");
+            return new BaseResponse<LoginResponse>(response, "Login successful.");
         }
+
 
         public async Task<BaseResponse<string>> RegisterAsync(RegisterRequest request)
         {
             var existingUser = await _userRepository.GetUserWithRolesAsync(request.Email, request.Phone);
-
             if (existingUser != null)
-                 return new BaseResponse<string>("Email or phone number is already registered.");
-            
+                throw new ApiException("Email or phone number is already registered.");
 
-            if (!request.Password.Equals(request.ConfirmPassword))
-                return new BaseResponse<string>("Confirm password not match.");
-            
+            if (request.Password != request.ConfirmPassword)
+                throw new ApiException("Password and confirmation do not match.");
+
             var newUser = new Users
             {
                 Email = request.Email,
@@ -107,94 +109,69 @@ namespace Identity.Services
                 Gender = request.Gender,
                 IsFirstLogin = true,
                 IsEnableTwoFactor = false,
+                IsActive = true
             };
-
             newUser.Password = _passwordHasher.HashPassword(newUser, request.Password);
 
-                // Add the new user to the DB
-                var createdUser = await _userRepository.AddAsync(newUser);
-            
+            var createdUser = await _userRepository.AddAsync(newUser);
 
-            // id 1 is USER
-            int roleUserId = 1;
-            // --- Assign default role (e.g., "User") ---
-            var userRole = await _roleRepository.GetByIdAsync(roleUserId);
-
-            if (userRole == null)
-                return new BaseResponse<string>("Default role 'User' not found. Please seed roles first.");
-
-            var userRoles = new UserRoles
+            var defaultRole = await _roleRepository.GetByIdAsync(1);
+            if (defaultRole != null)
             {
-                UserId = createdUser.Id,
-                RoleId = userRole.Id,
-            };
+                await _userRoleRepository.AddAsync(new UserRoles
+                {
+                    UserId = createdUser.Id,
+                    RoleId = defaultRole.Id
+                });
+            }
 
-            await _userRoleRepository.AddAsync(userRoles);
-           
+            var otp = _emailService.GenerateRandomNumber();
+            await _otpService.StoreOTPAsync(request.Email, otp);
+            await _emailService.SendOtpMail(request.Email, _emailService._mailSettings.EmailFrom, otp);
 
-            return new BaseResponse<string>(newUser.FirstName, "User registered successfully.");
+            return new BaseResponse<string>("User created successfully. Please verify your OTP.");
         }
 
         public async Task<BaseResponse<LoginResponse>> VerifyOTPAsync(string email, string inputOtp)
         {
-            var key = email;
-            var storedOtp = await _otpService.GetOTPAsync(key);
-
-            if (string.IsNullOrEmpty(storedOtp))
-            {
-                throw new ApiException(ErrorMessage.Otp_Expried.GetMessage());
-            }
-
-            if (storedOtp != inputOtp)
-            {
-                throw new ApiException("OTP incorrect.");
-            }
-
-            // Nếu OTP đúng
-            await _otpService.DeleteOTPAsync(key);
-
             var user = await _userRepository.GetUserByEmailAsync(email);
             if (user == null)
-            {
                 throw new ApiException("User not found.");
-            }
 
-            if (user.IsFirstLogin)
-            {
-                user.IsFirstLogin = false;
-                await _userRepository.UpdateAsync(user);
-            }
+            if (!user.IsFirstLogin)
+                throw new ApiException("User already verified.");
+
+            var storedOtp = await _otpService.GetOTPAsync(email);
+            if (storedOtp == null || storedOtp != inputOtp)
+                throw new ApiException("Invalid or expired OTP.");
+
+            // Đánh dấu đã xác thực
+            user.IsFirstLogin = false;
+            await _userRepository.UpdateAsync(user);
+
+            await _otpService.DeleteOTPAsync(email);
 
             var token = await _tokenService.CreateToken(user);
-
-            var response = new LoginResponse
+            return new BaseResponse<LoginResponse>(new LoginResponse
             {
                 AccessToken = token,
                 User = _mapper.Map<UserDto>(user)
-
-            };
-            return new BaseResponse<LoginResponse>(response, "Login successful");
+            }, "OTP verified. Login successful.");
         }
 
         public async Task<BaseResponse<string>> ResendOTPAsync(string email)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
-            if (user == null)
-            {
-                throw new ApiException("User not found.");
-            }
+            if (user == null || !user.IsFirstLogin)
+                throw new ApiException("Cannot resend OTP. User not found or already verified.");
 
             var otp = _emailService.GenerateRandomNumber();
-
             var isStored = await _otpService.StoreOTPAsync(email, otp);
             if (!isStored)
-            {
-                throw new ApiException(ErrorMessage.Redis_Connection_Failed.GetMessage());
-            }
+                throw new ApiException("Failed to store OTP.");
 
             await _emailService.SendOtpMail(email, _emailService._mailSettings.EmailFrom, otp);
-
-            return new BaseResponse<string>("OTP resend successful.");
+            return new BaseResponse<string>("OTP resent successfully.");
         }
 
         public async Task<BaseResponse<LoginResponse>> GoogleLoginAsync(GoogleLoginRequest request)
@@ -204,14 +181,14 @@ namespace Identity.Services
             {
                 payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken);
             }
-            catch (Exception)
+            catch
             {
-                return new BaseResponse<LoginResponse>("Invalid Google token.");
+                throw new ApiException("Invalid Google token.");
             }
 
-            var existingUser = await _userRepository.GetUserByEmailAsync(payload.Email);
+            var user = await _userRepository.GetUserByEmailAsync(payload.Email);
 
-            if (existingUser == null)
+            if (user == null)
             {
                 var newUser = new Users
                 {
@@ -222,18 +199,14 @@ namespace Identity.Services
                     Gender = "NONE",
                     IsFirstLogin = true,
                     IsEnableTwoFactor = false,
-                    IsActive = true // đảm bảo được lọc bởi GetUserByEmailAsync
+                    IsActive = true
                 };
 
                 newUser.Password = _passwordHasher.HashPassword(newUser, "1234567890");
 
-                // 1. Thêm user mới
                 await _userRepository.AddAsync(newUser);
-
-                // 2. Lấy lại user vừa thêm để có Id
                 var createdUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
 
-                // 3. Gán role mặc định
                 var defaultRole = await _roleRepository.GetByIdAsync(1);
                 if (defaultRole != null)
                 {
@@ -244,22 +217,64 @@ namespace Identity.Services
                     });
                 }
 
-                // ✅ 4. Gọi lại GetUserByEmailAsync để lấy đầy đủ thông tin user + role
-                existingUser = await _userRepository.GetUserByEmailAsync(createdUser.Email);
+                user = await _userRepository.GetUserByEmailAsync(createdUser.Email);
             }
 
-            // 5. Tạo Access Token
-            var token = await _tokenService.CreateToken(existingUser);
+            var token = await _tokenService.CreateToken(user);
 
-            // 6. Map sang DTO
-            var userDto = _mapper.Map<UserDto>(existingUser);
-
-            // 7. Trả kết quả
             return new BaseResponse<LoginResponse>(new LoginResponse
             {
                 AccessToken = token,
-                User = userDto
-            });
+                User = _mapper.Map<UserDto>(user)
+            }, "Google login successful.");
+        }
+
+        public async Task<BaseResponse<string>> SendForgotPasswordOTPAsync(string email)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            if (user == null)
+                throw new ApiException("Email not found.");
+
+            if(user.IsFirstLogin)
+                throw new ApiException("Your account is not verified.");
+
+            var otp = _emailService.GenerateRandomNumber();
+            var stored = await _otpService.StoreForgetPasswordOtpAsync(email, otp);
+            if (!stored)
+                throw new ApiException("Failed to store OTP.");
+
+            await _emailService.SendResetPassOtpMail(email, _emailService._mailSettings.EmailFrom, otp);
+            return new BaseResponse<string>("OTP sent to email.");
+        }
+
+        public async Task<BaseResponse<string>> VerifyForgetPasswordOtpAsync(string email, string otp, string newPassword, string confirmPassword)
+        {
+            var storedOtp = await _otpService.GetForgetPasswordOtpAsync(email);
+            if (storedOtp == null)
+                throw new ApiException("OTP expired or not found.");
+
+            if (storedOtp != otp)
+                throw new ApiException("Invalid OTP.");
+
+            return await ResetPasswordAsync(email, newPassword, confirmPassword);
+
+        }
+
+        private async Task<BaseResponse<string>> ResetPasswordAsync(string email, string newPassword, string confirmPassword)
+        {
+            if (newPassword != confirmPassword)
+                throw new ApiException("Password and confirmation do not match.");
+
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            if (user == null)
+                throw new ApiException("User not found.");
+
+            user.Password = _passwordHasher.HashPassword(user, newPassword);
+            await _userRepository.UpdateAsync(user);
+
+            await _otpService.DeleteForgetPasswordOtpAsync(email);
+
+            return new BaseResponse<string>("Password has been reset successfully.");
         }
 
     }

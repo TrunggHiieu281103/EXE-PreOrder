@@ -9,6 +9,8 @@ namespace Application.DTOs.Auth.Register
 {
     public class RegisterRequest
     {
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "The email format is incorrect.")]
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
