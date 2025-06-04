@@ -1,9 +1,13 @@
-﻿using Application.DTOs.Auth.Login;
+﻿using Application.DTOs.Auth.ChangePassword;
+using Application.DTOs.Auth.ForgetPassword;
+using Application.DTOs.Auth.Login;
 using Application.DTOs.Auth.Register;
 using Application.DTOs.Google;
 using Application.DTOs.OTP;
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.v1
@@ -25,7 +29,7 @@ namespace WebApi.Controllers.v1
         /// <param name="request">Thông tin đăng nhập</param>
         /// <returns>Thông tin người dùng và token</returns>
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] Application.DTOs.Auth.Login.LoginRequest request)
         {
             var result = await _authService.LoginAsync(request);
             if (!result.Succeeded)
@@ -40,7 +44,7 @@ namespace WebApi.Controllers.v1
         /// <param name="request">Thông tin đăng ký</param>
         /// <returns>Kết quả đăng ký</returns>
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] Application.DTOs.Auth.Register.RegisterRequest request)
         {
             var result = await _authService.RegisterAsync(request);
             if (!result.Succeeded)
@@ -50,7 +54,7 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// Xác thực OTP khi đăng nhập lần đầu
+        /// Xác thực OTP khi tạo tài khoản
         /// </summary>
         /// <param name="email">Email người dùng</param>
         /// <param name="otp">Mã OTP người dùng nhập</param>
@@ -80,5 +84,52 @@ namespace WebApi.Controllers.v1
             var result = await _authService.GoogleLoginAsync(request);
             return Ok(result);
         }
+
+        /// <summary>
+        /// Gửi OTP để reset mật khẩu
+        /// </summary>
+        /// <param name="request">Email người dùng</param>
+        /// <returns>Kết quả gửi OTP</returns>
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] SendOtpRequest request)
+        {
+            var result = await _authService.SendForgotPasswordOTPAsync(request.Email);
+            if (!result.Succeeded)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Xác thực OTP để reset lại password
+        /// </summary>
+        /// <param name="request">Email và mã OTP</param>
+        /// <returns>Kết quả xác thực</returns>
+        [HttpPost("verify-forgot-password-otp")]
+        public async Task<IActionResult> VerifyForgotPasswordOtp([FromBody] Application.DTOs.Auth.ForgetPassword.ResetPasswordRequest request)
+        {
+            var result = await _authService.VerifyForgetPasswordOtpAsync(request.Email, request.Otp, request.NewPassword, request.ConfirmPassword);
+            if (!result.Succeeded)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Đổi mật khẩu người dùng đã đăng nhập
+        /// </summary>
+        /// <param name="request">Mật khẩu cũ và mới</param>
+        /// <returns>Kết quả đổi mật khẩu</returns>
+        //[HttpPost("change-password")]
+        //[Authorize]
+        //public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest request)
+        //{
+        //    var result = await _authService.ChangePasswordAsync(User, request);
+        //    if (!result.Succeeded)
+        //    return BadRequest(result);
+
+        //    return Ok(result);
+        //}
+
     }
 }

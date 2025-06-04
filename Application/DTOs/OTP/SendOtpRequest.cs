@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs.OTP
 {
-    public class VerifyOtpRequest
+    public class SendOtpRequest
     {
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "The email format is incorrect.")]
         public string Email { get; set; }
-        public string Otp { get; set; }
     }
 }

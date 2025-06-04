@@ -20,7 +20,7 @@
         </member>
         <member name="M:WebApi.Controllers.v1.AuthController.VerifyOtp(Application.DTOs.OTP.VerifyOtpRequest)">
             <summary>
-            Xác thực OTP khi đăng nhập lần đầu
+            Xác thực OTP khi tạo tài khoản
             </summary>
             <param name="email">Email người dùng</param>
             <param name="otp">Mã OTP người dùng nhập</param>
@@ -32,6 +32,20 @@
             </summary>
             <param name="email">Email người dùng</param>
             <returns>Kết quả gửi lại OTP</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.ForgotPassword(Application.DTOs.OTP.SendOtpRequest)">
+            <summary>
+            Gửi OTP để reset mật khẩu
+            </summary>
+            <param name="request">Email người dùng</param>
+            <returns>Kết quả gửi OTP</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.VerifyForgotPasswordOtp(Application.DTOs.Auth.ForgetPassword.ResetPasswordRequest)">
+            <summary>
+            Xác thực OTP để reset lại password
+            </summary>
+            <param name="request">Email và mã OTP</param>
+            <returns>Kết quả xác thực</returns>
         </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
