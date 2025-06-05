@@ -23,6 +23,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 
-EXPOSE 8080
-ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 5190
+ENV ASPNETCORE_URLS=http://+:5190
 ENTRYPOINT ["dotnet", "WebApi.dll"]

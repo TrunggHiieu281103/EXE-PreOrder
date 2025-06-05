@@ -9,7 +9,7 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Express"
     ports:
-      - "1433:1433"
+      - "1533:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
       - ./sql-scripts:/scripts
@@ -28,10 +28,10 @@ services:
       /bin/bash -c "
       echo 'Chờ SQL Server khởi động...';
       sleep 60;
-      echo 'Tạo database MyStore...';
-      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -Q \"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'MyStore') CREATE DATABASE [MyStore]\" ;
+      echo 'Tạo database EXE_PreOrder...';
+      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -Q \"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'EXE_PreOrder') CREATE DATABASE [EXE_PreOrder]\" ;
       echo 'Chạy script khởi tạo...';
-      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -d MyStore -i /scripts/init.sql;
+      /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'MyStrongPassword123!' -d EXE_PreOrder -i /scripts/init.sql;
       echo 'Database đã được khởi tạo xong!';
       "
 
@@ -42,7 +42,8 @@ services:
     container_name: dotnet-app
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=MyStore;User Id=sa;Password=MyStrongPassword123!;TrustServerCertificate=True;
+      - ASPNETCORE_URLS=http://+:5190
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=EXE_PreOrder;User Id=sa;Password=MyStrongPassword123!;TrustServerCertificate=True;
     ports:
       - "5190:5190"
     depends_on:
