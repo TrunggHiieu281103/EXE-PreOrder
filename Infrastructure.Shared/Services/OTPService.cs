@@ -33,10 +33,10 @@ namespace Infrastructure.Shared.Services
                 return await _db.StringSetAsync(key, otp, TimeSpan.FromMinutes(_otpExpirationMinutes));
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw new ApiException(ErrorMessage.Redis_Connection_Failed.GetMessage());
+                // Ghi log hoặc truyền thông điệp chi tiết vào ApiException
+                throw new ApiException($"Failed to store OTP for key: {key}. Error: {ex.Message}", ex);
             }
         }
 

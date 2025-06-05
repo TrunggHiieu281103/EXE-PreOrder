@@ -4,11 +4,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+	  <DocumentationFile>CleanArchitecture.WebApi.xml</DocumentationFile>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>CleanArchitecture.WebApi.xml</DocumentationFile>
-		<NoWarn>1701;1702;1591</NoWarn>
+		
 	</PropertyGroup>
 
 	<ItemGroup>
