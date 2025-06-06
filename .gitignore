@@ -12,3 +12,6 @@
 *.pdb
 *.cache
 TestResults/
+
+# Ignore environment config
+.env
