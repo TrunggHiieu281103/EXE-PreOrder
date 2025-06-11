@@ -5,6 +5,7 @@ using Persistence.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,18 @@ namespace Persistence.Repositories
                 .Include(u => u.UserRoles)
                     .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(u => (u.Phone == phone && u.IsActive == true));
+        }
+
+        public async Task<Users> GetUserByIdWithAddressAsync(long userId)
+        {
+            return await _user
+        .Include(u => u.UserAddresses)
+        .FirstOrDefaultAsync(u => u.Id == userId && u.IsActive);
+        }
+
+        public async Task<bool> FindUserById(long userId)
+        {
+            return await _user.AnyAsync(u => u.Id == userId && u.IsActive);
         }
     }
 }

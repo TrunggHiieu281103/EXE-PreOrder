@@ -38,6 +38,10 @@ namespace Persistence
             services.AddTransient<IRoleRepositoryAsync, RoleRepositoryAsync>();
             services.AddTransient<IUserRoleRepositoryAsync, UserRoleRepositoryAsync>();
 
+            services.AddTransient<IOrderRepositoryAsync, OrderRepositoryAsync>();
+            services.AddTransient<IUserAddressRepositoryAsync, UserAddressRepository>();
+
+
             #endregion
         }
     }

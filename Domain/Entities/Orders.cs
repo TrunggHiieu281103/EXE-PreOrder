@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         public long Id { get; set; }
         public long UserId { get; set; }
-        public long UserAddress { get; set; }
+        public long UserAddressId { get; set; }
         public string Status { get; set; }
         public decimal? DepositPrice { get; set; }
         public decimal? ShippingFee { get; set; }
