@@ -61,5 +61,47 @@
             <param name="id">The ID of the asset.</param>
             <returns>The asset.</returns>
         </member>
+        <member name="M:WebApi.Controllers.OrderController.Get(Application.Features.Orders.Queries.GetAllOrders.GetAllOrderParameter)">
+            <summary>
+            Lấy tất cả đơn hàng
+            </summary>
+            <param name="filter">Thông tin đăng nhập</param>
+            <returns>danh sách tất cả đơn hàng</returns>
+        </member>
+        <member name="M:WebApi.Controllers.OrderController.GetById(System.Int64)">
+            <summary>
+            Lấy đơn hàng theo ID
+            </summary>
+            <param name="id">Thông tin đăng nhập</param>
+            <returns>Thông tin đơn hàng</returns>
+        </member>
+        <member name="M:WebApi.Controllers.OrderController.Create(Application.Features.Orders.Commands.CreateOrder.CreateOrderCommand)">
+            <summary>
+            Tạo đơn hàng
+            </summary>
+            <param name="command">Thông tin đăng nhập</param>
+            <returns>id đơn hàng mới tạo</returns>
+        </member>
+        <member name="M:WebApi.Controllers.OrderController.GetOrdersByUser(System.Int64)">
+            <summary>
+            Lấy tất cả đơn hàng theo Id người dùng
+            </summary>
+            <param name="userId">Thông tin đăng nhập</param>
+            <returns>Thông tin danh sách đơn của người dùng</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserAddressController.Post(Application.Features.UserAddress.Commands.CreateUserAddress.CreateUserAddressCommand)">
+            <summary>
+            Tạo địa chỉ người dùng mới
+            </summary>
+            <param name="command">Thông tin đăng nhập</param>
+            <returns>id địa chỉ vừa mới tạo</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserAddressController.GetById(System.Int64)">
+            <summary>
+            Lấy tất cả địa chỉ của người dùng theo userId
+            </summary>
+            <param name="userId">Thông tin đăng nhập</param>
+            <returns>Danh sách địa chỉ theo userId</returns>
+        </member>
     </members>
 </doc>

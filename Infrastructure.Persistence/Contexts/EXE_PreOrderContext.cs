@@ -155,7 +155,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<Orders>()
                 .HasOne(o => o.Address)
                 .WithMany(ua => ua.Orders)
-                .HasForeignKey(o => o.UserAddress);
+                .HasForeignKey(o => o.UserAddressId);
 
             // ORDER_PRODUCTS
             modelBuilder.Entity<OrderProducts>()
