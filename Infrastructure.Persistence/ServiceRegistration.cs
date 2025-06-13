@@ -40,6 +40,7 @@ namespace Persistence
 
             services.AddTransient<IOrderRepositoryAsync, OrderRepositoryAsync>();
             services.AddTransient<IUserAddressRepositoryAsync, UserAddressRepository>();
+            services.AddTransient<IPaymentRepositoryAsync, PaymentRepositoryAsync>();
 
 
             #endregion

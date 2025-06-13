@@ -8,6 +8,7 @@ using Infrastructure.Shared;
 using Microsoft.AspNetCore.Identity;
 using Persistence;
 using Persistence.Repositories;
+using System.Text.Json.Serialization;
 using WebApi.Extensions;
 using WebApi.Services;
 
@@ -27,7 +28,10 @@ namespace WebApi
             services.AddPersistenceInfrastructure(_config);
             services.AddSharedInfrastructure(_config);
             services.AddSwaggerExtension();
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
             

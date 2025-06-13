@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.DTOs.Payment;
+using Application.DTOs.Shipping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +22,11 @@ namespace Application.Features.Orders.Queries.GetOrderByUserId
         public decimal? ShippingFee { get; set; }
         public decimal? TotalPrice { get; set; }
         public bool IsPreorder { get; set; }
+
+        // Thêm thông tin thanh toán
+        public List<PaymentDto> Payments { get; set; }
+
+        // Thêm thông tin giao hàng
+        public ShippingDto Shipping { get; set; }
     }
 }

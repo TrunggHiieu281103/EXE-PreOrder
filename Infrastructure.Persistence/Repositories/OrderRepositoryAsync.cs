@@ -25,6 +25,8 @@ namespace Persistence.Repositories
             return await _orders
                 .Include(o => o.User)
                 .Include(o => o.Address)
+                .Include(o => o.Payments)
+                .Include(o => o.Shipping)
                 .Include(o => o.OrderProducts)
                     .ThenInclude(op => op.Product)
                 .FirstOrDefaultAsync(o => o.Id == id);
@@ -35,6 +37,8 @@ namespace Persistence.Repositories
             var query = _orders
                 .Include(o => o.User)
                 .Include(o => o.Address)
+                .Include(o => o.Payments)
+                .Include(o => o.Shipping)
                 .Include(o => o.OrderProducts)
                     .ThenInclude(op => op.Product)
                 .AsQueryable();
@@ -67,6 +71,8 @@ namespace Persistence.Repositories
                 .Where(o => o.UserId == userId)
                 .Include(o => o.User)
                 .Include(o => o.Address)
+                .Include(o => o.Payments)
+                .Include(o => o.Shipping)
                 .Include(o => o.OrderProducts)
                     .ThenInclude(op => op.Product)
                 .OrderByDescending(o => o.Id).AsQueryable();

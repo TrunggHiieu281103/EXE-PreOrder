@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         /// <summary>
         /// Tạo đơn hàng
         /// </summary>
-        /// <param name="command">Thông tin đăng nhập</param>
+        /// <param name="command">Thông tin đơn hàng cần tạo</param>
         /// <returns>id đơn hàng mới tạo</returns>
         // GET: api/order
         // POST: api/orders
@@ -58,25 +58,6 @@ namespace WebApi.Controllers
             var result = await Mediator.Send(command);
             return Ok(result);
         }
-
-        //// PUT: api/order/{id}/confirm
-        //[HttpPut("{id}/confirm")]
-        //public async Task<IActionResult> Confirm(long id)
-        //{
-        //    var result = await Mediator.Send(new ConfirmOrderCommand(id));
-        //    return Ok(result);
-        //}
-
-        //// PUT: api/order/{id}/status
-        //[HttpPut("{id}/status")]
-        //public async Task<IActionResult> UpdateStatus(long id, [FromBody] UpdateOrderStatusCommand command)
-        //{
-        //    if (id != command.Id)
-        //        return BadRequest("ID in URL does not match ID in request body.");
-
-        //    var result = await Mediator.Send(command);
-        //    return Ok(result);
-        //}
 
         /// <summary>
         /// Lấy tất cả đơn hàng theo Id người dùng
@@ -92,47 +73,6 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        //// GET: api/order/status/{status}
-        //[HttpGet("status/{status}")]
-        //public async Task<IActionResult> GetOrdersByStatus(string status)
-        //{
-        //    var result = await Mediator.Send(new GetOrdersByStatusQuery(status));
-        //    return Ok(result);
-        //}
-
-        //// GET: api/order/statistics
-        //[HttpGet("statistics")]
-        //public async Task<IActionResult> GetStatistics()
-        //{
-        //    var result = await Mediator.Send(new GetOrderStatisticsQuery());
-        //    return Ok(result);
-        //}
-
-        //// GET: api/order/export
-        //[HttpGet("export")]
-        //public async Task<IActionResult> ExportOrdersToExcel()
-        //{
-        //    var file = await Mediator.Send(new ExportOrderQuery());
-        //    return File(file.Content, file.ContentType, file.FileName);
-        //}
-
-        //// PUT: api/order/{id}
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Update(long id, [FromBody] UpdateOrderCommand command)
-        //{
-        //    if (id != command.Id)
-        //    {
-        //        return BadRequest("ID in URL does not match ID in request body.");
-        //    }
-        //    var result = await Mediator.Send(command);
-        //    return Ok(result);
-        //}
-        //// DELETE: api/order/{id}
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(long id)
-        //{
-        //    var result = await Mediator.Send(new DeleteOrderCommand(id));
-        //    return Ok(result);
-        //}
+        
     }
 }
