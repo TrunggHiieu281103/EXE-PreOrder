@@ -1,5 +1,7 @@
 ﻿using Application.DTOs.Auth;
 using Application.DTOs.Order;
+using Application.DTOs.Payment;
+using Application.DTOs.Shipping;
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Brands.Queries.GetAllBrand;
 using Application.Features.Brands.Queries.GetBrandById;
@@ -75,7 +77,9 @@ public class GeneralProfile : Profile
                     src.Address.Province
                 }.Where(s => !string.IsNullOrWhiteSpace(s)))
                 : string.Empty
-        ));
+        ))
+    .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.Payments))
+    .ForMember(dest => dest.Shipping, opt => opt.MapFrom(src => src.Shipping)); 
 
         CreateMap<Orders, GetOrderByIdViewModel>()
             .ForMember(dest => dest.Email,
@@ -97,7 +101,10 @@ public class GeneralProfile : Profile
                     src.Address.Province
                 }.Where(s => !string.IsNullOrWhiteSpace(s)))
                 : string.Empty
-        ));
+        ))
+    .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.Payments))
+    .ForMember(dest => dest.Shipping, opt => opt.MapFrom(src => src.Shipping))
+    .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.OrderProducts)); 
 
         CreateMap<Orders, GetOrderByUserIdViewModel>()
             .ForMember(dest => dest.Email,
@@ -119,16 +126,16 @@ public class GeneralProfile : Profile
                     src.Address.Province
                 }.Where(s => !string.IsNullOrWhiteSpace(s)))
                 : string.Empty
-        ));
+        ))
+    .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.Payments))
+    .ForMember(dest => dest.Shipping, opt => opt.MapFrom(src => src.Shipping));
 
-        CreateMap<CreateOrderCommand, Orders>()
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => "PENDING"))
-            .ForMember(dest => dest.IsPreorder, opt => opt.MapFrom(src => false))
-            .ForMember(dest => dest.DepositPrice, opt => opt.MapFrom(src => 0))
-            .ForMember(dest => dest.ShippingFee, opt => opt.MapFrom(src => 0))
-            .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.Items.Sum(i => i.TotalPrice)))
-            .ForMember(dest => dest.OrderProducts, opt => opt.Ignore());
-            //.ForAllOtherMembers(opt => opt.Ignore());
+
+        CreateMap<OrderProducts, OrderItemDto>()
+    .ForMember(dest => dest.ProductName,
+        opt => opt.MapFrom(src => src.Product.ProductName)) // Nếu bạn muốn lấy tên sản phẩm
+    .ForMember(dest => dest.TotalPrice,
+        opt => opt.MapFrom(src => src.Price * src.Quantity));
 
         CreateMap<OrderItemDto, OrderProducts>()
             .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
@@ -141,7 +148,8 @@ public class GeneralProfile : Profile
 
         //UserAddress
         CreateMap<UserAddresses, GetAddressByUserIdViewModel>();
-        
 
+        CreateMap<Payments, PaymentDto>();
+        CreateMap<Shippings, ShippingDto>();
     }
 }

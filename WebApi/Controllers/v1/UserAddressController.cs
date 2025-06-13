@@ -1,6 +1,7 @@
 ﻿using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Orders.Queries.GetOrderById;
 using Application.Features.UserAddress.Commands.CreateUserAddress;
+using Application.Features.UserAddress.Commands.SetDefaultUserAddress;
 using Application.Features.UserAddress.Queries;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,21 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetById(long userId)
         {
             var result = await Mediator.Send(new GetAddressByUserIdQuery(userId));
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Chọn địa chỉ giao hàng default
+        /// </summary>
+        /// <param name="userId">thông tin user</param>
+        /// <param name="userAddressId">Thông tin các địa chỉ của user đó</param>
+        /// <returns>thông báo đã đổi địa chỉ default</returns>
+        // GET: api/order
+        // GET: api/useraddress
+        [HttpPut("{userAddressId}")]
+        public async Task<IActionResult> PutDefault(long userId, long userAddressId)
+        {
+            var result = await Mediator.Send(new SetDefaultUserAddressCommand(userId, userAddressId));
             return Ok(result);
         }
     }

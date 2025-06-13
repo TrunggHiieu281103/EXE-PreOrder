@@ -79,7 +79,7 @@
             <summary>
             Tạo đơn hàng
             </summary>
-            <param name="command">Thông tin đăng nhập</param>
+            <param name="command">Thông tin đơn hàng cần tạo</param>
             <returns>id đơn hàng mới tạo</returns>
         </member>
         <member name="M:WebApi.Controllers.OrderController.GetOrdersByUser(System.Int64)">
@@ -102,6 +102,14 @@
             </summary>
             <param name="userId">Thông tin đăng nhập</param>
             <returns>Danh sách địa chỉ theo userId</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserAddressController.PutDefault(System.Int64,System.Int64)">
+            <summary>
+            Chọn địa chỉ giao hàng default
+            </summary>
+            <param name="userId">thông tin user</param>
+            <param name="userAddressId">Thông tin các địa chỉ của user đó</param>
+            <returns>thông báo đã đổi địa chỉ default</returns>
         </member>
     </members>
 </doc>

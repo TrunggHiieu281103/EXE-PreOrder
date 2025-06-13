@@ -12,6 +12,6 @@ namespace Application.Interfaces.Repositories
     {
         Task<UserAddresses> GetDefaultAddressByUserIdAsync(long userId);
         Task<IReadOnlyList<UserAddresses>> GetAllAddressByUserIdAsync(long userId);
-
+        Task<bool> SetDefaultAddressAsync(long userId, long userAddressId);
     }
 }

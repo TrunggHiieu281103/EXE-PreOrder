@@ -50,6 +50,7 @@ namespace WebApi.Extensions
                         }, new List<string>()
                     },
                 });
+                c.SchemaFilter<EnumSchemaFilter>();
             });
         }
         public static void AddApiVersioningExtension(this IServiceCollection services)

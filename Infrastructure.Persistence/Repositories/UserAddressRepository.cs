@@ -29,5 +29,29 @@ namespace Persistence.Repositories
             return await _userAddress
                 .FirstOrDefaultAsync(a => a.UserId == userId && a.IsDefault);
         }
+
+        public async Task<bool> SetDefaultAddressAsync(long userId, long userAddressId)
+        {
+            var addresses = await _userAddress
+                .Where(a => a.UserId == userId && a.IsActive)
+                .ToListAsync();
+
+            if (addresses == null || !addresses.Any())
+                return false;
+
+            var targetAddress = addresses.FirstOrDefault(a => a.Id == userAddressId);
+            if (targetAddress == null)
+                return false;
+
+            foreach (var address in addresses)
+            {
+                address.IsDefault = address.Id == userAddressId;
+            }
+
+            _userAddress.UpdateRange(addresses);
+            
+            return true;
+        }
+
     }
 }
