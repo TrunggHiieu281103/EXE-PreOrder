@@ -5,6 +5,7 @@ using Infrastructure.Shared.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
+using VNPAY.NET;
 
 
 namespace Infrastructure.Shared
@@ -22,6 +23,8 @@ namespace Infrastructure.Shared
             services.AddTransient<IDateTimeService, DateTimeService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IOTPService, OTPService>();
+            services.AddTransient<IVnpayPaymentService, VnpayPaymentService>();
+            services.AddTransient<IVnpay, Vnpay>();
 
 
         }
