@@ -8,12 +8,12 @@ namespace WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PaymentController : BaseApiController
+    public class VnpayController : BaseApiController
     {
         private readonly IVnpayPaymentService _vnpayPaymentService;
       
 
-        public PaymentController(IVnpayPaymentService vnpayPaymentService)
+        public VnpayController(IVnpayPaymentService vnpayPaymentService)
         {
             _vnpayPaymentService = vnpayPaymentService;
         }
@@ -66,7 +66,7 @@ namespace WebApi.Controllers.v1
             return NotFound("Payment info not found.");
         }
 
-        [HttpGet("vnpay-callback")]
+        [HttpGet("Callback")]
         public IActionResult VnpayCallback()
         {
             try

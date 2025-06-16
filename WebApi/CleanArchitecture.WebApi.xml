@@ -47,16 +47,6 @@
             <param name="request">Email và mã OTP</param>
             <returns>Kết quả xác thực</returns>
         </member>
-        <member name="M:WebApi.Controllers.v1.PaymentController.CreatePaymentUrl(System.Decimal,System.String,System.Int64,VNPAY.NET.Enums.BankCode)">
-            <summary>
-            Tạo URL thanh toán VNPAY
-            </summary>
-            <param name="amount">Số tiền thanh toán</param>
-            <param name="orderDescription">Thông tin đơn hàng</param>
-            <param name="orderId">ID đơn hàng</param>
-            <param name="bankCode">Mã ngân hàng (tùy chọn)</param>
-            <returns>URL thanh toán</returns>
-        </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
             Lấy ảnh theo product Id
@@ -70,6 +60,16 @@
             </summary>
             <param name="id">The ID of the asset.</param>
             <returns>The asset.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.v1.VnpayController.CreatePaymentUrl(System.Decimal,System.String,System.Int64,VNPAY.NET.Enums.BankCode)">
+            <summary>
+            Tạo URL thanh toán VNPAY
+            </summary>
+            <param name="amount">Số tiền thanh toán</param>
+            <param name="orderDescription">Thông tin đơn hàng</param>
+            <param name="orderId">ID đơn hàng</param>
+            <param name="bankCode">Mã ngân hàng (tùy chọn)</param>
+            <returns>URL thanh toán</returns>
         </member>
         <member name="M:WebApi.Controllers.OrderController.Get(Application.Features.Orders.Queries.GetAllOrders.GetAllOrderParameter)">
             <summary>
