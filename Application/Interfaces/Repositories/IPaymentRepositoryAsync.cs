@@ -10,6 +10,6 @@ namespace Application.Interfaces.Repositories
 {
     public interface IPaymentRepositoryAsync : IGenericRepositoryAsync<Payments>
     {
-
+        Task<Payments> GetByOrderIdAsync(long orderId);
     }
 }

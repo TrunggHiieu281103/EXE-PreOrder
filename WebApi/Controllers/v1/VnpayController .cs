@@ -2,6 +2,7 @@
 
 using Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using VNPAY.NET.Enums;
 
 namespace WebApi.Controllers.v1
@@ -40,82 +41,43 @@ namespace WebApi.Controllers.v1
             }
         }
 
-        [HttpGet("IpnAction")]
-        public IActionResult IpnAction()
-        {
-            if (Request.QueryString.HasValue)
-            {
-                try
-                {
-                    var paymentResult = _vnpayPaymentService.HandleVnpayCallback(Request.Query);
-                    if (paymentResult.IsSuccess)
-                    {
-                        // Thực hiện hành động nếu thanh toán thành công tại đây. Ví dụ: Cập nhật trạng thái đơn hàng trong cơ sở dữ liệu.
-                        return Ok();
-                    }
-
-                    // Thực hiện hành động nếu thanh toán thất bại tại đây. Ví dụ: Hủy đơn hàng.
-                    return BadRequest("Payment failed");
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(ex.Message);
-                }
-            }
-
-            return NotFound("Payment info not found.");
-        }
-
         [HttpGet("Callback")]
-        public IActionResult VnpayCallback()
+        public async Task<IActionResult> Callback()
         {
-            try
-            {
-                var result = _vnpayPaymentService.HandleVnpayCallback(Request.Query);
-                if (result.IsSuccess)
-                {
-                    // TODO: xử lý đơn hàng đã thanh toán thành công
-                    return Ok(new
-                    {
-                        paymentId = result.PaymentId,
-                        isSuccess = result.IsSuccess,
-                        description = result.Description,
-                        timestamp = result.Timestamp,
-                        vnpayTransactionId = result.VnpayTransactionId,
-                        paymentMethod = result.PaymentMethod,
-                        paymentResponse = new
-                        {
-                            code = result.PaymentResponse.Code,
-                            description = result.PaymentResponse.Description
-                        },
-                        transactionStatus = new
-                        {
-                            code = result.TransactionStatus.Code,
-                            description = result.TransactionStatus.Description
-                        },
-                        bankingInfor = new
-                        {
-                            bankCode = result.BankingInfor.BankCode,
-                            bankTransactionId = result.BankingInfor.BankTransactionId
-                        }
-                    });
+            var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
-                }
-                else
-                {
-                    return BadRequest(new
-                    {
-                        status = result.PaymentResponse.Code,
-                        message = result.PaymentResponse.Description
-                    });
-                }
-            }
-            catch (Exception ex)
+            if (result.IsSuccess)
             {
-                return StatusCode(500, new { error = ex.Message });
+                // Optionally redirect hoặc hiển thị thông báo thành công
+                return Ok(new
+                {
+                    message = "Thanh toán thành công",
+                    status = result.PaymentResponse.Code,
+                    transactionId = result.TransactionStatus
+                });
+            }
+            else
+            {
+                return BadRequest(new
+                {
+                    message = "Thanh toán thất bại",
+                    status = result.PaymentResponse.Code,
+                    error = result.TransactionStatus
+                });
             }
         }
 
+        [HttpGet("IpnAction")]
+        public async Task<IActionResult> IpnAction()
+        {
+            var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
+            if (result.IsSuccess)
+            {
+                return Ok("IPN SUCCESS");
+            }
+
+            return BadRequest("IPN FAILED");
+        }
     }
 }

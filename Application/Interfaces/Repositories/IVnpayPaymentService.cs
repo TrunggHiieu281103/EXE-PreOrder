@@ -13,6 +13,6 @@ namespace Application.Interfaces.Repositories
     {
 
         string CreatePaymentUrl(decimal amount, string orderDescription, long orderId, BankCode bankCode);
-        PaymentResult HandleVnpayCallback(IQueryCollection queryParams);
+        Task<PaymentResult> HandleVnpayCallback(IQueryCollection queryParams);
     }
 }

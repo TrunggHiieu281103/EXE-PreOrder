@@ -19,7 +19,7 @@ namespace Application.Enums
     public enum PaymentStatusEnum
     {
         PENDING = 0,
-        PAID = 1,
+        SUCCESS = 1,
         FAILED = 2,
         CANCELED = 4
     }
