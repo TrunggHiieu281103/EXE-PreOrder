@@ -1,9 +1,12 @@
 ﻿using Application.DTOs.Order;
 using Application.Enums;
+using Application.Exceptions;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;
 using Domain.Entities;
 using MediatR;
+using Newtonsoft.Json;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,96 +15,88 @@ using System.Threading.Tasks;
 
 namespace Application.Features.PreOrder.Commands.CreatePreOrder
 {
-    public class CreatePreOrderCommand : IRequest<BaseResponse<long>>
+    public class CreatePreOrderCommand : IRequest<BaseResponse<VnpayRedisOrderDto>>
     {
         public long UserId { get; set; }
         public decimal? ShippingFee { get; set; }
-        public bool IsPreorder { get; set; }
+        //public bool IsPreorder { get; set; }
         public ICollection<OrderItemDto> Items { get; set; }
         //public PaymentTypeEnum PaymentType { get; set; }
 
     }
 
-    public class CreatePreOrderCommandHandler : IRequestHandler<CreatePreOrderCommand, BaseResponse<long>>
+    public class CreatePreOrderCommandHandler : IRequestHandler<CreatePreOrderCommand, BaseResponse<VnpayRedisOrderDto>>
     {
         private readonly IOrderRepositoryAsync _orderRepository;
         private readonly IUserRepositoryAsync _userRepository;
         private readonly IUserAddressRepositoryAsync _userAddressRepository;
         private readonly IPaymentRepositoryAsync _paymentRepository;
         private readonly IProductRepositoryAsync _productRepositoryAsync;
+        private readonly IConnectionMultiplexer _redis;
+
         public CreatePreOrderCommandHandler(
             IOrderRepositoryAsync orderRepository,
             IUserRepositoryAsync userRepository,
             IUserAddressRepositoryAsync userAddressRepository,
             IProductRepositoryAsync productRepositoryAsync,
-            IPaymentRepositoryAsync paymentRepository)
+            IPaymentRepositoryAsync paymentRepository,
+            IConnectionMultiplexer redis)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _userAddressRepository = userAddressRepository;
             _paymentRepository = paymentRepository;
             _productRepositoryAsync = productRepositoryAsync;
+            _redis = redis;
         }
-        public async Task<BaseResponse<long>> Handle(CreatePreOrderCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResponse<VnpayRedisOrderDto>> Handle(CreatePreOrderCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdWithAddressAsync(request.UserId);
             if (user == null)
-                return new BaseResponse<long>("User not found");
+                throw new ApiException("User not found");
+
             var userAddress = await _userAddressRepository.GetDefaultAddressByUserIdAsync(request.UserId);
             if (userAddress == null)
-                return new BaseResponse<long>("Default address not found");
+                throw new ApiException("Default address not found");
 
             foreach (var item in request.Items)
             {
-                var product = await _productRepositoryAsync.GetProductByIdAsync(item.ProductId); // nếu bạn có repo riêng thì dùng đúng repo
+                var product = await _productRepositoryAsync.GetProductByIdAsync(item.ProductId);
                 if (product == null)
-                    return new BaseResponse<long>($"Product with ID {item.ProductId} not found.");
+                    throw new ApiException($"Product {item.ProductId} not found");
 
                 if (!product.IsPreOrder)
-                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is releashed now.");
+                    throw new ApiException($"Product {product.ProductName} is not for preorder");
+
                 if (product.StockQuantity < item.Quantity)
-                {
-                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is out of preorder slot.");
-                }
+                    throw new ApiException($"Out of stock for product {product.ProductName}");
             }
 
-            var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
+            var totalProductPrice = request.Items.Sum(i => i.TotalPrice);
             var shipping = request.ShippingFee ?? 0;
             var deposit = totalProductPrice * 0.3m;
-            var finalPaymentAmount = totalProductPrice + shipping - deposit;
-            
-            var order = new Domain.Entities.Orders
+            var finalPaymentAmount = deposit;
+
+            // Lưu tạm đơn hàng vào Redis
+            var redisKey = $"vnpay_order_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";
+            var redisOrder = new VnpayRedisOrderDto
             {
+                TempOrderId = long.Parse(redisKey.Split('_')[2]),
                 UserId = request.UserId,
                 UserAddressId = userAddress.Id,
                 IsPreorder = true,
-                Status = OrderStatusEnum.PENDING.ToString(),
                 DepositPrice = deposit,
-                ShippingFee = request.ShippingFee,
+                ShippingFee = shipping,
                 TotalPrice = totalProductPrice,
-                OrderProducts = request.Items.Select(i => new OrderProducts
-                {
-                    ProductId = i.ProductId,
-                    Price = i.Price,
-                    Quantity = i.Quantity
-                }).ToList()
-            };
-            await _orderRepository.AddAsync(order);
-
-            var payment = new Payments
-            {
-                OrderId = order.Id,
-                PaymentCode = $"PAY-{Guid.NewGuid().ToString().Substring(0, 8).ToUpper()}",
-                PaymentType = PaymentTypeEnum.VNPAY.ToString(),
-                Amount = deposit,
-                Content = $"Deposit for preorder OrderId: {order.Id}",  
-                PaymentStatus = PaymentStatusEnum.PENDING.ToString()
+                Items = request.Items.ToList()
             };
 
-            await _paymentRepository.AddAsync(payment);
+            var jsonData = JsonConvert.SerializeObject(redisOrder);
+            var redis = _redis.GetDatabase();
+            await redis.StringSetAsync(redisKey, jsonData, TimeSpan.FromMinutes(15)); // hết hạn 15 phút
 
-            return new BaseResponse<long>(order.Id, "Order and payment created successfully.");
-
+            return new BaseResponse<VnpayRedisOrderDto>(redisOrder, "Preorder saved to Redis. Proceed to VNPAY.");
         }
+
     }
 }

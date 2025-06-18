@@ -25,6 +25,7 @@ namespace Infrastructure.Shared
             services.AddTransient<IOTPService, OTPService>();
             services.AddTransient<IVnpayPaymentService, VnpayPaymentService>();
             services.AddTransient<IVnpay, Vnpay>();
+            services.AddTransient<IPendingOrderService, PendingOrderService>();
 
 
         }
