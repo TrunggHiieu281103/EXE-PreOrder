@@ -21,12 +21,14 @@ namespace Infrastructure.Shared.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IPaymentRepositoryAsync _paymentRepository;
         private readonly IOrderRepositoryAsync _orderRepository;
+        private readonly IProductRepositoryAsync _productRepository;
 
         public VnpayPaymentService(
     IVnpay vnpay,
     IConfiguration configuration,
     IHttpContextAccessor httpContextAccessor,
     IPaymentRepositoryAsync paymentRepository,
+    IProductRepositoryAsync productRepositoryAsync,
     IOrderRepositoryAsync orderRepository)
         {
             _vnpay = vnpay;
@@ -34,6 +36,7 @@ namespace Infrastructure.Shared.Services
             _httpContextAccessor = httpContextAccessor;
             _paymentRepository = paymentRepository;
             _orderRepository = orderRepository;
+            _productRepository = productRepositoryAsync;
 
             _vnpay.Initialize(
                 _configuration["Vnpay:TmnCode"],
@@ -78,8 +81,8 @@ namespace Infrastructure.Shared.Services
             var result = _vnpay.GetPaymentResult(queryParams);
             var orderId = result.PaymentId;
 
-            var payment =await _paymentRepository.GetByOrderIdAsync(orderId);
-            var order = await _orderRepository.GetByIdAsync(orderId);
+            var payment = await _paymentRepository.GetByOrderIdAsync(orderId);
+            var order = await _orderRepository.GetOrderByIdAsync(orderId);
 
             if (payment == null || order == null)
                 return result;
@@ -91,6 +94,15 @@ namespace Infrastructure.Shared.Services
 
                 await _paymentRepository.UpdateAsync(payment);
                 await _orderRepository.UpdateAsync(order);
+
+                // Trừ tồn kho tại đây nếu không phải PreOrder
+                foreach (var orderProduct in order.OrderProducts)
+                {
+                    var product = await _productRepository.GetByIdAsync(orderProduct.ProductId);
+          
+                        product.StockQuantity -= orderProduct.Quantity;
+                        await _productRepository.UpdateAsync(product); 
+                }
             }
             else
             {
@@ -100,6 +112,7 @@ namespace Infrastructure.Shared.Services
 
             return result;
         }
+
 
 
     }

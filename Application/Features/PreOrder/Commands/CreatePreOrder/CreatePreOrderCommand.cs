@@ -28,16 +28,19 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
         private readonly IUserRepositoryAsync _userRepository;
         private readonly IUserAddressRepositoryAsync _userAddressRepository;
         private readonly IPaymentRepositoryAsync _paymentRepository;
+        private readonly IProductRepositoryAsync _productRepositoryAsync;
         public CreatePreOrderCommandHandler(
             IOrderRepositoryAsync orderRepository,
             IUserRepositoryAsync userRepository,
             IUserAddressRepositoryAsync userAddressRepository,
+            IProductRepositoryAsync productRepositoryAsync,
             IPaymentRepositoryAsync paymentRepository)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _userAddressRepository = userAddressRepository;
             _paymentRepository = paymentRepository;
+            _productRepositoryAsync = productRepositoryAsync;
         }
         public async Task<BaseResponse<long>> Handle(CreatePreOrderCommand request, CancellationToken cancellationToken)
         {
@@ -48,6 +51,20 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
             if (userAddress == null)
                 return new BaseResponse<long>("Default address not found");
 
+            foreach (var item in request.Items)
+            {
+                var product = await _productRepositoryAsync.GetProductByIdAsync(item.ProductId); // nếu bạn có repo riêng thì dùng đúng repo
+                if (product == null)
+                    return new BaseResponse<long>($"Product with ID {item.ProductId} not found.");
+
+                if (!product.IsPreOrder)
+                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is releashed now.");
+                if (product.StockQuantity < item.Quantity)
+                {
+                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is out of preorder slot.");
+                }
+            }
+
             var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
             var shipping = request.ShippingFee ?? 0;
             var deposit = totalProductPrice * 0.3m;
@@ -57,8 +74,8 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
             {
                 UserId = request.UserId,
                 UserAddressId = userAddress.Id,
-                Status = OrderStatusEnum.PENDING.ToString(),
                 IsPreorder = true,
+                Status = OrderStatusEnum.PENDING.ToString(),
                 DepositPrice = deposit,
                 ShippingFee = request.ShippingFee,
                 TotalPrice = totalProductPrice,
@@ -76,8 +93,8 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
                 OrderId = order.Id,
                 PaymentCode = $"PAY-{Guid.NewGuid().ToString().Substring(0, 8).ToUpper()}",
                 PaymentType = PaymentTypeEnum.VNPAY.ToString(),
-                Content = $"Deposit for preorder OrderId: {order.Id}",
                 Amount = deposit,
+                Content = $"Deposit for preorder OrderId: {order.Id}",  
                 PaymentStatus = PaymentStatusEnum.PENDING.ToString()
             };
 

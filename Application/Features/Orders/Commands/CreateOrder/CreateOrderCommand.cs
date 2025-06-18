@@ -30,17 +30,20 @@ namespace Application.Features.Orders.Commands.CreateOrder
         private readonly IUserRepositoryAsync _userRepository;
         private readonly IUserAddressRepositoryAsync _userAddressRepository;
         private readonly IPaymentRepositoryAsync _paymentRepository;
+        private readonly IProductRepositoryAsync _productRepository;
 
         public CreateOrderCommandHandler(
             IOrderRepositoryAsync orderRepository,
             IUserRepositoryAsync userRepository,
             IUserAddressRepositoryAsync userAddressRepository,
-            IPaymentRepositoryAsync paymentRepository)
+            IPaymentRepositoryAsync paymentRepository,
+            IProductRepositoryAsync productRepository)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _userAddressRepository = userAddressRepository;
             _paymentRepository = paymentRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<BaseResponse<long>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
@@ -52,6 +55,27 @@ namespace Application.Features.Orders.Commands.CreateOrder
             var userAddress = await _userAddressRepository.GetDefaultAddressByUserIdAsync(request.UserId);
             if (userAddress == null)
                 return new BaseResponse<long>("Default address not found");
+
+            // Check stock availability before creating the order
+            foreach (var item in request.Items)
+            {
+                var product = await _productRepository.GetByIdAsync(item.ProductId);
+
+                if (product == null)
+                    return new BaseResponse<long>($"Product with ID {item.ProductId} was not found.");
+
+                if (product.IsPreOrder)
+                {
+                    return new BaseResponse<long>($"Can not order preoder product");
+
+                }
+                // Chỉ kiểm tra tồn kho khi KHÔNG phải preorder
+                if (product.StockQuantity < item.Quantity)
+                    {
+                        return new BaseResponse<long>($"Not enough quantity for product '{product.ProductName}'. Available: {product.StockQuantity}, requested: {item.Quantity}.");
+                    }
+                
+            }
 
             var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
             var shipping = request.ShippingFee ?? 0;
@@ -81,6 +105,22 @@ namespace Application.Features.Orders.Commands.CreateOrder
             };
 
             await _orderRepository.AddAsync(order);
+
+
+            if (order.Status == OrderStatusEnum.CONFIRM.ToString())
+            {
+                foreach (var item in request.Items)
+                {
+                    var product = await _productRepository.GetByIdAsync(item.ProductId);
+
+                    if (!product.IsPreOrder)
+                    {
+                        product.StockQuantity -= item.Quantity;
+                        await _productRepository.UpdateAsync(product);
+                    }
+                }
+            }
+
 
             var payment = new Payments
             {

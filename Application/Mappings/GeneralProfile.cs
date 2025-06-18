@@ -133,8 +133,8 @@ public class GeneralProfile : Profile
 
 
         CreateMap<OrderProducts, OrderItemDto>()
-    //.ForMember(dest => dest.ProductName,
-    //    opt => opt.MapFrom(src => src.Product.ProductName))// Nếu bạn muốn lấy tên sản phẩm
+    .ForMember(dest => dest.ProductName,
+        opt => opt.MapFrom(src => src.Product.ProductName))// Nếu bạn muốn lấy tên sản phẩm
     .ForMember(dest => dest.TotalPrice,
         opt => opt.MapFrom(src => src.Price * src.Quantity));
 
