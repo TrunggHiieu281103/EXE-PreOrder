@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.Enums;
+using Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -18,12 +19,24 @@ namespace Infrastructure.Shared.Services
         private readonly IVnpay _vnpay;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IPaymentRepositoryAsync _paymentRepository;
+        private readonly IOrderRepositoryAsync _orderRepository;
+        private readonly IProductRepositoryAsync _productRepository;
 
-        public VnpayPaymentService(IVnpay vnpay, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public VnpayPaymentService(
+    IVnpay vnpay,
+    IConfiguration configuration,
+    IHttpContextAccessor httpContextAccessor,
+    IPaymentRepositoryAsync paymentRepository,
+    IProductRepositoryAsync productRepositoryAsync,
+    IOrderRepositoryAsync orderRepository)
         {
             _vnpay = vnpay;
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
+            _paymentRepository = paymentRepository;
+            _orderRepository = orderRepository;
+            _productRepository = productRepositoryAsync;
 
             _vnpay.Initialize(
                 _configuration["Vnpay:TmnCode"],
@@ -63,11 +76,44 @@ namespace Infrastructure.Shared.Services
             }
         }
 
-        public PaymentResult HandleVnpayCallback(IQueryCollection queryParams)
+        public async Task<PaymentResult> HandleVnpayCallback(IQueryCollection queryParams)
         {
-            return _vnpay.GetPaymentResult(queryParams);
+            var result = _vnpay.GetPaymentResult(queryParams);
+            var orderId = result.PaymentId;
+
+            var payment = await _paymentRepository.GetByOrderIdAsync(orderId);
+            var order = await _orderRepository.GetOrderByIdAsync(orderId);
+
+            if (payment == null || order == null)
+                return result;
+
+            if (result.IsSuccess)
+            {
+                payment.PaymentStatus = PaymentStatusEnum.SUCCESS.ToString();
+                order.Status = OrderStatusEnum.CONFIRM.ToString();
+
+                await _paymentRepository.UpdateAsync(payment);
+                await _orderRepository.UpdateAsync(order);
+
+                // Trừ tồn kho tại đây nếu không phải PreOrder
+                foreach (var orderProduct in order.OrderProducts)
+                {
+                    var product = await _productRepository.GetByIdAsync(orderProduct.ProductId);
+          
+                        product.StockQuantity -= orderProduct.Quantity;
+                        await _productRepository.UpdateAsync(product); 
+                }
+            }
+            else
+            {
+                payment.PaymentStatus = PaymentStatusEnum.FAILED.ToString();
+                await _paymentRepository.UpdateAsync(payment);
+            }
+
+            return result;
         }
 
-        
+
+
     }
 }

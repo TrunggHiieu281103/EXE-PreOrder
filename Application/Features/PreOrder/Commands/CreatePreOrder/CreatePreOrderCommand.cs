@@ -2,7 +2,6 @@
 using Application.Enums;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;
-using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -11,89 +10,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Orders.Commands.CreateOrder
+namespace Application.Features.PreOrder.Commands.CreatePreOrder
 {
-    public class CreateOrderCommand : IRequest<BaseResponse<long>>
+    public class CreatePreOrderCommand : IRequest<BaseResponse<long>>
     {
         public long UserId { get; set; }
-     
         public decimal? ShippingFee { get; set; }
-     
+        public bool IsPreorder { get; set; }
         public ICollection<OrderItemDto> Items { get; set; }
+        //public PaymentTypeEnum PaymentType { get; set; }
 
-        public PaymentTypeEnum PaymentType { get; set; }
     }
 
-    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, BaseResponse<long>>
+    public class CreatePreOrderCommandHandler : IRequestHandler<CreatePreOrderCommand, BaseResponse<long>>
     {
         private readonly IOrderRepositoryAsync _orderRepository;
         private readonly IUserRepositoryAsync _userRepository;
         private readonly IUserAddressRepositoryAsync _userAddressRepository;
         private readonly IPaymentRepositoryAsync _paymentRepository;
-        private readonly IProductRepositoryAsync _productRepository;
-
-        public CreateOrderCommandHandler(
+        private readonly IProductRepositoryAsync _productRepositoryAsync;
+        public CreatePreOrderCommandHandler(
             IOrderRepositoryAsync orderRepository,
             IUserRepositoryAsync userRepository,
             IUserAddressRepositoryAsync userAddressRepository,
-            IPaymentRepositoryAsync paymentRepository,
-            IProductRepositoryAsync productRepository)
+            IProductRepositoryAsync productRepositoryAsync,
+            IPaymentRepositoryAsync paymentRepository)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _userAddressRepository = userAddressRepository;
             _paymentRepository = paymentRepository;
-            _productRepository = productRepository;
+            _productRepositoryAsync = productRepositoryAsync;
         }
-
-        public async Task<BaseResponse<long>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResponse<long>> Handle(CreatePreOrderCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdWithAddressAsync(request.UserId);
             if (user == null)
                 return new BaseResponse<long>("User not found");
-
             var userAddress = await _userAddressRepository.GetDefaultAddressByUserIdAsync(request.UserId);
             if (userAddress == null)
                 return new BaseResponse<long>("Default address not found");
 
-            // Check stock availability before creating the order
             foreach (var item in request.Items)
             {
-                var product = await _productRepository.GetByIdAsync(item.ProductId);
-
+                var product = await _productRepositoryAsync.GetProductByIdAsync(item.ProductId); // nếu bạn có repo riêng thì dùng đúng repo
                 if (product == null)
-                    return new BaseResponse<long>($"Product with ID {item.ProductId} was not found.");
+                    return new BaseResponse<long>($"Product with ID {item.ProductId} not found.");
 
-                if (product.IsPreOrder)
-                {
-                    return new BaseResponse<long>($"Can not order preoder product");
-
-                }
-                // Chỉ kiểm tra tồn kho khi KHÔNG phải preorder
+                if (!product.IsPreOrder)
+                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is releashed now.");
                 if (product.StockQuantity < item.Quantity)
-                    {
-                        return new BaseResponse<long>($"Not enough quantity for product '{product.ProductName}'. Available: {product.StockQuantity}, requested: {item.Quantity}.");
-                    }
-                
+                {
+                    return new BaseResponse<long>($"Product '{product.ProductName}' with '{product.Id}' is out of preorder slot.");
+                }
             }
 
             var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
             var shipping = request.ShippingFee ?? 0;
-            var deposit = 0;
+            var deposit = totalProductPrice * 0.3m;
             var finalPaymentAmount = totalProductPrice + shipping - deposit;
-
-            // Set order status theo loại thanh toán
-            var orderStatus = request.PaymentType == PaymentTypeEnum.COD
-                ? OrderStatusEnum.CONFIRM.ToString()
-                : OrderStatusEnum.PENDING.ToString();
-
+            
             var order = new Domain.Entities.Orders
             {
                 UserId = request.UserId,
                 UserAddressId = userAddress.Id,
-                Status = orderStatus,
-                IsPreorder = false,
-                DepositPrice = 0,
+                IsPreorder = true,
+                Status = OrderStatusEnum.PENDING.ToString(),
+                DepositPrice = deposit,
                 ShippingFee = request.ShippingFee,
                 TotalPrice = totalProductPrice,
                 OrderProducts = request.Items.Select(i => new OrderProducts
@@ -103,38 +86,22 @@ namespace Application.Features.Orders.Commands.CreateOrder
                     Quantity = i.Quantity
                 }).ToList()
             };
-
             await _orderRepository.AddAsync(order);
-
-
-            if (order.Status == OrderStatusEnum.CONFIRM.ToString())
-            {
-                foreach (var item in request.Items)
-                {
-                    var product = await _productRepository.GetByIdAsync(item.ProductId);
-
-                    if (!product.IsPreOrder)
-                    {
-                        product.StockQuantity -= item.Quantity;
-                        await _productRepository.UpdateAsync(product);
-                    }
-                }
-            }
-
 
             var payment = new Payments
             {
                 OrderId = order.Id,
                 PaymentCode = $"PAY-{Guid.NewGuid().ToString().Substring(0, 8).ToUpper()}",
-                PaymentType = request.PaymentType.ToString(),
-                Content = $"Pay for orderId: {order.Id}",
-                Amount = finalPaymentAmount,
+                PaymentType = PaymentTypeEnum.VNPAY.ToString(),
+                Amount = deposit,
+                Content = $"Deposit for preorder OrderId: {order.Id}",  
                 PaymentStatus = PaymentStatusEnum.PENDING.ToString()
             };
 
             await _paymentRepository.AddAsync(payment);
 
             return new BaseResponse<long>(order.Id, "Order and payment created successfully.");
+
         }
     }
 }

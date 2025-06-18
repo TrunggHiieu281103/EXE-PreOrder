@@ -13,6 +13,7 @@ using Application.Features.Orders.Commands.CreateOrder;
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.Orders.Queries.GetOrderById;
 using Application.Features.Orders.Queries.GetOrderByUserId;
+using Application.Features.PreOrder.Queries.GetAllPreOrders;
 using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
 
 using Application.Features.Products.Commands.CreateProduct;
@@ -133,7 +134,7 @@ public class GeneralProfile : Profile
 
         CreateMap<OrderProducts, OrderItemDto>()
     .ForMember(dest => dest.ProductName,
-        opt => opt.MapFrom(src => src.Product.ProductName)) // Nếu bạn muốn lấy tên sản phẩm
+        opt => opt.MapFrom(src => src.Product.ProductName))// Nếu bạn muốn lấy tên sản phẩm
     .ForMember(dest => dest.TotalPrice,
         opt => opt.MapFrom(src => src.Price * src.Quantity));
 
@@ -145,6 +146,31 @@ public class GeneralProfile : Profile
             .ForMember(dest => dest.Order, opt => opt.Ignore())
             .ForMember(dest => dest.Product, opt => opt.Ignore());
 
+        //Map domain PreOrder entity 
+        
+            CreateMap<Orders, GetAllPreOrderViewModel>()
+    .ForMember(dest => dest.Email,
+        opt => opt.MapFrom(src => src.User.Email))
+    .ForMember(dest => dest.CustomerName,
+        opt => opt.MapFrom(src => src.User.FirstName + " " + src.User.LastName))
+    .ForMember(dest => dest.Phone,
+        opt => opt.MapFrom(src => src.User.Phone))
+    .ForMember(dest => dest.Address,
+        opt => opt.MapFrom(src => src.Address)) // Assuming it's src.UserAddress = AddressId
+    .ForMember(dest => dest.Address,
+        opt => opt.MapFrom(src =>
+            src.Address != null
+                ? string.Join(", ", new[]
+                {
+                    src.Address.AddressDetail,
+                    src.Address.Ward,
+                    src.Address.District,
+                    src.Address.Province
+                }.Where(s => !string.IsNullOrWhiteSpace(s)))
+                : string.Empty
+        ))
+    .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.Payments))
+    .ForMember(dest => dest.Shipping, opt => opt.MapFrom(src => src.Shipping));
 
         //UserAddress
         CreateMap<UserAddresses, GetAddressByUserIdViewModel>();

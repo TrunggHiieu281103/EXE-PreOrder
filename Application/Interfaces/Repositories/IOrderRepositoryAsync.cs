@@ -1,4 +1,5 @@
 ﻿using Application.Features.Orders.Queries.GetAllOrders;
+using Application.Features.PreOrder.Queries.GetAllPreOrders;
 using Application.Repository;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,6 @@ namespace Application.Interfaces.Repositories
         Task<IReadOnlyList<Domain.Entities.Orders>> GetOrderPagedResponseAsync(GetAllOrderParameter filter);
         Task<Domain.Entities.Orders> GetOrderByIdAsync(long id);
         Task<IReadOnlyList<Domain.Entities.Orders>> GetOrderPagedResponseByUserIdAsync(long userId, int pageNumber, int pageSize);
-
+        Task<IReadOnlyList<Domain.Entities.Orders>> GetPreOrderPagedResponseAsync(GetAllPreOrderParameter filter);
     }
 }

@@ -99,6 +99,20 @@
             <param name="userId">Thông tin đăng nhập</param>
             <returns>Thông tin danh sách đơn của người dùng</returns>
         </member>
+        <member name="M:WebApi.Controllers.PreOrderController.Create(Application.Features.PreOrder.Commands.CreatePreOrder.CreatePreOrderCommand)">
+            <summary>
+            Tạo đơn hàng đặt trước
+            </summary>
+            <param name="command">Thông tin đơn hàng cần tạo</param>
+            <returns>id đơn hàng mới tạo</returns>
+        </member>
+        <member name="M:WebApi.Controllers.PreOrderController.Get(Application.Features.PreOrder.Queries.GetAllPreOrders.GetAllPreOrderParameter)">
+            <summary>
+            Lấy tất cả đơn hàng đặt trước
+            </summary>
+            <param name="filter">Thông tin đơn hàng cần tạo</param>
+            <returns>danh sách tất cả đơn hàng đặt trước</returns>
+        </member>
         <member name="M:WebApi.Controllers.UserAddressController.Post(Application.Features.UserAddress.Commands.CreateUserAddress.CreateUserAddressCommand)">
             <summary>
             Tạo địa chỉ người dùng mới

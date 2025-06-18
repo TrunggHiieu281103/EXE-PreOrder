@@ -18,6 +18,11 @@ namespace Persistence.Repositories
             _payments = dbContext.Set<Payments>();
         }
 
-
+        public async Task<Payments> GetByOrderIdAsync(long orderId)
+        {
+            return await _payments
+                .Include(p => p.Order)
+                .FirstOrDefaultAsync(p => p.OrderId == orderId);
+        }
     }
 }
