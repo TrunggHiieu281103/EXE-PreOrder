@@ -1,10 +1,13 @@
 ﻿using Application.DTOs.Order;
 using Application.Enums;
+using Application.Exceptions;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Newtonsoft.Json;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Orders.Commands.CreateOrder
 {
-    public class CreateOrderCommand : IRequest<BaseResponse<long>>
+    public class CreateOrderCommand : IRequest<BaseResponse<OrderResponseDto>>
     {
         public long UserId { get; set; }
      
@@ -24,12 +27,13 @@ namespace Application.Features.Orders.Commands.CreateOrder
         public PaymentTypeEnum PaymentType { get; set; }
     }
 
-    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, BaseResponse<long>>
+    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, BaseResponse<OrderResponseDto>>
     {
         private readonly IOrderRepositoryAsync _orderRepository;
         private readonly IUserRepositoryAsync _userRepository;
         private readonly IUserAddressRepositoryAsync _userAddressRepository;
         private readonly IPaymentRepositoryAsync _paymentRepository;
+        private readonly IConnectionMultiplexer _redis;
         private readonly IProductRepositoryAsync _productRepository;
 
         public CreateOrderCommandHandler(
@@ -37,61 +41,80 @@ namespace Application.Features.Orders.Commands.CreateOrder
             IUserRepositoryAsync userRepository,
             IUserAddressRepositoryAsync userAddressRepository,
             IPaymentRepositoryAsync paymentRepository,
-            IProductRepositoryAsync productRepository)
+            IProductRepositoryAsync productRepository,
+            IConnectionMultiplexer redis)
         {
             _userRepository = userRepository;
             _orderRepository = orderRepository;
             _userAddressRepository = userAddressRepository;
             _paymentRepository = paymentRepository;
             _productRepository = productRepository;
+            _redis = redis;
         }
 
-        public async Task<BaseResponse<long>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResponse<OrderResponseDto>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdWithAddressAsync(request.UserId);
             if (user == null)
-                return new BaseResponse<long>("User not found");
+                throw new ApiException("User not found");
 
             var userAddress = await _userAddressRepository.GetDefaultAddressByUserIdAsync(request.UserId);
             if (userAddress == null)
-                return new BaseResponse<long>("Default address not found");
+                throw new ApiException("Default address not found");
 
-            // Check stock availability before creating the order
+            // Check stock availability
             foreach (var item in request.Items)
             {
                 var product = await _productRepository.GetByIdAsync(item.ProductId);
-
                 if (product == null)
-                    return new BaseResponse<long>($"Product with ID {item.ProductId} was not found.");
+                    throw new ApiException($"Product with ID {item.ProductId} was not found.");
 
                 if (product.IsPreOrder)
-                {
-                    return new BaseResponse<long>($"Can not order preoder product");
+                    throw new ApiException($"Cannot order preorder product");
 
-                }
-                // Chỉ kiểm tra tồn kho khi KHÔNG phải preorder
                 if (product.StockQuantity < item.Quantity)
-                    {
-                        return new BaseResponse<long>($"Not enough quantity for product '{product.ProductName}'. Available: {product.StockQuantity}, requested: {item.Quantity}.");
-                    }
-                
+                    throw new ApiException($"Not enough quantity for product '{product.ProductName}'. Available: {product.StockQuantity}, requested: {item.Quantity}.");
             }
 
             var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
             var shipping = request.ShippingFee ?? 0;
-            var deposit = 0;
-            var finalPaymentAmount = totalProductPrice + shipping - deposit;
+            var finalAmount = totalProductPrice + shipping;
 
-            // Set order status theo loại thanh toán
-            var orderStatus = request.PaymentType == PaymentTypeEnum.COD
-                ? OrderStatusEnum.CONFIRM.ToString()
-                : OrderStatusEnum.PENDING.ToString();
+            if (request.PaymentType == PaymentTypeEnum.VNPAY)
+            {
+                // Store to Redis instead of DB
+                var redis = _redis.GetDatabase();
+                var redisOrderId = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                var redisKey = $"vnpay_order_{redisOrderId}";
 
+                var redisOrder = new VnpayRedisOrderDto
+                {
+                    TempOrderId = redisOrderId,
+                    UserId = request.UserId,
+                    UserAddressId = userAddress.Id,
+                    IsPreorder = false,
+                    DepositPrice = 0,
+                    ShippingFee = shipping,
+                    TotalPrice = totalProductPrice,
+                    Items = request.Items.ToList()
+                };
+
+                var json = JsonConvert.SerializeObject(redisOrder);
+                await redis.StringSetAsync(redisKey, json, TimeSpan.FromMinutes(15)); // optional expiration
+
+                return new BaseResponse<OrderResponseDto>(new OrderResponseDto
+                {
+                    OrderId = redisOrderId,
+                    VnpayData = redisOrder
+                }, "Order cached in Redis. Proceed to VNPAY.");
+            }
+
+            // == Handle COD normally ==
             var order = new Domain.Entities.Orders
             {
                 UserId = request.UserId,
                 UserAddressId = userAddress.Id,
-                Status = orderStatus,
+                Status = OrderStatusEnum.CONFIRM.ToString(),
                 IsPreorder = false,
                 DepositPrice = 0,
                 ShippingFee = request.ShippingFee,
@@ -106,21 +129,16 @@ namespace Application.Features.Orders.Commands.CreateOrder
 
             await _orderRepository.AddAsync(order);
 
-
-            if (order.Status == OrderStatusEnum.CONFIRM.ToString())
+            // Update stock
+            foreach (var item in request.Items)
             {
-                foreach (var item in request.Items)
+                var product = await _productRepository.GetByIdAsync(item.ProductId);
+                if (!product.IsPreOrder)
                 {
-                    var product = await _productRepository.GetByIdAsync(item.ProductId);
-
-                    if (!product.IsPreOrder)
-                    {
-                        product.StockQuantity -= item.Quantity;
-                        await _productRepository.UpdateAsync(product);
-                    }
+                    product.StockQuantity -= item.Quantity;
+                    await _productRepository.UpdateAsync(product);
                 }
             }
-
 
             var payment = new Payments
             {
@@ -128,13 +146,17 @@ namespace Application.Features.Orders.Commands.CreateOrder
                 PaymentCode = $"PAY-{Guid.NewGuid().ToString().Substring(0, 8).ToUpper()}",
                 PaymentType = request.PaymentType.ToString(),
                 Content = $"Pay for orderId: {order.Id}",
-                Amount = finalPaymentAmount,
+                Amount = finalAmount,
                 PaymentStatus = PaymentStatusEnum.PENDING.ToString()
             };
 
             await _paymentRepository.AddAsync(payment);
 
-            return new BaseResponse<long>(order.Id, "Order and payment created successfully.");
+            return new BaseResponse<OrderResponseDto>(new OrderResponseDto
+            {
+                OrderId = order.Id,
+                VnpayData = null
+            }, "COD Order and payment created successfully.");
         }
     }
 }
