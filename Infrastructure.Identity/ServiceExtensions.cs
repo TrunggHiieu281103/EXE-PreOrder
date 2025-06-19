@@ -67,6 +67,26 @@ namespace Identity
                     };
                     o.Events = new JwtBearerEvents()
                     {
+                        OnMessageReceived = context =>
+                        {
+                            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+
+                            if (!string.IsNullOrEmpty(authHeader))
+                            {
+                                // Nếu có tiền tố "Bearer " thì giữ nguyên
+                                if (authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    context.Token = authHeader.Substring("Bearer ".Length).Trim();
+                                }
+                                else
+                                {
+                                    // Nếu không có Bearer thì dùng nguyên chuỗi làm token
+                                    context.Token = authHeader.Trim();
+                                }
+                            }
+
+                            return Task.CompletedTask;
+                        },
                         OnAuthenticationFailed = c =>
                         {
                             c.NoResult();

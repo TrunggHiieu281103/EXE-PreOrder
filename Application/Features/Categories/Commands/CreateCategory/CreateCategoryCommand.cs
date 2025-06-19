@@ -10,7 +10,7 @@ namespace Application.Features.Categories.Commands.CreateCategory
 {
     public class CreateCategoryCommand : IRequest<BaseResponse<long>>
     {
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
         public string Description { get; set; }
     }
 

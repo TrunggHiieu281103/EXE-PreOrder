@@ -10,7 +10,7 @@ namespace Application.Features.Categories.Queries.GetAllCategory
 {
     public class GetAllCategoryParameter : RequestParameter
     {
-        public string Name { get; set; }
+        public string ?CategoryName { get; set; }
     }
 }
 

@@ -25,10 +25,12 @@ namespace Application.Features.Brands.Commands.DeleteBrand
             var brand = await _brandRepository.GetByIdAsync(request.Id);
             if (brand == null)
             {
-                return new BaseResponse<long>(0, $"Brand with Id {request.Id} not found.");
+                return new BaseResponse<long>($"Brand with Id {request.Id} not found.");
             }
 
-            await _brandRepository.DeleteAsync(brand);
+            brand.IsActive = false; // Set IsActive to false instead of deleting
+
+            await _brandRepository.UpdateAsync(brand);
 
             return new BaseResponse<long>(request.Id, "Brand deleted successfully.");
         }

@@ -9,7 +9,7 @@ namespace Application.Features.Categories.Queries.GetAllCategory
     public class GetAllCategoryViewModel
     {
         public long Id { get; set; }
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
         public string Description { get; set; }
     }
 }

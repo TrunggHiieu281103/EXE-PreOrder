@@ -43,6 +43,14 @@ public class GeneralProfile : Profile
         CreateMap<Brands, GetAllBrandsViewModel>();
         CreateMap<Brands, GetBrandByIdViewModel>();
         //User
+        CreateMap<Users, UserProfileDto>()
+            .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => 
+                src.UserRoles != null
+                ? src.UserRoles.Select(ur => ur.Role != null ? ur.Role.RoleName : null).Where(r => r != null).ToList()
+                : new List<string>()
+                ));
+            
+
         CreateMap<Users, UserDto>()
             .ForMember(dest => dest.Roles, opt => opt.MapFrom(src =>
                 src.UserRoles != null
