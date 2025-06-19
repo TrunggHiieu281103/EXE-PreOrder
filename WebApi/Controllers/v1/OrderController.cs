@@ -32,9 +32,9 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Lấy đơn hàng theo ID
+        /// Lấy chi tiết đơn hàng theo ID
         /// </summary>
-        /// <param name="id">Thông tin đăng nhập</param>
+        /// <param name="id">Id đơn hàng</param>
         /// <returns>Thông tin đơn hàng</returns>
         // GET: api/order
         // GET: api/order/{id}

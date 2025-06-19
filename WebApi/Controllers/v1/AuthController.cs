@@ -6,9 +6,12 @@ using Application.DTOs.Google;
 using Application.DTOs.OTP;
 using Application.Features.Brands.Commands.CreateBrand;
 using Application.Interfaces;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace WebApi.Controllers.v1
 {
@@ -131,5 +134,25 @@ namespace WebApi.Controllers.v1
         //    return Ok(result);
         //}
 
+        [HttpGet("profile")]
+        [Authorize]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = User.GetUserId();
+            var userEmail = User.GetEmail();
+            //var userRole = User.FindFirst(ClaimTypes.Role)?.Value; 
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return Unauthorized("User not authenticated");
+            }
+
+            // Assuming you have a method to get user profile by username
+            var profile = await _authService.GetUserProfileAsync(userId);
+            if (profile == null)
+            {
+                return NotFound("User profile not found");
+            }
+            return Ok(profile);
+        }
     }
 }

@@ -47,6 +47,13 @@
             <param name="request">Email và mã OTP</param>
             <returns>Kết quả xác thực</returns>
         </member>
+        <member name="M:WebApi.Controllers.v1.AuthController.GetProfile">
+            <summary>
+            Đổi mật khẩu người dùng đã đăng nhập
+            </summary>
+            <param name="request">Mật khẩu cũ và mới</param>
+            <returns>Kết quả đổi mật khẩu</returns>
+        </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
             Lấy ảnh theo product Id
@@ -71,6 +78,78 @@
             <param name="bankCode">Mã ngân hàng (tùy chọn)</param>
             <returns>URL thanh toán</returns>
         </member>
+        <member name="M:WebApi.Controllers.BrandController.Get(Application.Features.Brands.Queries.GetAllBrand.GetAllBrandsParameter)">
+            <summary>
+            Lấy danh sách thương hiệu có phân trang và lọc theo tên.
+            </summary>
+            <param name="filter">Bộ lọc gồm số trang, kích thước trang và tên thương hiệu.</param>
+            <returns>Danh sách thương hiệu.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.BrandController.GetById(System.Int64)">
+            <summary>
+            Lấy thông tin chi tiết của một thương hiệu theo ID.
+            </summary>
+            <param name="id">ID của thương hiệu.</param>
+            <returns>Thông tin chi tiết thương hiệu.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.BrandController.Post(Application.Features.Brands.Commands.CreateBrand.CreateBrandCommand)">
+            <summary>
+            Tạo mới một thương hiệu.
+            </summary>
+            <param name="command">Thông tin thương hiệu cần tạo.</param>
+            <returns>Thương hiệu được tạo cùng với ID.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.BrandController.Put(System.Int64,Application.Features.Brands.Commands.UpdateBrand.UpdateBrandCommand)">
+            <summary>
+            Cập nhật thông tin một thương hiệu.
+            </summary>
+            <param name="id">ID của thương hiệu cần cập nhật.</param>
+            <param name="command">Thông tin mới của thương hiệu.</param>
+            <returns>Kết quả cập nhật.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.BrandController.Delete(System.Int64)">
+            <summary>
+            Xóa một thương hiệu theo ID.
+            </summary>
+            <param name="id">ID của thương hiệu cần xóa.</param>
+            <returns>Kết quả xóa.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoryController.Get(Application.Features.Categories.Queries.GetAllCategory.GetAllCategoryParameter)">
+            <summary>
+            Lấy danh sách tất cả danh mục có phân trang và lọc theo tên.
+            </summary>
+            <param name="filter">Bộ lọc gồm số trang, kích thước trang và tên danh mục.</param>
+            <returns>Danh sách danh mục.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoryController.GetById(System.Int64)">
+            <summary>
+            Lấy thông tin chi tiết của một danh mục theo ID.
+            </summary>
+            <param name="id">ID của danh mục cần lấy.</param>
+            <returns>Thông tin danh mục tương ứng.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoryController.Create(Application.Features.Categories.Commands.CreateCategory.CreateCategoryCommand)">
+            <summary>
+            Tạo mới một danh mục.
+            </summary>
+            <param name="command">Thông tin danh mục cần tạo.</param>
+            <returns>Kết quả tạo mới danh mục.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoryController.Update(System.Int64,Application.Features.Categories.Commands.UpdateCategory.UpdateCategoryCommand)">
+            <summary>
+            Cập nhật thông tin một danh mục.
+            </summary>
+            <param name="id">ID danh mục cần cập nhật (trong URL).</param>
+            <param name="command">Thông tin danh mục mới.</param>
+            <returns>Kết quả cập nhật danh mục.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoryController.Delete(System.Int64)">
+            <summary>
+            Xóa một danh mục theo ID.
+            </summary>
+            <param name="id">ID của danh mục cần xóa.</param>
+            <returns>Kết quả xóa danh mục.</returns>
+        </member>
         <member name="M:WebApi.Controllers.OrderController.Get(Application.Features.Orders.Queries.GetAllOrders.GetAllOrderParameter)">
             <summary>
             Lấy tất cả đơn hàng
@@ -80,9 +159,9 @@
         </member>
         <member name="M:WebApi.Controllers.OrderController.GetById(System.Int64)">
             <summary>
-            Lấy đơn hàng theo ID
+            Lấy chi tiết đơn hàng theo ID
             </summary>
-            <param name="id">Thông tin đăng nhập</param>
+            <param name="id">Id đơn hàng</param>
             <returns>Thông tin đơn hàng</returns>
         </member>
         <member name="M:WebApi.Controllers.OrderController.Create(Application.Features.Orders.Commands.CreateOrder.CreateOrderCommand)">

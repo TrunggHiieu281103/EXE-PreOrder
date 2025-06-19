@@ -10,7 +10,7 @@ namespace Application.Features.Categories.Commands.CreateCategory
     {
         public CreateCategoryCommandValidator()
         {
-            RuleFor(c => c.Name)
+            RuleFor(c => c.CategoryName)
                 .NotEmpty().WithMessage("Name is required.")
                 .MaximumLength(100).WithMessage("Name must not exceed 100 characters.");
 

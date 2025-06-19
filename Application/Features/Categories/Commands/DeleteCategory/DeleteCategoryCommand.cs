@@ -28,7 +28,9 @@ namespace Application.Features.Categories.Commands.DeleteCategory
                 return new BaseResponse<long>(0, $"Category with Id {request.Id} not found.");
             }
 
-            await _categoryRepository.DeleteAsync(category);
+            category.IsActive = false;
+
+            await _categoryRepository.UpdateAsync(category);
             return new BaseResponse<long>(category.Id, "Category deleted successfully.");
         }
     }

@@ -12,7 +12,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class BrandController : BaseApiController
     {
-        // GET: api/brand
+        /// <summary>
+        /// Lấy danh sách thương hiệu có phân trang và lọc theo tên.
+        /// </summary>
+        /// <param name="filter">Bộ lọc gồm số trang, kích thước trang và tên thương hiệu.</param>
+        /// <returns>Danh sách thương hiệu.</returns>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllBrandsParameter filter)
         {
@@ -27,7 +31,11 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        // GET api/brand/5
+        /// <summary>
+        /// Lấy thông tin chi tiết của một thương hiệu theo ID.
+        /// </summary>
+        /// <param name="id">ID của thương hiệu.</param>
+        /// <returns>Thông tin chi tiết thương hiệu.</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
@@ -35,8 +43,11 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-
-        // POST api/brand
+        /// <summary>
+        /// Tạo mới một thương hiệu.
+        /// </summary>
+        /// <param name="command">Thông tin thương hiệu cần tạo.</param>
+        /// <returns>Thương hiệu được tạo cùng với ID.</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateBrandCommand command)
         {
@@ -44,7 +55,12 @@ namespace WebApi.Controllers
             return CreatedAtAction(nameof(Get), new { id = result.Data }, result);
         }
 
-        // PUT api/brand/5
+        /// <summary>
+        /// Cập nhật thông tin một thương hiệu.
+        /// </summary>
+        /// <param name="id">ID của thương hiệu cần cập nhật.</param>
+        /// <param name="command">Thông tin mới của thương hiệu.</param>
+        /// <returns>Kết quả cập nhật.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(long id, [FromBody] UpdateBrandCommand command)
         {
@@ -52,22 +68,20 @@ namespace WebApi.Controllers
                 return BadRequest("ID mismatch");
 
             var result = await Mediator.Send(command);
-            if (!result.Succeeded)
-                return NotFound(result.Message);
-
             return Ok(result);
         }
 
-        // DELETE api/brand/5
+        /// <summary>
+        /// Xóa một thương hiệu theo ID.
+        /// </summary>
+        /// <param name="id">ID của thương hiệu cần xóa.</param>
+        /// <returns>Kết quả xóa.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             var command = new DeleteBrandCommand { Id = id };
             var result = await Mediator.Send(command);
-            if (!result.Succeeded)
-                return NotFound(result.Message);
-
-            return NoContent();
+            return Ok(result);
         }
     }
 }

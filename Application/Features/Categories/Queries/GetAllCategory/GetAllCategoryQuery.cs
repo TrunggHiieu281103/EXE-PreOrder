@@ -13,7 +13,7 @@ namespace Application.Features.Categories.Queries.GetAllCategory
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string? Name { get; set; } // optional filter
+        public string? CategoryName { get; set; } // optional filter
     }
 
     public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, PageResponse<IEnumerable<GetAllCategoryViewModel>>>
@@ -33,7 +33,7 @@ namespace Application.Features.Categories.Queries.GetAllCategory
             {
                 PageNumber = request.PageNumber,
                 PageSize = request.PageSize,
-                Name = request.Name
+                CategoryName = request.CategoryName
             };
 
             var categories = await _categoryRepository.GetCategoryPagedResponseAsync(filter);

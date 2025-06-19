@@ -13,8 +13,10 @@ using Application.Repository;
 using Application.Wrappers;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Settings;
 using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto.Generators;
 using Persistence.Repositories;
@@ -37,6 +39,8 @@ namespace Identity.Services
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly IOTPService _otpService;
+        private readonly IOptions<CloudinarySettings> _cloudinarySettings;
+
         public AuthService(
             IUserRepositoryAsync userRepository,
             ITokenService tokenService,
@@ -45,7 +49,8 @@ namespace Identity.Services
             IRoleRepositoryAsync roleRepository,
             IUserRoleRepositoryAsync userRoleRepository,
             IEmailService emailService,
-            IOTPService oTPService)
+            IOTPService oTPService,
+            IOptions<CloudinarySettings> cloudinarySettings)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
@@ -55,6 +60,7 @@ namespace Identity.Services
             _userRoleRepository = userRoleRepository;
             _emailService = emailService;
             _otpService = oTPService;
+            _cloudinarySettings = cloudinarySettings;
         }
 
         public async Task<BaseResponse<LoginResponse>> LoginAsync(LoginRequest request)
@@ -277,6 +283,20 @@ namespace Identity.Services
             return new BaseResponse<string>("Password has been reset successfully.");
         }
 
+        public async Task<BaseResponse<UserProfileDto>> GetUserProfileAsync(long userId)
+        {
+            var user = await _userRepository.GetUserWithRolesByIdAsync(userId);
+            if (user == null)
+                return new BaseResponse<UserProfileDto>("User not found");
+
+            var avatarPublicId = user.AvatarPublicId ?? "samples/man-portrait";
+
+            var dto = _mapper.Map<UserProfileDto>(user);
+
+            dto.AvatarImageUrl = $"https://res.cloudinary.com/{_cloudinarySettings.Value.CloudName}/image/upload/{dto.AvatarPublicId}.jpg";
+
+            return new BaseResponse<UserProfileDto>(dto);
+        }
     }
 
 }

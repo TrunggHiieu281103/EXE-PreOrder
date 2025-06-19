@@ -28,11 +28,11 @@ namespace Persistence.Repositories
         }
         public async Task<IReadOnlyList<Categories>> GetCategoryPagedResponseAsync(GetAllCategoryParameter filter)
         {
-            var query = _categories.AsQueryable();
+            var query = _categories.Where(c => c.IsActive).AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(filter.Name))
+            if (!string.IsNullOrWhiteSpace(filter.CategoryName))
             {
-                query = query.Where(c => c.CategoryName.Contains(filter.Name));
+                query = query.Where(c => c.CategoryName.Contains(filter.CategoryName));
             }
 
             return await query

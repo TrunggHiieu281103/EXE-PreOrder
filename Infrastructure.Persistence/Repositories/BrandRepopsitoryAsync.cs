@@ -30,7 +30,7 @@ namespace Persistence.Repositories
 
         public async Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter)
         {
-            var query = _brands.AsQueryable();
+            var query = _brands.Where(b => b.IsActive).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(filter.Name))
                 query = query.Where(b => b.Name.Contains(filter.Name));

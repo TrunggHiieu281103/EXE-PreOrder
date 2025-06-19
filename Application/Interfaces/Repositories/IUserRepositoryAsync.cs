@@ -15,5 +15,6 @@ namespace Application.Interfaces.Repositories
         Task<Users> GetUserByPhoneAsync(string phone);
         Task<Users> GetUserByIdWithAddressAsync(long userId);
         Task<bool> FindUserById(long userId);
+        Task<Users> GetUserWithRolesByIdAsync(long userId);
     }
 }
