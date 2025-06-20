@@ -1,5 +1,5 @@
 
-/****** Object:  Database [EXE_PreOrder]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Database [EXE_PreOrder]    Script Date: 6/20/2025 11:19:15 PM ******/
 CREATE DATABASE [EXE_PreOrder]
  
 GO
@@ -78,7 +78,7 @@ ALTER DATABASE [EXE_PreOrder] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEA
 GO
 USE [EXE_PreOrder]
 GO
-/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Brands]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Brands]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,7 +111,7 @@ CREATE TABLE [dbo].[Brands](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderProducts]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[OrderProducts]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[OrderProducts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payments]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Payments]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,7 +199,7 @@ CREATE TABLE [dbo].[Payments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductAssets]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[ProductAssets]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -219,7 +219,7 @@ CREATE TABLE [dbo].[ProductAssets](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductCommentAssets]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[ProductCommentAssets]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -239,7 +239,7 @@ CREATE TABLE [dbo].[ProductCommentAssets](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductComments]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[ProductComments]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -261,7 +261,7 @@ CREATE TABLE [dbo].[ProductComments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -279,18 +279,20 @@ CREATE TABLE [dbo].[Products](
 	[BrandId] [bigint] NULL,
 	[Type] [nvarchar](max) NOT NULL,
 	[Size] [nvarchar](max) NOT NULL,
-	[StockQuantity] [int] NULL,
+	[StockQuantity] [int] NOT NULL,
 	[ProductDetails] [nvarchar](max) NOT NULL,
 	[Price] [decimal](18, 2) NOT NULL,
 	[OpenedAt] [bigint] NULL,
 	[IsPreOrder] [bit] NOT NULL,
+	[Discount] [int] NULL,
+	[DiscountedPrice] [decimal](18, 2) NULL,
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RefreshTokens]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[RefreshTokens]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -309,7 +311,7 @@ CREATE TABLE [dbo].[RefreshTokens](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Roles]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Roles]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -327,7 +329,7 @@ CREATE TABLE [dbo].[Roles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shippings]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Shippings]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -352,7 +354,7 @@ CREATE TABLE [dbo].[Shippings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserAddresses]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[UserAddresses]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -375,7 +377,7 @@ CREATE TABLE [dbo].[UserAddresses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserRoles]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[UserRoles]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -394,7 +396,7 @@ CREATE TABLE [dbo].[UserRoles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 6/20/2025 11:19:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -425,6 +427,8 @@ GO
 INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250514080554_UpdateShippingRelation', N'8.0.4')
 INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250529081232_RemovePhoneUniqueConstraint', N'8.0.4')
 INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250611052831_ModifyProperty', N'8.0.4')
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250620114325_AddDiscountPropery', N'8.0.4')
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250620160217_AcceptNullDiscount', N'8.0.4')
 GO
 SET IDENTITY_INSERT [dbo].[Brands] ON 
 
@@ -435,6 +439,7 @@ INSERT [dbo].[Brands] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [N
 INSERT [dbo].[Brands] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Name], [Description]) VALUES (5, 1, 1, 1747800378595, 1747800378595, N'Perfect Grade', N'Cực kỳ chi tiết, phức tạp nhất, thường đi kèm đèn LED')
 INSERT [dbo].[Brands] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Name], [Description]) VALUES (6, 1, 1, 1747800420039, 1747800420039, N'Entry Grade', N'Cực kỳ đơn giản, không cần keo hoặc sơn, lắp nhanh')
 INSERT [dbo].[Brands] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Name], [Description]) VALUES (7, 1, 1, 1747800465519, 1747800465519, N'Mega Size Model', N'Tỉ lệ: 1/48, Rất lớn, ít chi tiết nhưng gây ấn tượng mạnh')
+INSERT [dbo].[Brands] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Name], [Description]) VALUES (8, 6, 0, 1750296990801, 1750297345187, N'MixiMoi', N'hihihihi')
 SET IDENTITY_INSERT [dbo].[Brands] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Categories] ON 
@@ -443,6 +448,8 @@ INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt]
 INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [CategoryName], [Description]) VALUES (2, 1, 1, 1749048002728, 1749048002728, N'Gundam', N'Mobile Suit Gundam model kits and collectibles')
 INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [CategoryName], [Description]) VALUES (3, 1, 1, 1749048002728, 1749048002728, N'Gunpla Tools', N'Modeling tools for assembling and detailing Gundam kits')
 INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [CategoryName], [Description]) VALUES (4, 1, 1, 1749048002728, 1749048002728, N'Gundam Accessories', N'Weapons packs, effect parts, and display stands for Gundam kits')
+INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [CategoryName], [Description]) VALUES (6, 1, 1, 1750296022129, 1750296022129, N'SSS', N'SSS gundam')
+INSERT [dbo].[Categories] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [CategoryName], [Description]) VALUES (7, 3, 0, 1750296037424, 1750296877124, N'RS', N'Rare secret gundam')
 SET IDENTITY_INSERT [dbo].[Categories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[OrderProducts] ON 
@@ -455,6 +462,42 @@ INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [Updated
 INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (6, 1, 1, 1749801864958, 1749801864958, 9, 1, NULL, CAST(200000.00 AS Decimal(18, 2)), 3)
 INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (7, 1, 1, 1749801864958, 1749801864958, 9, 2, NULL, CAST(180000.00 AS Decimal(18, 2)), 1)
 INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (8, 1, 1, 1749804024915, 1749804024915, 10, 3, NULL, CAST(600000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (9, 1, 1, 1750064406447, 1750064406447, 11, 1, NULL, CAST(100.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (10, 1, 1, 1750064764890, 1750064764890, 12, 1, NULL, CAST(10000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (11, 1, 1, 1750123565131, 1750123565131, 13, 1, NULL, CAST(1000000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (12, 1, 1, 1750123837607, 1750123837607, 14, 2, NULL, CAST(1000000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (13, 1, 1, 1750124257406, 1750124257406, 15, 4, NULL, CAST(777777.00 AS Decimal(18, 2)), 3)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (14, 1, 1, 1750124765585, 1750124765585, 16, 3, NULL, CAST(100000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (15, 1, 1, 1750224406378, 1750224406378, 17, 3, NULL, CAST(0.00 AS Decimal(18, 2)), 10)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (16, 1, 1, 1750224501896, 1750224501896, 18, 3, NULL, CAST(0.00 AS Decimal(18, 2)), 10)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (17, 1, 1, 1750224588617, 1750224588617, 19, 4, NULL, CAST(0.00 AS Decimal(18, 2)), 10)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (18, 1, 1, 1750224872087, 1750224872087, 20, 4, NULL, CAST(0.00 AS Decimal(18, 2)), 64)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (19, 1, 1, 1750227120383, 1750227120383, 21, 3, NULL, CAST(200000.00 AS Decimal(18, 2)), 10)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (20, 1, 1, 1750227120383, 1750227120383, 21, 4, NULL, CAST(300000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (21, 1, 1, 1750227967993, 1750227967993, 22, 4, NULL, CAST(450000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (22, 1, 1, 1750248680343, 1750248680343, 23, 1, NULL, CAST(500000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (23, 1, 1, 1750256909180, 1750256909180, 24, 1, NULL, CAST(500000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (24, 1, 1, 1750258048718, 1750258048718, 25, 4, NULL, CAST(100000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (25, 1, 1, 1750258543181, 1750258543181, 26, 4, NULL, CAST(200000.00 AS Decimal(18, 2)), 3)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (26, 1, 1, 1750259443485, 1750259443485, 27, 1, NULL, CAST(100000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (27, 1, 1, 1750260904218, 1750260904218, 28, 1, NULL, CAST(400000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (28, 1, 1, 1750314855161, 1750314855161, 29, 1, NULL, CAST(500000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (29, 1, 1, 1750315044618, 1750315044618, 30, 1, NULL, CAST(500000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (30, 1, 1, 1750324101177, 1750324101177, 31, 4, NULL, CAST(292500.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (31, 1, 1, 1750324707702, 1750324707702, 32, 4, NULL, CAST(292500.00 AS Decimal(18, 2)), 7)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (32, 1, 1, 1750326070145, 1750326070145, 33, 2, NULL, CAST(0.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (33, 1, 1, 1750326070145, 1750326070145, 33, 1, NULL, CAST(0.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (34, 1, 1, 1750326221699, 1750326221699, 34, 2, NULL, CAST(0.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (35, 1, 1, 1750326221699, 1750326221699, 34, 1, NULL, CAST(0.00 AS Decimal(18, 2)), 3)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (36, 1, 1, 1750326425959, 1750326425959, 35, 2, NULL, CAST(180000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (37, 1, 1, 1750326425959, 1750326425959, 35, 1, NULL, CAST(200000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (38, 1, 1, 1750387842743, 1750387842743, 36, 1, NULL, CAST(200000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (39, 1, 1, 1750433068201, 1750433068201, 37, 1, NULL, CAST(200000.00 AS Decimal(18, 2)), 4)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (40, 1, 1, 1750433511565, 1750433511565, 38, 2, NULL, CAST(180000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (41, 1, 1, 1750433575277, 1750433575277, 39, 2, NULL, CAST(180000.00 AS Decimal(18, 2)), 2)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (42, 1, 1, 1750435731524, 1750435731524, 40, 4, NULL, CAST(0.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (43, 1, 1, 1750435944510, 1750435944510, 41, 2, NULL, CAST(180000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[OrderProducts] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [OrderId], [ProductId], [DepositPrice], [Price], [Quantity]) VALUES (44, 1, 1, 1750436141794, 1750436141794, 42, 3, NULL, CAST(0.00 AS Decimal(18, 2)), 1)
 SET IDENTITY_INSERT [dbo].[OrderProducts] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Orders] ON 
@@ -464,12 +507,76 @@ INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [U
 INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (8, 1, 1, 1749622477561, 1749622477561, 4, 13, N'CONFIRMED', CAST(0.00 AS Decimal(18, 2)), CAST(34000.00 AS Decimal(18, 2)), CAST(2760000.00 AS Decimal(18, 2)), 1)
 INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (9, 1, 1, 1749801864958, 1749801864958, 1, 18, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(780000.00 AS Decimal(18, 2)), 0)
 INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (10, 1, 1, 1749804024915, 1749804024915, 1, 19, N'CONFIRM', CAST(100000.00 AS Decimal(18, 2)), CAST(17000.00 AS Decimal(18, 2)), CAST(1200000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (11, 1, 1, 1750064406447, 1750064406447, 8, 17, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(200.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (12, 1, 1, 1750064764890, 1750064764890, 8, 17, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(34000.00 AS Decimal(18, 2)), CAST(20000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (13, 1, 1, 1750123565131, 1750123565131, 5, 14, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(15000.00 AS Decimal(18, 2)), CAST(1000000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (14, 2, 1, 1750123837607, 1750174038292, 7, 16, N'CONFIRM', CAST(300000.00 AS Decimal(18, 2)), CAST(25000.00 AS Decimal(18, 2)), CAST(1000000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (15, 1, 1, 1750124257406, 1750124257406, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(25000.00 AS Decimal(18, 2)), CAST(2333331.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (16, 1, 1, 1750124765585, 1750124765585, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(200000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (17, 1, 1, 1750224406378, 1750224406378, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (18, 1, 1, 1750224501896, 1750224501896, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (19, 1, 1, 1750224588617, 1750224588617, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (20, 1, 1, 1750224872087, 1750224872087, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (21, 4, 1, 1750227120383, 1750227641530, 5, 14, N'CONFIRM', CAST(690000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(2300000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (22, 2, 1, 1750227967993, 1750228188413, 2, 11, N'CONFIRM', CAST(135000.00 AS Decimal(18, 2)), CAST(20000.00 AS Decimal(18, 2)), CAST(450000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (23, 1, 1, 1750248680343, 1750248680343, 4, 13, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(50000.00 AS Decimal(18, 2)), CAST(500000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (24, 1, 1, 1750256909180, 1750256909180, 2, 11, N'PENDING', CAST(0.00 AS Decimal(18, 2)), CAST(25000.00 AS Decimal(18, 2)), CAST(1000000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (25, 1, 1, 1750258048718, 1750258048718, 2, 11, N'CONFIRM', CAST(30000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(100000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (26, 1, 1, 1750258543181, 1750258543181, 8, 17, N'CONFIRM', CAST(180000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(600000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (27, 1, 1, 1750259443485, 1750259443485, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(25000.00 AS Decimal(18, 2)), CAST(200000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (28, 1, 1, 1750260904218, 1750260904218, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(17000.00 AS Decimal(18, 2)), CAST(800000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (29, 1, 1, 1750314855161, 1750314855161, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(500000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (30, 1, 1, 1750315044618, 1750315044618, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(1000000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (31, 1, 1, 1750324101177, 1750324101177, 5, 14, N'CONFIRM', CAST(175500.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(585000.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (32, 1, 1, 1750324707702, 1750324707702, 3, 12, N'CONFIRM', CAST(614250.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(2047500.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (33, 1, 1, 1750326070145, 1750326070145, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (34, 1, 1, 1750326221699, 1750326221699, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (35, 1, 1, 1750326425959, 1750326425959, 5, 14, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(580000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (36, 1, 1, 1750387842743, 1750387842743, 2, 11, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(200000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (37, 1, 1, 1750433068201, 1750433068201, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(800000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (38, 1, 1, 1750433511565, 1750433511565, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(360000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (39, 1, 1, 1750433575277, 1750433575277, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(22000.00 AS Decimal(18, 2)), CAST(360000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (40, 1, 1, 1750435731524, 1750435731524, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (41, 1, 1, 1750435944510, 1750435944510, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[Orders] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [UserId], [UserAddressId], [Status], [DepositPrice], [ShippingFee], [TotalPrice], [IsPreorder]) VALUES (42, 1, 1, 1750436141794, 1750436141794, 3, 12, N'CONFIRM', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1)
 SET IDENTITY_INSERT [dbo].[Orders] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Payments] ON 
 
 INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (1, 1, 1, 1749801865136, 1749801865136, N'PAY-48DD3BD7', 9, N'COD', N'Thanh toán đơn hàng #9', CAST(780000.00 AS Decimal(18, 2)), N'PENDING')
 INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (2, 1, 1, 1749804025095, 1749804025095, N'PAY-8EFCFEB9', 10, N'COD', N'Thanh toán đơn hàng #10', CAST(1117000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (3, 1, 1, 1750064406617, 1750064406617, N'PAY-D98EA2DD', 11, N'VNPAY', N'Pay for orderId: 11', CAST(200.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (4, 1, 1, 1750064764903, 1750064764903, N'PAY-91929DC7', 12, N'VNPAY', N'Pay for orderId: 12', CAST(54000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (5, 1, 1, 1750123565405, 1750123565405, N'PAY-5E2ABE48', 13, N'VNPAY', N'Deposit for preorder OrderId: 13', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (6, 2, 1, 1750123837891, 1750174038171, N'PAY-13BEC68D', 14, N'VNPAY', N'Deposit for preorder OrderId: 14', CAST(300000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (7, 1, 1, 1750124257620, 1750124257620, N'PAY-9C2DB5C9', 15, N'COD', N'Pay for orderId: 15', CAST(2358331.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (8, 1, 1, 1750124765782, 1750124765782, N'PAY-37C8D398', 16, N'COD', N'Pay for orderId: 16', CAST(211000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (9, 1, 1, 1750224406478, 1750224406478, N'PAY-3A54B1DC', 17, N'COD', N'Pay for orderId: 17', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (10, 1, 1, 1750224501906, 1750224501906, N'PAY-3298C254', 18, N'COD', N'Pay for orderId: 18', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (11, 1, 1, 1750224604279, 1750224604279, N'PAY-4891C16D', 19, N'COD', N'Pay for orderId: 19', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (12, 1, 1, 1750224872303, 1750224872303, N'PAY-9AAA1EF3', 20, N'COD', N'Pay for orderId: 20', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (13, 4, 1, 1750227120574, 1750227641525, N'PAY-D27C1244', 21, N'VNPAY', N'Deposit for preorder OrderId: 21', CAST(690000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (14, 2, 1, 1750227968146, 1750228188399, N'PAY-BE452760', 22, N'VNPAY', N'Deposit for preorder OrderId: 22', CAST(135000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (15, 1, 1, 1750248680511, 1750248680511, N'PAY-2DC3D590', 23, N'VNPAY', N'Pay for orderId: 23', CAST(550000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (16, 1, 1, 1750256909387, 1750256909387, N'PAY-4EFFD963', 24, N'VNPAY', N'Pay for orderId: 24', CAST(1025000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (17, 1, 1, 1750258048876, 1750258048876, N'PAY-036E13A1', 25, N'VNPAY', N'Deposit for orderId: 25', CAST(30000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (18, 1, 1, 1750258560117, 1750258560117, N'PAY-C19A77BD', 26, N'VNPAY', N'Deposit for orderId: 26', CAST(180000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (19, 1, 1, 1750259443650, 1750259443650, N'PAY-937ADE48', 27, N'VNPAY', N'Deposit for orderId: 27', CAST(0.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (20, 1, 1, 1750260904406, 1750260904406, N'PAY-26DE572C', 28, N'VNPAY', N'Payment for orderId: 28', CAST(817000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (21, 1, 1, 1750314855786, 1750314855786, N'PAY-F450CC88', 29, N'COD', N'Pay for orderId: 29', CAST(500000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (22, 1, 1, 1750315044647, 1750315044647, N'PAY-74696E8A', 30, N'VNPAY', N'Payment for orderId: 30', CAST(1000000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (23, 1, 1, 1750324101361, 1750324101361, N'PAY-A74C3BD4', 31, N'VNPAY', N'Payment for orderId: 31', CAST(175500.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (24, 1, 1, 1750324707850, 1750324707850, N'PAY-8842F187', 32, N'VNPAY', N'Payment for orderId: 32', CAST(614250.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (25, 1, 1, 1750326070391, 1750326070391, N'PAY-F2124A68', 33, N'COD', N'Pay for orderId: 33', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (26, 1, 1, 1750326221753, 1750326221753, N'PAY-E362E734', 34, N'COD', N'Pay for orderId: 34', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (27, 1, 1, 1750326426206, 1750326426206, N'PAY-C3FFC106', 35, N'COD', N'Pay for orderId: 35', CAST(580000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (28, 1, 1, 1750387843429, 1750387843429, N'PAY-FE68F674', 36, N'VNPAY', N'Payment for orderId: 36', CAST(200000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (29, 1, 1, 1750433068426, 1750433068426, N'PAY-1061B958', 37, N'COD', N'Pay for orderId: 37', CAST(800000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (30, 1, 1, 1750433511721, 1750433511721, N'PAY-61A16D3E', 38, N'VNPAY', N'Payment for orderId: 38', CAST(360000.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (31, 1, 1, 1750433575298, 1750433575298, N'PAY-8AD8B292', 39, N'COD', N'Pay for orderId: 39', CAST(382000.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (32, 1, 1, 1750435731696, 1750435731696, N'PAY-B45CA3F7', 40, N'VNPAY', N'Payment for orderId: 40', CAST(0.00 AS Decimal(18, 2)), N'SUCCESS')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (33, 1, 1, 1750435944763, 1750435944763, N'PAY-A1EB19CB', 41, N'COD', N'Pay for orderId: 41', CAST(0.00 AS Decimal(18, 2)), N'PENDING')
+INSERT [dbo].[Payments] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [PaymentCode], [OrderId], [PaymentType], [Content], [Amount], [PaymentStatus]) VALUES (34, 1, 1, 1750436141814, 1750436141814, N'PAY-3EA2294C', 42, N'VNPAY', N'Payment for orderId: 42', CAST(0.00 AS Decimal(18, 2)), N'SUCCESS')
 SET IDENTITY_INSERT [dbo].[Payments] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ProductAssets] ON 
@@ -485,10 +592,10 @@ SET IDENTITY_INSERT [dbo].[ProductAssets] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Products] ON 
 
-INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder]) VALUES (1, 1, 1, 1749047375279, 1749047375279, N'GDM-001', N'RX-78-2 Gundam HG 1/144', N'High Grade 1/144 scale RX-78-2 Gundam plastic model kit', 1, 1, N'HG', N'1/144', 100, N'Includes Beam Rifle, Shield, and Beam Saber. Articulated joints.', CAST(200000.00 AS Decimal(18, 2)), NULL, 0)
-INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder]) VALUES (2, 1, 1, 1749047375279, 1749047375279, N'GDM-002', N'Zaku II HG 1/144', N'High Grade 1/144 scale MS-06 Zaku II', 1, 2, N'HG', N'1/144', 80, N'Includes Machine Gun, Heat Hawk. Articulated limbs and mono-eye.', CAST(180000.00 AS Decimal(18, 2)), NULL, 0)
-INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder]) VALUES (3, 1, 1, 1749048016634, 1749048016634, N'GDM-003', N'Unicorn Gundam MG 1/100', N'Master Grade Unicorn Gundam model kit with transformation gimmick', 1, NULL, N'MG', N'1/100', 60, N'Includes beam magnum, shield, beam sabers, and Psycho Frame mode.', CAST(600000.00 AS Decimal(18, 2)), NULL, 0)
-INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder]) VALUES (4, 1, 1, 1749048016634, 1749048016634, N'GDM-004', N'Wing Gundam Zero EW RG 1/144', N'Real Grade version of Wing Gundam Zero EW from Endless Waltz', 1, NULL, N'RG', N'1/144', 75, N'Includes Twin Buster Rifle, Wing binders, and great articulation.', CAST(450000.00 AS Decimal(18, 2)), NULL, 0)
+INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder], [Discount], [DiscountedPrice]) VALUES (1, 10, 1, 1749047375279, 1750433068379, N'GDM-001', N'RX-78-2 Gundam HG 1/144', N'High Grade 1/144 scale RX-78-2 Gundam plastic model kit', 1, 1, N'HG', N'1/144', 82, N'Includes Beam Rifle, Shield, and Beam Saber. Articulated joints.', CAST(200000.00 AS Decimal(18, 2)), NULL, 0, 0, CAST(0.00 AS Decimal(18, 2)))
+INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder], [Discount], [DiscountedPrice]) VALUES (2, 7, 1, 1749047375279, 1750435944715, N'GDM-002', N'Zaku II HG 1/144', N'High Grade 1/144 scale MS-06 Zaku II', 1, 2, N'HG', N'1/144', 73, N'Includes Machine Gun, Heat Hawk. Articulated limbs and mono-eye.', CAST(180000.00 AS Decimal(18, 2)), NULL, 0, 0, CAST(0.00 AS Decimal(18, 2)))
+INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder], [Discount], [DiscountedPrice]) VALUES (3, 3, 1, 1749048016634, 1750436141821, N'GDM-003', N'Unicorn Gundam MG 1/100', N'Master Grade Unicorn Gundam model kit with transformation gimmick', 1, NULL, N'MG', N'1/100', 61, N'Includes beam magnum, shield, beam sabers, and Psycho Frame mode.', CAST(600000.00 AS Decimal(18, 2)), NULL, 1, 20, CAST(480000.00 AS Decimal(18, 2)))
+INSERT [dbo].[Products] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [ProductCode], [ProductName], [Description], [CategoryId], [BrandId], [Type], [Size], [StockQuantity], [ProductDetails], [Price], [OpenedAt], [IsPreOrder], [Discount], [DiscountedPrice]) VALUES (4, 10, 1, 1749048016634, 1750435731750, N'GDM-004', N'Wing Gundam Zero EW RG 1/144', N'Real Grade version of Wing Gundam Zero EW from Endless Waltz', 1, NULL, N'RG', N'1/144', 10, N'Includes Twin Buster Rifle, Wing binders, and great articulation.', CAST(450000.00 AS Decimal(18, 2)), NULL, 1, 30, CAST(315000.00 AS Decimal(18, 2)))
 SET IDENTITY_INSERT [dbo].[Products] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Roles] ON 
@@ -534,31 +641,31 @@ INSERT [dbo].[Users] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Em
 INSERT [dbo].[Users] ([Id], [Version], [IsActive], [CreatedAt], [UpdatedAt], [Email], [Password], [FirstName], [LastName], [Gender], [AvatarKey], [AvatarPublicId], [Phone], [DateOfBirth], [IsFirstLogin], [IsEnableTwoFactor]) VALUES (8, 2, 1, 1749045808812, 1749045884595, N'khanhtranphuong2003@gmail.com', N'AQAAAAIAAYagAAAAEPqlRwIbOnBy3MM+AHb+S33rpO4mSRMoxLLJh+yzdiqu90xaIfHG0d86/qSrhKCiRg==', N'string', N'string', N'string', N'samples/man-portrait', N'samples/man-portrait', N'7020947789', 0, 0, 0)
 SET IDENTITY_INSERT [dbo].[Users] OFF
 GO
-/****** Object:  Index [IX_OrderProducts_OrderId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_OrderProducts_OrderId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_OrderProducts_OrderId] ON [dbo].[OrderProducts]
 (
 	[OrderId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_OrderProducts_ProductId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_OrderProducts_ProductId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_OrderProducts_ProductId] ON [dbo].[OrderProducts]
 (
 	[ProductId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Orders_UserAddressId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Orders_UserAddressId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Orders_UserAddressId] ON [dbo].[Orders]
 (
 	[UserAddressId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Orders_UserId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Orders_UserId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Orders_UserId] ON [dbo].[Orders]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Payments_OrderId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Payments_OrderId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Payments_OrderId] ON [dbo].[Payments]
 (
 	[OrderId] ASC
@@ -566,49 +673,49 @@ CREATE NONCLUSTERED INDEX [IX_Payments_OrderId] ON [dbo].[Payments]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Payments_PaymentCode]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Payments_PaymentCode]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Payments_PaymentCode] ON [dbo].[Payments]
 (
 	[PaymentCode] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ProductAssets_ProductId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_ProductAssets_ProductId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_ProductAssets_ProductId] ON [dbo].[ProductAssets]
 (
 	[ProductId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ProductCommentAssets_ProductCommentId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_ProductCommentAssets_ProductCommentId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_ProductCommentAssets_ProductCommentId] ON [dbo].[ProductCommentAssets]
 (
 	[ProductCommentId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ProductComments_OrderId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_ProductComments_OrderId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_ProductComments_OrderId] ON [dbo].[ProductComments]
 (
 	[OrderId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ProductComments_ProductId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_ProductComments_ProductId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_ProductComments_ProductId] ON [dbo].[ProductComments]
 (
 	[ProductId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ProductComments_UserId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_ProductComments_UserId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_ProductComments_UserId] ON [dbo].[ProductComments]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Products_BrandId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Products_BrandId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Products_BrandId] ON [dbo].[Products]
 (
 	[BrandId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Products_CategoryId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Products_CategoryId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Products_CategoryId] ON [dbo].[Products]
 (
 	[CategoryId] ASC
@@ -616,19 +723,19 @@ CREATE NONCLUSTERED INDEX [IX_Products_CategoryId] ON [dbo].[Products]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Products_ProductCode]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Products_ProductCode]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Products_ProductCode] ON [dbo].[Products]
 (
 	[ProductCode] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_RefreshTokens_UserId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_RefreshTokens_UserId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_RefreshTokens_UserId] ON [dbo].[RefreshTokens]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Shippings_OrderId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Shippings_OrderId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Shippings_OrderId] ON [dbo].[Shippings]
 (
 	[OrderId] ASC
@@ -636,25 +743,25 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Shippings_OrderId] ON [dbo].[Shippings]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Shippings_TrackingNumber]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Shippings_TrackingNumber]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Shippings_TrackingNumber] ON [dbo].[Shippings]
 (
 	[TrackingNumber] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_UserAddresses_UserId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_UserAddresses_UserId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_UserAddresses_UserId] ON [dbo].[UserAddresses]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_UserRoles_RoleId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_UserRoles_RoleId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_UserRoles_RoleId] ON [dbo].[UserRoles]
 (
 	[RoleId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_UserRoles_UserId]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_UserRoles_UserId]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_UserRoles_UserId] ON [dbo].[UserRoles]
 (
 	[UserId] ASC
@@ -662,7 +769,7 @@ CREATE NONCLUSTERED INDEX [IX_UserRoles_UserId] ON [dbo].[UserRoles]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Users_Email]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Users_Email]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Users_Email] ON [dbo].[Users]
 (
 	[Email] ASC
@@ -670,7 +777,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Users_Email] ON [dbo].[Users]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Users_Phone]    Script Date: 6/13/2025 4:07:30 PM ******/
+/****** Object:  Index [IX_Users_Phone]    Script Date: 6/20/2025 11:19:16 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Users_Phone] ON [dbo].[Users]
 (
 	[Phone] ASC
@@ -693,6 +800,8 @@ GO
 ALTER TABLE [dbo].[ProductComments] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsActive]
 GO
 ALTER TABLE [dbo].[Products] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsActive]
+GO
+ALTER TABLE [dbo].[Products] ADD  DEFAULT ((0)) FOR [StockQuantity]
 GO
 ALTER TABLE [dbo].[RefreshTokens] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsActive]
 GO
