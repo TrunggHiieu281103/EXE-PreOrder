@@ -112,10 +112,11 @@ namespace Persistence.Repositories
         }
 
 
-        //public Task<bool> IsUniqueBarcodeAsync(string barcode)
-        //{
-        //    return _products
-        //        .AllAsync(p => p.Barcode != barcode);
-        //}
+        public async Task<List<Products>> GetProductsByIdsAsync(IEnumerable<long> productIds)
+        {
+            return await _products
+                .Where(p => productIds.Contains(p.Id))
+                .ToListAsync();
+        }
     }
 }

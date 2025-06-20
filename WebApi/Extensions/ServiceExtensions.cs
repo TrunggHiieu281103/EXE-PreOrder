@@ -35,24 +35,8 @@ namespace WebApi.Extensions
                     BearerFormat = "JWT",
                     Description = "Input your Bearer token in this format - Bearer {your token here} to access this API",
                 });
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer",
-                //            },
-                //            Scheme = "Bearer",
-                //            Name = "Bearer",
-                //            In = ParameterLocation.Header,
-                //        }, new List<string>()
-                //    },
-                //});
-                c.OperationFilter<AuthorizeCheckOperationFilter>();
 
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
                 c.SchemaFilter<EnumSchemaFilter>();
             });
         }

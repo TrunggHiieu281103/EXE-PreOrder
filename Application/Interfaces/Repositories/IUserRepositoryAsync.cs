@@ -1,4 +1,5 @@
-﻿using Application.Repository;
+﻿using Application.Features.User.Queries.GetAllUser;
+using Application.Repository;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace Application.Interfaces.Repositories
         Task<Users> GetUserByIdWithAddressAsync(long userId);
         Task<bool> FindUserById(long userId);
         Task<Users> GetUserWithRolesByIdAsync(long userId);
+        Task<IReadOnlyList<Users>> GetPagedUserResponseAsync(GetAllUserParameter parameter);
+
     }
 }

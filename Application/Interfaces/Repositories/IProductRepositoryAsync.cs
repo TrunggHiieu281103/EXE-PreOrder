@@ -19,6 +19,7 @@ namespace Application.Interfaces.Repositories
         Task<Products?> IsUniqueProductCodeAsync(string productCode);
         Task<bool> FindBrandIdAsync(long brandId);
         Task<bool> FindCategoryIdAsync(long categoryId);
+        Task<List<Products>> GetProductsByIdsAsync(IEnumerable<long> productIds);
 
     }
 }

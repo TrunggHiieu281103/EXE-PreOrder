@@ -102,9 +102,9 @@ namespace Persistence.Repositories
                 .AsQueryable();
 
             // Lọc theo CustomerName nếu có
-            if (!string.IsNullOrWhiteSpace(filter.Email))
+            if (!string.IsNullOrWhiteSpace(filter.UserEmail))
             {
-                var customerEmail = filter.Email.ToLower();
+                var customerEmail = filter.UserEmail.ToLower();
                 query = query.Where(o =>
                     o.User != null &&
                     (

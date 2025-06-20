@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.Features.User.Queries.GetAllUser;
+using Application.Interfaces.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
@@ -63,5 +64,30 @@ namespace Persistence.Repositories
         {
             return await _user.AnyAsync(u => u.Id == userId && u.IsActive);
         }
+
+        public async Task<IReadOnlyList<Users>> GetPagedUserResponseAsync(GetAllUserParameter parameter)
+        {
+            var query = _user
+                .Where(u => u.IsActive)
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(parameter.Email))
+            {
+                string searchLower = parameter.Email.ToLower();
+                query = query.Where(u =>
+                    u.FirstName.ToLower().Contains(searchLower) ||
+                    u.Email.ToLower().Contains(searchLower));
+            }
+
+            var users = await query
+                .Skip((parameter.PageNumber - 1) * parameter.PageSize)
+                .Take(parameter.PageSize)
+                .ToListAsync();
+
+            return users;
+        }
+
     }
 }

@@ -18,8 +18,9 @@ namespace Application.Features.Orders.Commands.CreateOrder
 {
     public class CreateOrderCommand : IRequest<BaseResponse<OrderResponseDto>>
     {
-        public long UserId { get; set; }
-     
+        public long UserId { get; private set; } // không truyền từ client
+        public void SetUserId(long id) => UserId = id;
+
         public decimal? ShippingFee { get; set; }
      
         public ICollection<OrderItemDto> Items { get; set; }
@@ -62,19 +63,34 @@ namespace Application.Features.Orders.Commands.CreateOrder
             if (userAddress == null)
                 throw new ApiException("Default address not found");
 
+            var productIds = request.Items.Select(i => i.ProductId).Distinct();
+            var products = await _productRepository.GetProductsByIdsAsync(productIds);
+            
+            // Tạo dictionary để tra nhanh
+            var productDict = products.ToDictionary(p => p.Id);
+
+            var updatedItems = new List<OrderItemDto>();
             // Check stock availability
             foreach (var item in request.Items)
             {
-                var product = await _productRepository.GetByIdAsync(item.ProductId);
-                if (product == null)
-                    throw new ApiException($"Product with ID {item.ProductId} was not found.");
+                if (!productDict.TryGetValue(item.ProductId, out var product))
+                    throw new ApiException($"Product {item.ProductId} not found");
 
                 if (product.IsPreOrder)
-                    throw new ApiException($"Cannot order preorder product");
+                    throw new ApiException($"Product {product.ProductName} is not released for order");
 
                 if (product.StockQuantity < item.Quantity)
                     throw new ApiException($"Not enough quantity for product '{product.ProductName}'. Available: {product.StockQuantity}, requested: {item.Quantity}.");
+
+                updatedItems.Add(new OrderItemDto
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    Price = product.Price,
+                    // TotalPrice được tính tự động nếu là expression property
+                });
             }
+            request.Items = updatedItems;
 
             var totalProductPrice = request.Items?.Sum(i => i.TotalPrice) ?? 0;
             var shipping = request.ShippingFee ?? 0;
