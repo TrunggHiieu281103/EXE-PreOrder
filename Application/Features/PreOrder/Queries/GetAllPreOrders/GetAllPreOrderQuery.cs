@@ -14,7 +14,7 @@ namespace Application.Features.PreOrder.Queries.GetAllPreOrders
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string Email { get; set; }
+        public string UserEmail { get; set; }
         public class GetAllPreOrderQueryHandler : IRequestHandler<GetAllPreOrderQuery, PageResponse<IEnumerable<GetAllPreOrderViewModel>>>
         {
             private readonly IOrderRepositoryAsync _orderRepository;
@@ -30,7 +30,7 @@ namespace Application.Features.PreOrder.Queries.GetAllPreOrders
                 {
                     PageNumber = request.PageNumber,
                     PageSize = request.PageSize,
-                    Email = request.Email
+                    UserEmail = request.UserEmail
                 };
                 var preOrders = await _orderRepository.GetPreOrderPagedResponseAsync(preOrderFilter);
                 return new PageResponse<IEnumerable<GetAllPreOrderViewModel>>(

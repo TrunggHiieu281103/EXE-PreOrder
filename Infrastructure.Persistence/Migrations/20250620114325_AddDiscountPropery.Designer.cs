@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(EXE_PreOrderContext))]
-    partial class EXE_PreOrderContextModelSnapshot : ModelSnapshot
+    [Migration("20250620114325_AddDiscountPropery")]
+    partial class AddDiscountPropery
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -379,10 +382,10 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Discount")
+                    b.Property<int>("Discount")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("DiscountedPrice")
+                    b.Property<decimal>("DiscountedPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsActive")

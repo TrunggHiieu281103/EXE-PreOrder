@@ -10,7 +10,7 @@ namespace Application.Features.User.Queries.GetUserByIdQuery
     {
         public long Id { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
@@ -23,6 +23,8 @@ namespace Application.Features.User.Queries.GetUserByIdQuery
         public int Version { get; set; }
         public bool IsActive { get; set; } 
         public long CreatedAt { get; set; } 
-        public long UpdatedAt { get; set; } 
+        public long UpdatedAt { get; set; }
+        public ICollection<string> Roles { get; set; }
+
     }
 }

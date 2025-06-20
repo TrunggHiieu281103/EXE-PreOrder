@@ -140,12 +140,38 @@ namespace Infrastructure.Shared.Services
 
             await _paymentRepository.AddAsync(payment);
 
-            // Trừ tồn kho nếu là PreOrder
-            foreach (var item in redisOrderData.Items)
+            // Trừ tồn kho nếu là Order
+            if (!redisOrderData.IsPreorder)
             {
-                var product = await _productRepository.GetByIdAsync(item.ProductId);
-                product.StockQuantity -= item.Quantity;
-                await _productRepository.UpdateAsync(product);
+                foreach (var item in redisOrderData.Items)
+                {
+                    var product = await _productRepository.GetByIdAsync(item.ProductId);
+                    product.StockQuantity -= item.Quantity;
+                    await _productRepository.UpdateAsync(product);
+                }
+            }
+            else
+            {
+                foreach (var item in redisOrderData.Items)
+                {
+                    var product = await _productRepository.GetByIdAsync(item.ProductId);
+
+                    // Tăng số lượng người đặt
+                    product.StockQuantity += item.Quantity;
+
+                    // Cập nhật Discount theo số lượng người đặt
+                    if (product.StockQuantity < 10)
+                        product.Discount = 35;
+                    else if (product.StockQuantity < 25)
+                        product.Discount = 30;
+                    else
+                        product.Discount = 20;
+
+                    // Tính lại DiscountedPrice
+                    product.DiscountedPrice = product.Price * (1 - (product.Discount ?? 0) / 100m);
+
+                    await _productRepository.UpdateAsync(product);
+                }
             }
 
             // Xoá dữ liệu Redis

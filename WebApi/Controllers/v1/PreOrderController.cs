@@ -2,6 +2,8 @@
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.PreOrder.Commands.CreatePreOrder;
 using Application.Features.PreOrder.Queries.GetAllPreOrders;
+using Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -16,9 +18,16 @@ namespace WebApi.Controllers
         /// <param name="command">Thông tin đơn hàng cần tạo</param>
         /// <returns>id đơn hàng mới tạo</returns>
         // POST: api/preorders
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreatePreOrderCommand command)
         {
+            var userId = User.GetUserId(); // lấy từ Claims
+            if (userId == 0)
+                return Unauthorized();
+
+            command.SetUserId(userId); // gán vào command
+
             var result = await Mediator.Send(command);
             return Ok(result);
         }
@@ -36,7 +45,7 @@ namespace WebApi.Controllers
             {
                 PageNumber = filter.PageNumber,
                 PageSize = filter.PageSize,
-                Email = filter.Email
+                UserEmail = filter.UserEmail
             };
             var result = await Mediator.Send(query);
             return Ok(result);

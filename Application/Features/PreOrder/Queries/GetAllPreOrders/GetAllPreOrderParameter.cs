@@ -9,7 +9,7 @@ namespace Application.Features.PreOrder.Queries.GetAllPreOrders
 {
     public class GetAllPreOrderParameter : RequestParameter
     {
-        public string? Email { get; set; }
+        public string? UserEmail { get; set; }
 
     }
 }

@@ -19,6 +19,7 @@ using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
 using Application.Features.Products.Commands.CreateProduct;
 using Application.Features.Products.Queries.GetAllProduct;
 using Application.Features.Products.Queries.GetProductById;
+using Application.Features.User.Queries.GetAllUserQuery;
 using Application.Features.UserAddress.Queries;
 using AutoMapper;
 using Domain.Entities;
@@ -57,6 +58,12 @@ public class GeneralProfile : Profile
                     ? src.UserRoles.Select(ur => ur.Role != null ? ur.Role.RoleName : null).Where(r => r != null).ToList()
                     : new List<string>()
             ));
+        CreateMap<Users, GetAllUserViewModel>().ForMember(dest => dest.Roles, opt => opt.MapFrom(src =>
+                src.UserRoles != null
+                    ? src.UserRoles.Select(ur => ur.Role != null ? ur.Role.RoleName : null).Where(r => r != null).ToList()
+                    : new List<string>()
+            )); 
+        
         // Map domain Category entity
         CreateMap<CreateCategoryCommand, Categories>();
         CreateMap<Categories, GetAllCategoryViewModel>();

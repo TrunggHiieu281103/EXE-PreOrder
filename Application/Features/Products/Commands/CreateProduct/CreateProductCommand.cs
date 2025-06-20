@@ -23,6 +23,8 @@ namespace Application.Features.Products.Commands.CreateProduct
         public int StockQuantity { get; set; }
         public string ProductDetails { get; set; }
         public decimal Price { get; set; }
+        public int? Discount { get; set; }  // phần trăm, ví dụ: 10 = 10%
+        public decimal? DiscountedPrice { get; set; }  // giá sau khi áp dụng giảm
         public long? OpenedAt { get; set; }
         public bool IsPreOrder { get; set; }
     }

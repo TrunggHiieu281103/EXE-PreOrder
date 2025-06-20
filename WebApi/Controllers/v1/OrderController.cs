@@ -3,6 +3,8 @@ using Application.Features.Orders.Commands.CreateOrder;
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.Orders.Queries.GetOrderById;
 using Application.Features.Orders.Queries.GetOrderByUserId;
+using Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -52,9 +54,16 @@ namespace WebApi.Controllers
         /// <returns>id đơn hàng mới tạo</returns>
         // GET: api/order
         // POST: api/orders
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateOrderCommand command)
         {
+            var userId = User.GetUserId(); // lấy từ Claims
+            if (userId == 0)
+                return Unauthorized();
+
+            command.SetUserId(userId);
+
             var result = await Mediator.Send(command);
             return Ok(result);
         }

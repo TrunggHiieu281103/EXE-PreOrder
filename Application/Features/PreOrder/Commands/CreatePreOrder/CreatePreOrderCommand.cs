@@ -17,7 +17,8 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
 {
     public class CreatePreOrderCommand : IRequest<BaseResponse<VnpayRedisOrderDto>>
     {
-        public long UserId { get; set; }
+        public long UserId { get; private set; } // không truyền từ client
+        public void SetUserId(long id) => UserId = id;
         public decimal? ShippingFee { get; set; }
         //public bool IsPreorder { get; set; }
         public ICollection<OrderItemDto> Items { get; set; }
@@ -59,21 +60,39 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
             if (userAddress == null)
                 throw new ApiException("Default address not found");
 
+            var productIds = request.Items.Select(i => i.ProductId).Distinct();
+            var products = await _productRepositoryAsync.GetProductsByIdsAsync(productIds);
+
+            // Tạo dictionary để tra nhanh
+            var productDict = products.ToDictionary(p => p.Id);
+
+            var updatedItems = new List<OrderItemDto>();
+
             foreach (var item in request.Items)
             {
-                var product = await _productRepositoryAsync.GetProductByIdAsync(item.ProductId);
-                if (product == null)
+                if (!productDict.TryGetValue(item.ProductId, out var product))
                     throw new ApiException($"Product {item.ProductId} not found");
 
                 if (!product.IsPreOrder)
                     throw new ApiException($"Product {product.ProductName} is not for preorder");
 
-                if (product.StockQuantity < item.Quantity)
-                    throw new ApiException($"Out of stock for product {product.ProductName}");
+                var discountedPrice = product.DiscountedPrice ?? product.Price;
+
+                updatedItems.Add(new OrderItemDto
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    Price = discountedPrice,
+                    // TotalPrice được tính tự động nếu là expression property
+                });
             }
 
-            var totalProductPrice = request.Items.Sum(i => i.TotalPrice);
+            // Gán lại vào request (nếu cần thiết)
+            request.Items = updatedItems;
+
             var shipping = request.ShippingFee ?? 0;
+            var totalProductPrice = request.Items.Sum(i => i.TotalPrice) + shipping;
+
             var deposit = totalProductPrice * 0.3m;
             var finalPaymentAmount = deposit;
 
@@ -97,6 +116,17 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
 
             return new BaseResponse<VnpayRedisOrderDto>(redisOrder, "Preorder saved to Redis. Proceed to VNPAY.");
         }
+
+        private decimal CalculateDiscountedPrice(decimal basePrice, int currentPreOrders)
+        {
+            if (currentPreOrders < 10)
+                return basePrice * 0.65m; // 35% giảm
+            else if (currentPreOrders < 25)
+                return basePrice * 0.70m; // 30% giảm
+            else
+                return basePrice * 0.80m; // 20% giảm
+        }
+
 
     }
 }
