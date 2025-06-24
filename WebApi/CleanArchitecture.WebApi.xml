@@ -49,10 +49,10 @@
         </member>
         <member name="M:WebApi.Controllers.v1.AuthController.GetProfile">
             <summary>
-            Đổi mật khẩu người dùng đã đăng nhập
+            Lấy thông tin người dùng hiện tại (profile)
             </summary>
             <param name="request">Mật khẩu cũ và mới</param>
-            <returns>Kết quả đổi mật khẩu</returns>
+            <returns>User profile</returns>
         </member>
         <member name="M:WebApi.Controllers.v1.ProductAssetsController.GetByProductId(System.Int64)">
             <summary>
@@ -152,7 +152,7 @@
         </member>
         <member name="M:WebApi.Controllers.OrderController.Get(Application.Features.Orders.Queries.GetAllOrders.GetAllOrderParameter)">
             <summary>
-            Lấy tất cả đơn hàng
+            Lấy tất cả đơn hàng (chỉ ADMIN)
             </summary>
             <param name="filter">Thông tin đăng nhập</param>
             <returns>danh sách tất cả đơn hàng</returns>
@@ -173,7 +173,7 @@
         </member>
         <member name="M:WebApi.Controllers.OrderController.GetOrdersByUser(System.Int64)">
             <summary>
-            Lấy tất cả đơn hàng theo Id người dùng
+            Lấy tất cả đơn hàng theo Id người dùng (chỉ ADMIN)
             </summary>
             <param name="userId">Thông tin đăng nhập</param>
             <returns>Thông tin danh sách đơn của người dùng</returns>
@@ -187,7 +187,7 @@
         </member>
         <member name="M:WebApi.Controllers.PreOrderController.Get(Application.Features.PreOrder.Queries.GetAllPreOrders.GetAllPreOrderParameter)">
             <summary>
-            Lấy tất cả đơn hàng đặt trước
+            Lấy tất cả đơn hàng đặt trước (chỉ ADMIN)
             </summary>
             <param name="filter">Thông tin đơn hàng cần tạo</param>
             <returns>danh sách tất cả đơn hàng đặt trước</returns>
@@ -196,23 +196,51 @@
             <summary>
             Tạo địa chỉ người dùng mới
             </summary>
-            <param name="command">Thông tin đăng nhập</param>
-            <returns>id địa chỉ vừa mới tạo</returns>
         </member>
-        <member name="M:WebApi.Controllers.UserAddressController.GetById(System.Int64)">
+        <member name="M:WebApi.Controllers.UserAddressController.GetMyAddresses">
             <summary>
-            Lấy tất cả địa chỉ của người dùng theo userId
+            Lấy tất cả địa chỉ của người dùng hiện tại (đã đăng nhập)
             </summary>
-            <param name="userId">Thông tin đăng nhập</param>
-            <returns>Danh sách địa chỉ theo userId</returns>
         </member>
-        <member name="M:WebApi.Controllers.UserAddressController.PutDefault(System.Int64,System.Int64)">
+        <member name="M:WebApi.Controllers.UserAddressController.PutDefault(System.Int64)">
             <summary>
-            Chọn địa chỉ giao hàng default
+            Chọn địa chỉ giao hàng mặc định
             </summary>
-            <param name="userId">thông tin user</param>
-            <param name="userAddressId">Thông tin các địa chỉ của user đó</param>
-            <returns>thông báo đã đổi địa chỉ default</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Get(Application.Features.User.Queries.GetAllUser.GetAllUserParameter)">
+            <summary>
+            Lấy danh sách người dùng (chỉ ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.GetById(System.Int64)">
+            <summary>
+            Lấy thông tin chi tiết người dùng theo ID (chỉ ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Update(System.Int64,Application.Features.User.Commands.UpdateUser.UpdatePersonalUserInfoCommand)">
+            <summary>
+            Cập nhật thông tin người dùng (không yêu cầu ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Delete(System.Int64)">
+            <summary>
+            Vô hiệu hóa người dùng (chỉ ADMIN, không được vô hiệu hóa người có role ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Recover(System.Int64)">
+            <summary>
+            Khích hoạt lại tài khoản người dùng (chỉ ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Create(Application.Features.User.Commands.CreateUserAdmin.CreateUserAdminCommand)">
+            <summary>
+            Tạo người dùng mới (chỉ ADMIN, người dùng được tạo sẽ mang role ADMIN)
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.UpdateAvatar(Application.Features.User.Commands.UpdateUserAvatar.UpdateUserAvatarCommand)">
+            <summary>
+            Cập nhật ảnh đại diện người dùng (thay thế ảnh cũ)
+            </summary>
         </member>
     </members>
 </doc>

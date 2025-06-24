@@ -40,7 +40,7 @@ namespace WebApi.Controllers.v1
 
         // POST api/<controller>
         [HttpPost]
-        //[Authorize]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Post(CreateProductCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -48,7 +48,7 @@ namespace WebApi.Controllers.v1
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        //[Authorize]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Put(long id, UpdateProductCommand command)
         {
             if (id != command.Id)
@@ -60,7 +60,7 @@ namespace WebApi.Controllers.v1
 
         // delete api/<controller>/5
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> delete(long id)
         {
             return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));

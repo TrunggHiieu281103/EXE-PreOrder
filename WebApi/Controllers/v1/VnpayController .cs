@@ -1,6 +1,7 @@
 ﻿
 
 using Application.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using VNPAY.NET.Enums;
@@ -28,6 +29,7 @@ namespace WebApi.Controllers.v1
         /// <param name="bankCode">Mã ngân hàng (tùy chọn)</param>
         /// <returns>URL thanh toán</returns>
         [HttpPost("create-payment-url")]
+        [Authorize]
         public IActionResult CreatePaymentUrl(decimal amount, string orderDescription, long orderId, BankCode bankCode)
         {
             try
@@ -46,24 +48,18 @@ namespace WebApi.Controllers.v1
         {
             var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
+            // Frontend URL
+            var frontendUrl = "http://localhost:5173";
+
             if (result.IsSuccess)
             {
-                // Optionally redirect hoặc hiển thị thông báo thành công
-                return Ok(new
-                {
-                    message = "Thanh toán thành công",
-                    status = result.PaymentResponse.Code,
-                    transactionId = result.TransactionStatus
-                });
+                var successUrl = $"{frontendUrl}?status=success&code={result.PaymentResponse.Code}&transactionId={result.TransactionStatus}";
+                return Redirect(successUrl);
             }
             else
             {
-                return BadRequest(new
-                {
-                    message = "Thanh toán thất bại",
-                    status = result.PaymentResponse.Code,
-                    error = result.TransactionStatus
-                });
+                var failUrl = $"{frontendUrl}?status=fail&code={result.PaymentResponse.Code}&error={result.TransactionStatus}";
+                return Redirect(failUrl);
             }
         }
 

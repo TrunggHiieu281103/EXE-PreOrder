@@ -15,11 +15,12 @@ namespace WebApi.Controllers
     public class OrderController : BaseApiController
     {
         /// <summary>
-        /// Lấy tất cả đơn hàng
+        /// Lấy tất cả đơn hàng (chỉ ADMIN)
         /// </summary>
         /// <param name="filter">Thông tin đăng nhập</param>
         /// <returns>danh sách tất cả đơn hàng</returns>
         // GET: api/order
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllOrderParameter filter)
         {
@@ -40,6 +41,7 @@ namespace WebApi.Controllers
         /// <returns>Thông tin đơn hàng</returns>
         // GET: api/order
         // GET: api/order/{id}
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
@@ -69,12 +71,13 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Lấy tất cả đơn hàng theo Id người dùng
+        /// Lấy tất cả đơn hàng theo Id người dùng (chỉ ADMIN)
         /// </summary>
         /// <param name="userId">Thông tin đăng nhập</param>
         /// <returns>Thông tin danh sách đơn của người dùng</returns>
         // GET: api/order
         // GET: api/order/user/{userId}
+        [Authorize(Roles = "ADMIN")]
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetOrdersByUser(long userId)
         {

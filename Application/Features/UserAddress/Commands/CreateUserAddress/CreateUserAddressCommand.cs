@@ -1,6 +1,7 @@
 ﻿using Application.Features.Orders.Commands.CreateOrder;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;
+using Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace Application.Features.UserAddress.Commands.CreateUserAddress
 {
     public class CreateUserAddressCommand : IRequest<BaseResponse<long>>
     {
-        public long UserId { get; set; }
+        public long UserId { get; private set; }
+        public void SetUserId(long id) => UserId = id;
         public string Province { get; set; }
         public string District { get; set; }
         public string Ward { get; set; }

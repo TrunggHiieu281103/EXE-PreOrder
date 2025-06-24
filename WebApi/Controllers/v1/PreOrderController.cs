@@ -33,11 +33,12 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Lấy tất cả đơn hàng đặt trước
+        /// Lấy tất cả đơn hàng đặt trước (chỉ ADMIN)
         /// </summary>
         /// <param name="filter">Thông tin đơn hàng cần tạo</param>
         /// <returns>danh sách tất cả đơn hàng đặt trước</returns>
         // GET: api/order
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllPreOrderParameter filter)
         {

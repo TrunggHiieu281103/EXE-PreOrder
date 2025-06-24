@@ -4,6 +4,7 @@ using Application.Features.ProductAssets.Commands.UploadProductAsset;
 using Application.Features.ProductAssets.Queries.GetAssetById;
 using Application.Features.ProductAssets.Queries.GetAssetsByProductId;
 using Application.Features.Products.Queries.GetAllProduct;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.v1
@@ -35,24 +36,28 @@ namespace WebApi.Controllers.v1
         /// <param name="id">The ID of the asset.</param>
         /// <returns>The asset.</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> GetById(long id)
         {
             return Ok(await Mediator.Send(new GetAssetByIdQuery { Id = id }));
         }
 
         [HttpPost("upload")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UploadAsset([FromForm] UploadProductAssetCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpPut("update")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateProductAssetCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpDelete("delete/{assetId}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteAsset(long assetId)
         {
             return Ok(await Mediator.Send(new DeleteProductAssetCommand { Id = assetId }));
