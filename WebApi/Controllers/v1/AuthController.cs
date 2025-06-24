@@ -118,11 +118,7 @@ namespace WebApi.Controllers.v1
             return Ok(result);
         }
 
-        /// <summary>
-        /// Đổi mật khẩu người dùng đã đăng nhập
-        /// </summary>
-        /// <param name="request">Mật khẩu cũ và mới</param>
-        /// <returns>Kết quả đổi mật khẩu</returns>
+
         //[HttpPost("change-password")]
         //[Authorize]
         //public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest request)
@@ -134,6 +130,11 @@ namespace WebApi.Controllers.v1
         //    return Ok(result);
         //}
 
+        /// <summary>
+        /// Lấy thông tin người dùng hiện tại (profile)
+        /// </summary>
+        /// <param name="request">Mật khẩu cũ và mới</param>
+        /// <returns>User profile</returns>
         [HttpGet("profile")]
         [Authorize]
         public async Task<IActionResult> GetProfile()
