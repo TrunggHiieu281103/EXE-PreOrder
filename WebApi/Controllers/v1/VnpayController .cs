@@ -53,12 +53,12 @@ namespace WebApi.Controllers.v1
 
             if (result.IsSuccess)
             {
-                var successUrl = $"{frontendUrl}?status=success&code={result.PaymentResponse.Code}&transactionId={result.TransactionStatus}";
+                var successUrl = $"{frontendUrl}/result?status=success&code={result.PaymentResponse.Code}&transactionId={result.TransactionStatus}";
                 return Redirect(successUrl);
             }
             else
             {
-                var failUrl = $"{frontendUrl}?status=fail&code={result.PaymentResponse.Code}&error={result.TransactionStatus}";
+                var failUrl = $"{frontendUrl}/result?status=fail&code={result.PaymentResponse.Code}&error={result.TransactionStatus}";
                 return Redirect(failUrl);
             }
         }
