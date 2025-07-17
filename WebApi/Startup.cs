@@ -17,12 +17,26 @@ namespace WebApi
     public class Startup
     {
         public IConfiguration _config { get; }
+
         public Startup(IConfiguration configuration)
         {
             _config = configuration;
         }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            // ✅ CORS config
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()  // Cho phép tất cả origin, có thể thay bằng WithOrigins("https://your-frontend-domain")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);
@@ -34,15 +48,14 @@ namespace WebApi
             {
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
+
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
-            
+
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<IBrandRepositoryAsync, BrandRepositoryAsync>();
-
             services.AddScoped<IPasswordHasher<Users>, PasswordHasher<Users>>();
             services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,8 +69,13 @@ namespace WebApi
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            // ✅ Apply CORS middleware
+            app.UseCors("AllowAll");
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwaggerExtension();
