@@ -49,7 +49,7 @@ namespace WebApi.Controllers.v1
             var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
             // Frontend URL
-            var frontendUrl = "http://localhost:5173";
+            var frontendUrl = "http://34.58.229.234:9999";
 
             if (result.IsSuccess)
             {
