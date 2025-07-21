@@ -97,6 +97,8 @@ namespace Persistence.Repositories
             BrandId = p.BrandId,
             Type = p.Type,
             Size = p.Size,
+            Discount = p.Discount ?? 0,
+            DiscountedPrice = p.DiscountedPrice ?? 0,
             StockQuantity = p.StockQuantity,
             ProductDetails = p.ProductDetails,
             Price = p.Price,

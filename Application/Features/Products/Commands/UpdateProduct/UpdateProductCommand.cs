@@ -24,7 +24,7 @@ namespace Application.Features.Products.Commands.UpdateProduct
         public string? ProductDetails { get; set; }
         public decimal? Price { get; set; }
         public int? Discount { get; set; }  // phần trăm, ví dụ: 10 = 10%
-        public decimal? DiscountedPrice { get; set; }  // giá sau khi áp dụng giảm
+
         public long? OpenedAt { get; set; }
         public bool? IsPreOrder { get; set; }
         public bool? IsActive { get; set; }
@@ -55,9 +55,24 @@ namespace Application.Features.Products.Commands.UpdateProduct
                     product.StockQuantity = command.StockQuantity ?? product.StockQuantity;
                     product.ProductDetails = command.ProductDetails ?? product.ProductDetails;
                     product.Price = command.Price ?? product.Price;
+                    product.Discount = command.Discount ?? product.Discount;
+             
                     product.OpenedAt = command.OpenedAt ?? product.OpenedAt;
                     product.IsPreOrder = command.IsPreOrder ?? product.IsPreOrder;
                     product.IsActive = command.IsActive ?? product.IsActive;
+
+                    // ✅ Tính lại DiscountedPrice nếu có thay đổi về Price hoặc Discount
+                    if (command.Price.HasValue || command.Discount.HasValue)
+                    {
+                        if (product.Discount.HasValue && product.Discount.Value > 0)
+                        {
+                            product.DiscountedPrice = product.Price - (product.Price * product.Discount.Value / 100);
+                        }
+                        else
+                        {
+                            product.DiscountedPrice = product.Price;
+                        }
+                    }
 
                     await _productRepository.UpdateAsync(product);
                     return new BaseResponse<long>(product.Id, $"Product update successfully.");

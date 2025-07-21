@@ -156,19 +156,31 @@ namespace Infrastructure.Shared.Services
                 {
                     var product = await _productRepository.GetByIdAsync(item.ProductId);
 
-                    // Tăng số lượng người đặt
+                    // Tăng số lượng sản phẩm đã được đặt
                     product.StockQuantity += item.Quantity;
 
-                    // Cập nhật Discount theo số lượng người đặt
-                    if (product.StockQuantity < 10)
-                        product.Discount = 35;
-                    else if (product.StockQuantity < 25)
-                        product.Discount = 30;
-                    else
-                        product.Discount = 20;
+                    // Giảm giá gốc ban đầu
+                    var originalDiscount = product.Discount ?? 0;
 
-                    // Tính lại DiscountedPrice
-                    product.DiscountedPrice = product.Price * (1 - (product.Discount ?? 0) / 100m);
+                    int newDiscount;
+
+                    if (product.StockQuantity < 10)
+                    {
+                        newDiscount = originalDiscount;
+                    }
+                    else if (product.StockQuantity < 25)
+                    {
+                        newDiscount = Math.Max(0, originalDiscount - 5); // giảm 5%
+                    }
+                    else
+                    {
+                        newDiscount = Math.Max(0, originalDiscount - 10); // giảm 10%
+                    }
+
+                    product.Discount = newDiscount;
+
+                    // Tính lại giá sau giảm
+                    product.DiscountedPrice = product.Price * (1 - product.Discount.Value / 100m);
 
                     await _productRepository.UpdateAsync(product);
                 }
