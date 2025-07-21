@@ -48,20 +48,38 @@ namespace WebApi.Controllers.v1
         {
             var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
-            // Frontend URL
             var frontendUrl = "http://34.58.229.234:9999";
 
             if (result.IsSuccess)
             {
-                var successUrl = $"{frontendUrl}/result?";
+                var successUrl = $"{frontendUrl}/result" +
+                                 $"?status=success" +
+                                 $"&paymentId={result.PaymentId}" +
+                                 $"&code={result.PaymentResponse?.Code}" +
+                                 $"&description={Uri.EscapeDataString(result.Description)}" +
+                                 $"&timestamp={result.Timestamp:O}" + // ISO 8601
+                                 $"&vnpayTransactionId={result.VnpayTransactionId}" +
+                                 $"&paymentMethod={result.PaymentMethod}" +
+                                 $"&transactionCode={result.TransactionStatus?.Code}" +
+                                 $"&transactionDescription={Uri.EscapeDataString(result.TransactionStatus?.Description ?? "")}" +
+                                 $"&bankCode={result.BankingInfor?.BankCode}" +
+                                 $"&bankTransactionId={result.BankingInfor?.BankTransactionId}";
+
                 return Redirect(successUrl);
             }
             else
             {
-                var failUrl = $"{frontendUrl}/result?";
+                var failUrl = $"{frontendUrl}/result" +
+                              $"?status=fail" +
+                              $"&code={result.PaymentResponse?.Code}" +
+                              $"&description={Uri.EscapeDataString(result.Description)}" +
+                              $"&transactionCode={result.TransactionStatus?.Code}" +
+                              $"&transactionDescription={Uri.EscapeDataString(result.TransactionStatus?.Description ?? "")}";
+
                 return Redirect(failUrl);
             }
         }
+
 
         [HttpGet("IpnAction")]
         public async Task<IActionResult> IpnAction()

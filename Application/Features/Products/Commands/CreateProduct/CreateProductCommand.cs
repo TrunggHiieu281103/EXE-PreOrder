@@ -24,7 +24,7 @@ namespace Application.Features.Products.Commands.CreateProduct
         public string ProductDetails { get; set; }
         public decimal Price { get; set; }
         public int? Discount { get; set; }  // phần trăm, ví dụ: 10 = 10%
-        public decimal? DiscountedPrice { get; set; }  // giá sau khi áp dụng giảm
+      
         public long? OpenedAt { get; set; }
         public bool IsPreOrder { get; set; }
     }
@@ -42,6 +42,16 @@ namespace Application.Features.Products.Commands.CreateProduct
             {
                 var nowMilliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
                 var product = _mapper.Map<Domain.Entities.Products>(request);
+
+            // Tính giá sau giảm nếu có discount và giá > 0
+            if (request.Discount.HasValue && request.Discount.Value > 0)
+            {
+                product.DiscountedPrice = request.Price - (request.Price * request.Discount.Value / 100);
+            }
+            else
+            {
+                product.DiscountedPrice = product.Price;
+            }
 
             await _productRepository.AddAsync(product);
                 return new BaseResponse<long>(product.Id, $"Product created successfully with id: {product.Id}");
