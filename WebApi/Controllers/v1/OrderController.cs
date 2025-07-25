@@ -1,8 +1,11 @@
 ﻿
 using Application.Features.Orders.Commands.CreateOrder;
+using Application.Features.Orders.Commands.UpdateOrder;
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.Orders.Queries.GetOrderById;
 using Application.Features.Orders.Queries.GetOrderByUserId;
+using Application.Features.Orders.Queries.GetUserOrder;
+using Application.Features.Products.Commands.UpdateProduct;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -71,6 +74,22 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
+        /// Cập nhật trạng thái SUCCESS cho đơn hàng (chỉ ADMIN)
+        /// </summary>
+        [Authorize(Roles = "ADMIN")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(long id)
+        {
+            var userId = User.GetUserId(); // lấy từ Claims
+            if (userId == 0)
+                return Unauthorized();
+
+            var command = new UpdateOrderCommand(id, userId);
+            var result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        /// <summary>
         /// Lấy tất cả đơn hàng theo Id người dùng (chỉ ADMIN)
         /// </summary>
         /// <param name="userId">Thông tin đăng nhập</param>
@@ -85,6 +104,29 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        
+        /// <summary>
+        /// Lấy lịch sử đặt hàng của người dùng hiện tại
+        /// </summary>
+        /// <param name="filter">Thông tin đăng nhập</param>
+        /// <returns>danh sách tất cả đơn hàng</returns>
+        // GET: api/order
+        [Authorize]
+        [HttpGet("my_order")]
+        public async Task<IActionResult> GetUserOrder([FromQuery] GetUserOrderParameter filter)
+        {
+            var userId = User.GetUserId(); // lấy từ Claims
+            if (userId == 0)
+                return Unauthorized();
+
+            var query = new GetUserOrderQuery
+            {
+                PageNumber = filter.PageNumber,
+                PageSize = filter.PageSize,
+                IsPreorder = filter.IsPreorder
+            };
+            query.SetUserId(userId); // Set userId từ Claims
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
     }
 }

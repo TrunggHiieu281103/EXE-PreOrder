@@ -117,16 +117,5 @@ namespace Application.Features.PreOrder.Commands.CreatePreOrder
             return new BaseResponse<VnpayRedisOrderDto>(redisOrder, "Preorder saved to Redis. Proceed to VNPAY.");
         }
 
-        private decimal CalculateDiscountedPrice(decimal basePrice, int currentPreOrders)
-        {
-            if (currentPreOrders < 10)
-                return basePrice * 0.65m; // 35% giảm
-            else if (currentPreOrders < 25)
-                return basePrice * 0.70m; // 30% giảm
-            else
-                return basePrice * 0.80m; // 20% giảm
-        }
-
-
     }
 }

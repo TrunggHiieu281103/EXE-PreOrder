@@ -1,12 +1,16 @@
-﻿using Application.Features.Orders.Queries.GetAllOrders;
+﻿using Application.DTOs.DashBoard;
+using Application.Enums;
+using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.PreOrder.Queries.GetAllPreOrders;
 using Application.Interfaces.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -122,5 +126,90 @@ namespace Persistence.Repositories
                 .Take(filter.PageSize)
                 .ToListAsync();
         }
+
+        public async Task<IReadOnlyList<Orders>> GetUserOrdersAsync(long userId, int pageNumber, int pageSize, bool? isPreorder)
+        {
+            var query = _orders
+                .Where(o => o.UserId == userId)
+                .Include(o => o.User)
+                .Include(o => o.Address)
+                .Include(o => o.Payments)
+                .Include(o => o.Shipping)
+                .Include(o => o.OrderProducts)
+                    .ThenInclude(op => op.Product)
+                .OrderByDescending(o => o.Id).AsQueryable();
+
+            if (isPreorder.HasValue)
+            {
+                query = query.Where(o => o.IsPreorder == isPreorder.Value);
+            }
+            var skip = (pageNumber - 1) * pageSize;
+
+            return await query
+                .OrderByDescending(o => o.Id)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+        public async Task<int> CountAllOrdersAsync()
+        {
+            return await _orders.CountAsync();
+        }
+
+        public async Task<int> CountOrdersByPaymentStatusAsync(string status)
+        {
+            return await _orders
+                .Where(o => o.Payments.Any(p => p.PaymentStatus == status))
+                .CountAsync();
+        }
+
+        public async Task<int> CountOrdersByTypeAsync(bool isPreorder)
+        {
+            return await  _orders
+                .Where(o => o.IsPreorder == isPreorder)
+                .CountAsync();
+        }
+
+        public async Task<decimal> GetTotalRevenueAsync()
+        {
+            return await _orders
+                .Where(o => o.Status == OrderStatusEnum.COMPLETED.ToString()) 
+                .SumAsync(o => (o.TotalPrice ?? 0) + (o.ShippingFee ?? 0)); 
+        }
+
+        public async Task<List<Orders>> GetOrdersWithPaymentsAsync(Expression<Func<Orders, bool>> predicate)
+        {
+            return await _orders
+                .Where(predicate)
+                .Include(o => o.Payments)
+                .ToListAsync();
+        }
+
+        public async Task<List<MonthlyRevenueDto>> GetMonthlyRevenueAsync(int year)
+        {
+            var orders = await _orders.ToListAsync();
+
+            var result = orders
+                .Where(o =>
+                {
+                    var createdDate = DateTimeOffset.FromUnixTimeMilliseconds(o.CreatedAt).DateTime;
+                    return createdDate.Year == year && o.Status == OrderStatusEnum.COMPLETED.ToString();
+                })
+                .GroupBy(o => DateTimeOffset.FromUnixTimeMilliseconds(o.CreatedAt).DateTime.Month)
+                .Select(g => new MonthlyRevenueDto
+                {
+                    Month = g.Key,
+                    TotalRevenue = g.Sum(o => (o.ShippingFee ?? 0) + (o.TotalPrice ?? 0))
+                })
+                .ToList();
+
+            // Đảm bảo có đủ 12 tháng
+            var fullResult = Enumerable.Range(1, 12)
+                .Select(month => result.FirstOrDefault(x => x.Month == month) ?? new MonthlyRevenueDto { Month = month, TotalRevenue = 0 })
+                .ToList();
+
+            return fullResult;
+        }
+
     }
 }
