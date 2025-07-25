@@ -69,12 +69,10 @@ namespace WebApi
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            // ✅ Apply CORS middleware
-            app.UseCors("AllowAll");
 
             app.UseAuthentication();
             app.UseAuthorization();
