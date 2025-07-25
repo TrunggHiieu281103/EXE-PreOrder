@@ -15,7 +15,7 @@ namespace Application.Features.Orders.Queries.GetAllOrders
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         public class GetAllOrderQueryHandler : IRequestHandler<GetAllOrderQuery, PageResponse<IEnumerable<GetAllOrderViewModel>>>
         {

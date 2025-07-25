@@ -18,6 +18,10 @@ namespace Application.Interfaces.Repositories
         Task<bool> FindUserById(long userId);
         Task<Users> GetUserWithRolesByIdAsync(long userId);
         Task<IReadOnlyList<Users>> GetPagedUserResponseAsync(GetAllUserParameter parameter);
-
+        Task<int> CountAllUsersAsync();
+        Task<int> CountActiveUsersAsync();
+        Task<int> CountInactiveUsersAsync();
+        Task<int> CountNewUsersThisMonthAsync();
+        Task<int> CountUsersByRoleAsync(string roleName);
     }
 }

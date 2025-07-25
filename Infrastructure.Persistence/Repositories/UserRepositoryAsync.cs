@@ -89,5 +89,36 @@ namespace Persistence.Repositories
             return users;
         }
 
+        public async Task<int> CountAllUsersAsync()
+        {
+            return await _user.CountAsync();
+        }
+
+        public async Task<int> CountActiveUsersAsync()
+        {
+            return await _user.CountAsync(u => u.IsActive);
+        }
+
+        public async Task<int> CountInactiveUsersAsync()
+        {
+            return await _user.CountAsync(u => !u.IsActive);
+        }
+
+        public async Task<int> CountNewUsersThisMonthAsync()
+        {
+            var firstDayOfMonth = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
+            var firstDayOfMonthTimestamp = new DateTimeOffset(firstDayOfMonth).ToUnixTimeMilliseconds();
+
+            return await _user.CountAsync(u => u.CreatedAt >= firstDayOfMonthTimestamp);
+        }
+
+        public async Task<int> CountUsersByRoleAsync(string roleName)
+        {
+            return await _user
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .Where(u => u.UserRoles.Any(ur => ur.Role.RoleName.ToLower() == roleName.ToLower()))
+                .CountAsync();
+        }
     }
 }
