@@ -1,4 +1,4 @@
-﻿using Application;
+using Application;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
 using Domain.Entities;
@@ -31,7 +31,7 @@ namespace WebApi
                 options.AddPolicy("AllowAll", builder =>
                 {
                     builder
-                        .AllowAnyOrigin()  // Cho phép tất cả origin, có thể thay bằng WithOrigins("https://your-frontend-domain")
+                        .AllowAnyOrigin()     // ⚠️ Trong production, nên thay bằng WithOrigins("http://your-domain.com")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
@@ -69,13 +69,15 @@ namespace WebApi
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-            app.UseCors("AllowAll");
-            app.UseHttpsRedirection();
-            app.UseRouting();
 
+            // 🔥 CORS phải đặt ngay sau UseRouting và trước UseAuthentication / UseAuthorization
+            app.UseRouting();
+            app.UseCors("AllowAll");
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseHttpsRedirection();
             app.UseSwaggerExtension();
             app.UseErrorHandlingMiddleware();
             app.UseHealthChecks("/health");
