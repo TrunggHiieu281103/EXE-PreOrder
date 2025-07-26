@@ -74,7 +74,8 @@ namespace WebApi
 
             // 🔥 CORS phải đặt ngay sau UseRouting và trước UseAuthentication / UseAuthorization
             app.UseRouting();
-            app.UseCors("AllowAll");
+            app.UseCors("AllowFrontend");
+
 
             app.UseAuthentication();
             app.UseAuthorization();
