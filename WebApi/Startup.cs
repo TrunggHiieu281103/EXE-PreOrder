@@ -28,14 +28,16 @@ namespace WebApi
             // ✅ CORS config
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", builder =>
+                options.AddPolicy("AllowFrontend", builder =>
                 {
                     builder
-                        .AllowAnyOrigin()     // ⚠️ Trong production, nên thay bằng WithOrigins("http://your-domain.com")
+                        .WithOrigins("http://gundam.thanhnt-tech.id.vn")
                         .AllowAnyMethod()
-                        .AllowAnyHeader();
+                        .AllowAnyHeader()
+                        .AllowCredentials();
                 });
             });
+
 
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
