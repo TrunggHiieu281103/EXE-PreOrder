@@ -48,7 +48,7 @@ namespace WebApi.Controllers.v1
         {
             var result = await _vnpayPaymentService.HandleVnpayCallback(Request.Query);
 
-            var frontendUrl = "http://34.58.229.234:9999";
+            var frontendUrl = "http://gundam.thanhnt-tech.id.vn";
 
             if (result.IsSuccess)
             {
