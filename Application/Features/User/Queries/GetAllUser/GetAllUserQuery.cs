@@ -38,10 +38,10 @@ namespace Application.Features.User.Queries.GetAllUserQuery
                     Email = request.Email
                 };
 
-                var users = await _userRepository.GetPagedUserResponseAsync(parameter);
+                var (users, totalItem) = await _userRepository.GetPagedUserResponseAsync(parameter);
                 var userViewModels = _mapper.Map<IEnumerable<GetAllUserViewModel>>(users);
 
-                return new PageResponse<IEnumerable<GetAllUserViewModel>>(userViewModels, request.PageNumber, request.PageSize);
+                return new PageResponse<IEnumerable<GetAllUserViewModel>>(userViewModels, request.PageNumber, request.PageSize, totalItem);
             }
         }
     }

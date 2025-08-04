@@ -36,11 +36,12 @@ namespace Application.Features.Orders.Queries.GetAllOrders
                     Email = request.Email
                 };
 
-                var orders =await _orderRepository.GetOrderPagedResponseAsync(orderFilter);
+                var (orders, totalItems) = await _orderRepository.GetOrderPagedResponseAsync(orderFilter);
                 return new PageResponse<IEnumerable<GetAllOrderViewModel>>(
                     _mapper.Map<IEnumerable<GetAllOrderViewModel>>(orders),
                     request.PageNumber,
-                    request.PageSize
+                    request.PageSize,
+                    totalItems
                 );
             }
         }

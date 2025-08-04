@@ -9,6 +9,6 @@ namespace Application.Interfaces.Repositories
     public interface ICategoryRepositoryAsync : IGenericRepositoryAsync<Categories>
     {
         Task<IReadOnlyList<Categories>> GetCategoryPagedResponseAsync(int pageNumber, int pageSize);
-        Task<IReadOnlyList<Categories>> GetCategoryPagedResponseAsync(GetAllCategoryParameter filter);
+        Task<(IReadOnlyList<Categories>, int TotalItems)> GetCategoryPagedResponseAsync(GetAllCategoryParameter filter);
     }
 }

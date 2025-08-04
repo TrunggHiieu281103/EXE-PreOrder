@@ -26,7 +26,7 @@ namespace Persistence.Repositories
                 .Take(pageSize)
                 .ToListAsync();
         }
-        public async Task<IReadOnlyList<Categories>> GetCategoryPagedResponseAsync(GetAllCategoryParameter filter)
+        public async Task<(IReadOnlyList<Categories>, int TotalItems)> GetCategoryPagedResponseAsync(GetAllCategoryParameter filter)
         {
             var query = _categories.Where(c => c.IsActive).AsQueryable();
 
@@ -34,12 +34,15 @@ namespace Persistence.Repositories
             {
                 query = query.Where(c => c.CategoryName.Contains(filter.CategoryName));
             }
+            int totalItems = await query.CountAsync();
 
-            return await query
+            var item =await query
                 .OrderBy(c => c.Id)
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+
+            return (item, totalItems);
         }
 
     }

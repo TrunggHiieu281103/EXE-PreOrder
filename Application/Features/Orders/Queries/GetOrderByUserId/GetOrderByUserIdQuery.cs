@@ -35,12 +35,12 @@ namespace Application.Features.Orders.Queries.GetOrderByUserId
             public async Task<PageResponse<IEnumerable<GetOrderByUserIdViewModel>>> Handle(GetOrderByUserIdQuery request, CancellationToken cancellationToken)
             {
                 // Lấy tất cả đơn hàng của user
-                var allOrders = await _orderRepository.GetOrderPagedResponseByUserIdAsync(request.UserId, request.PageNumber, request.PageSize);
+                var (allOrders, totalItem) = await _orderRepository.GetOrderPagedResponseByUserIdAsync(request.UserId, request.PageNumber, request.PageSize);
 
                 // Map sang ViewModel
                 var viewModels = _mapper.Map<IEnumerable<GetOrderByUserIdViewModel>>(allOrders);
 
-                return new PageResponse<IEnumerable<GetOrderByUserIdViewModel>>(viewModels, request.PageNumber, request.PageSize);
+                return new PageResponse<IEnumerable<GetOrderByUserIdViewModel>>(viewModels, request.PageNumber, request.PageSize, totalItem);
             }
         }
     }

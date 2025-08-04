@@ -24,7 +24,7 @@ namespace Persistence.Repositories
             _categories = dbContext.Set<Categories>();
         }
 
-        public async Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter)
+        public async Task<(IReadOnlyList<Products>, int TotalItem)> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter)
         {
             var query = _products.Include(p => p.ProductAssets).AsQueryable();
 
@@ -43,12 +43,14 @@ namespace Persistence.Repositories
             if (!string.IsNullOrWhiteSpace(filter.Size))
                 query = query.Where(p => p.Size.Contains(filter.Size));
 
-
-            return await query
+            var totalItems = await query.CountAsync();
+            var items = await query
                 .OrderBy(p => p.Id)
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+
+            return (items, totalItems);
         }
 
         public async Task<Products?> FindDuplicateProductAsync(string productCode, string productName, long brandId, long categoryId)

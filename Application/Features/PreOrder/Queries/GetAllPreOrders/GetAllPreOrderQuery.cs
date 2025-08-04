@@ -32,11 +32,12 @@ namespace Application.Features.PreOrder.Queries.GetAllPreOrders
                     PageSize = request.PageSize,
                     UserEmail = request.UserEmail
                 };
-                var preOrders = await _orderRepository.GetPreOrderPagedResponseAsync(preOrderFilter);
+                var (preOrders, totalItems) = await _orderRepository.GetPreOrderPagedResponseAsync(preOrderFilter);
                 return new PageResponse<IEnumerable<GetAllPreOrderViewModel>>(
                     _mapper.Map<IEnumerable<GetAllPreOrderViewModel>>(preOrders),
                     request.PageNumber,
-                    request.PageSize
+                    request.PageSize,
+                    totalItems
                 );
             }
         }

@@ -32,11 +32,11 @@ namespace Application.Features.Orders.Queries.GetUserOrder
 
             public async Task<PageResponse<IEnumerable<GetOrderByUserIdViewModel>>> Handle(GetUserOrderQuery request, CancellationToken cancellationToken)
             {
-                var orders = await _orderRepository.GetUserOrdersAsync(request.UserId, request.PageNumber, request.PageSize, request.IsPreorder);
+                var (orders, totalItems) = await _orderRepository.GetUserOrdersAsync(request.UserId, request.PageNumber, request.PageSize, request.IsPreorder);
 
                 var orderViewModels = _mapper.Map<IEnumerable<GetOrderByUserIdViewModel>>(orders);
 
-                return new PageResponse<IEnumerable<GetOrderByUserIdViewModel>>(orderViewModels, request.PageNumber, request.PageSize);
+                return new PageResponse<IEnumerable<GetOrderByUserIdViewModel>>(orderViewModels, request.PageNumber, request.PageSize, totalItems);
             }
         }
     }

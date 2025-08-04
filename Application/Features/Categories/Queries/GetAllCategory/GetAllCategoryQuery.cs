@@ -36,10 +36,10 @@ namespace Application.Features.Categories.Queries.GetAllCategory
                 CategoryName = request.CategoryName
             };
 
-            var categories = await _categoryRepository.GetCategoryPagedResponseAsync(filter);
+            var (categories, totalItems) = await _categoryRepository.GetCategoryPagedResponseAsync(filter);
             var viewModel = _mapper.Map<IEnumerable<GetAllCategoryViewModel>>(categories);
 
-            return new PageResponse<IEnumerable<GetAllCategoryViewModel>>(viewModel, filter.PageNumber, filter.PageSize);
+            return new PageResponse<IEnumerable<GetAllCategoryViewModel>>(viewModel, filter.PageNumber, filter.PageSize, totalItems);
         }
     }
 }
