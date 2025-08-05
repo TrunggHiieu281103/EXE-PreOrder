@@ -28,20 +28,23 @@ namespace Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter)
+        public async Task<(IReadOnlyList<Brands> Items, int TotalItems)> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter)
         {
             var query = _brands.Where(b => b.IsActive).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(filter.Name))
                 query = query.Where(b => b.Name.Contains(filter.Name));
 
-            // Nếu cần lọc thêm, có thể thêm ở đây
+            int totalItems = await query.CountAsync();
 
-            return await query
+            var items = await query
                 .OrderBy(b => b.Id)
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+
+            return (items, totalItems);
         }
+
     }
 }

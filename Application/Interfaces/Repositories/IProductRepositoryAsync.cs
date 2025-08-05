@@ -13,7 +13,7 @@ namespace Application.Interfaces.Repositories
     {
         //Task<bool> IsUniqueBarcodeAsync(string barcode);
 
-        Task<IReadOnlyList<Products>> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter);
+        Task<(IReadOnlyList<Products>, int TotalItem)> GetProductPagedReponseWithAssetsAsync(GetAllProductsParameter filter);
         Task<Products?> GetProductByIdAsync(long productId);
         Task<Products?> IsUniqueProductNameAsync(string productName);
         Task<Products?> IsUniqueProductCodeAsync(string productCode);

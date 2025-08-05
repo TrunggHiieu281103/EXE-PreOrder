@@ -15,11 +15,11 @@ namespace Application.Interfaces.Repositories
 {
     public interface IOrderRepositoryAsync : IGenericRepositoryAsync<Domain.Entities.Orders>
     {
-        Task<IReadOnlyList<Domain.Entities.Orders>> GetOrderPagedResponseAsync(GetAllOrderParameter filter);
+        Task<(IReadOnlyList<Domain.Entities.Orders>, int TotalItems)> GetOrderPagedResponseAsync(GetAllOrderParameter filter);
         Task<Domain.Entities.Orders> GetOrderByIdAsync(long id);
-        Task<IReadOnlyList<Domain.Entities.Orders>> GetOrderPagedResponseByUserIdAsync(long userId, int pageNumber, int pageSize);
-        Task<IReadOnlyList<Domain.Entities.Orders>> GetUserOrdersAsync(long userId, int pageNumber, int pageSize, bool? isPreOrder);
-        Task<IReadOnlyList<Domain.Entities.Orders>> GetPreOrderPagedResponseAsync(GetAllPreOrderParameter filter);
+        Task<(IReadOnlyList<Orders>, int TotalItems)> GetOrderPagedResponseByUserIdAsync(long userId, int pageNumber, int pageSize);
+        Task<(IReadOnlyList<Orders>, int TotalItems)> GetUserOrdersAsync(long userId, int pageNumber, int pageSize, bool? isPreorder);
+        Task<(IReadOnlyList<Orders>, int TotalItems)> GetPreOrderPagedResponseAsync(GetAllPreOrderParameter filter);
         Task<int> CountAllOrdersAsync();
         Task<int> CountOrdersByPaymentStatusAsync(string status);
         Task<int> CountOrdersByTypeAsync(bool isPreorder);

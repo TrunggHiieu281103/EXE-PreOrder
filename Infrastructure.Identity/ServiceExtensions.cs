@@ -65,50 +65,73 @@ namespace Identity
                         ValidAudience = configuration["JWTSettings:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
                     };
-                    o.Events = new JwtBearerEvents()
+                    o.Events = new JwtBearerEvents
                     {
                         OnMessageReceived = context =>
                         {
                             var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
-
                             if (!string.IsNullOrEmpty(authHeader))
                             {
-                                // Nếu có tiền tố "Bearer " thì giữ nguyên
                                 if (authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
                                 {
                                     context.Token = authHeader.Substring("Bearer ".Length).Trim();
                                 }
                                 else
                                 {
-                                    // Nếu không có Bearer thì dùng nguyên chuỗi làm token
                                     context.Token = authHeader.Trim();
                                 }
+                            }
+                            return Task.CompletedTask;
+                        },
+
+                        OnAuthenticationFailed = context =>
+                        {
+                            context.NoResult();
+
+                            if (!context.Response.HasStarted)
+                            {
+                                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                                context.Response.ContentType = "application/json";
+
+                                var response = new BaseResponse<string>("Invalid or expired token");
+                                var json = JsonConvert.SerializeObject(response);
+                                return context.Response.WriteAsync(json);
                             }
 
                             return Task.CompletedTask;
                         },
-                        OnAuthenticationFailed = c =>
-                        {
-                            c.NoResult();
-                            c.Response.StatusCode = 500;
-                            c.Response.ContentType = "text/plain";
-                            return c.Response.WriteAsync(c.Exception.ToString());
-                        },
+
                         OnChallenge = context =>
                         {
                             context.HandleResponse();
-                            context.Response.StatusCode = 401;
-                            context.Response.ContentType = "application/json";
-                            var result = JsonConvert.SerializeObject(new BaseResponse<string>("You are not Authorized"));
-                            return context.Response.WriteAsync(result);
+
+                            if (!context.Response.HasStarted)
+                            {
+                                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                                context.Response.ContentType = "application/json";
+
+                                var response = new BaseResponse<string>("You are not authorized");
+                                var json = JsonConvert.SerializeObject(response);
+                                return context.Response.WriteAsync(json);
+                            }
+
+                            return Task.CompletedTask;
                         },
+
                         OnForbidden = context =>
                         {
-                            context.Response.StatusCode = 403;
-                            context.Response.ContentType = "application/json";
-                            var result = JsonConvert.SerializeObject(new BaseResponse<string>("You are not authorized to access this resource"));
-                            return context.Response.WriteAsync(result);
-                        },
+                            if (!context.Response.HasStarted)
+                            {
+                                context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                                context.Response.ContentType = "application/json";
+
+                                var response = new BaseResponse<string>("You do not have permission to access this resource");
+                                var json = JsonConvert.SerializeObject(response);
+                                return context.Response.WriteAsync(json);
+                            }
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
         }

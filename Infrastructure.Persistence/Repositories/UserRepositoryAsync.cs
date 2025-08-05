@@ -65,7 +65,7 @@ namespace Persistence.Repositories
             return await _user.AnyAsync(u => u.Id == userId && u.IsActive);
         }
 
-        public async Task<IReadOnlyList<Users>> GetPagedUserResponseAsync(GetAllUserParameter parameter)
+        public async Task<(IReadOnlyList<Users>, int TotalItems)> GetPagedUserResponseAsync(GetAllUserParameter parameter)
         {
             var query = _user
                 .Where(u => u.IsActive)
@@ -81,12 +81,13 @@ namespace Persistence.Repositories
                     u.Email.ToLower().Contains(searchLower));
             }
 
+            var totalItems = await query.CountAsync();
             var users = await query
                 .Skip((parameter.PageNumber - 1) * parameter.PageSize)
                 .Take(parameter.PageSize)
                 .ToListAsync();
 
-            return users;
+            return (users, totalItems);
         }
 
         public async Task<int> CountAllUsersAsync()

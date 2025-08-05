@@ -37,7 +37,7 @@ namespace Persistence.Repositories
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        public async Task<IReadOnlyList<Orders>> GetOrderPagedResponseAsync(GetAllOrderParameter filter)
+        public async Task<(IReadOnlyList<Orders>, int TotalItems)> GetOrderPagedResponseAsync(GetAllOrderParameter filter)
         {
             var query = _orders
                 .Include(o => o.User)
@@ -61,17 +61,18 @@ namespace Persistence.Repositories
                 );
             }
 
-            // Phân trang
-            var skip = (filter.PageNumber - 1) * filter.PageSize;
+            var totalItems = await query.CountAsync();
 
-            return await query
+            var items = await query
                 .OrderByDescending(o => o.Id)
-                .Skip(skip)
+                .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+
+            return (items, totalItems);
         }
 
-        public async Task<IReadOnlyList<Orders>> GetOrderPagedResponseByUserIdAsync(long userId, int pageNumber, int pageSize)
+        public async Task<(IReadOnlyList<Orders>, int TotalItems)> GetOrderPagedResponseByUserIdAsync(long userId, int pageNumber, int pageSize)
         {
             var query = _orders
                 .Where(o => o.UserId == userId)
@@ -83,17 +84,18 @@ namespace Persistence.Repositories
                     .ThenInclude(op => op.Product)
                 .OrderByDescending(o => o.Id).AsQueryable();
              
+            var totalItems = await query.CountAsync();
 
-            var skip = (pageNumber - 1) * pageSize;
-
-            return await query
+            var itmes = await query
                 .OrderByDescending(o => o.Id)
-                .Skip(skip)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+
+            return ( itmes, totalItems );
         }
 
-        public async Task<IReadOnlyList<Orders>> GetPreOrderPagedResponseAsync(GetAllPreOrderParameter filter)
+        public async Task<(IReadOnlyList<Orders>, int TotalItems)> GetPreOrderPagedResponseAsync(GetAllPreOrderParameter filter)
         {
             var query = _orders
                 .Include(o => o.User)
@@ -117,17 +119,18 @@ namespace Persistence.Repositories
                 );
             }
 
-            // Phân trang
-            var skip = (filter.PageNumber - 1) * filter.PageSize;
+            var totalItems = await query.CountAsync();
 
-            return await query
+            var items = await query
                 .OrderByDescending(o => o.Id)
-                .Skip(skip)
+                .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .ToListAsync();
+
+            return (items, totalItems);
         }
 
-        public async Task<IReadOnlyList<Orders>> GetUserOrdersAsync(long userId, int pageNumber, int pageSize, bool? isPreorder)
+        public async Task<(IReadOnlyList<Orders>, int TotalItems)> GetUserOrdersAsync(long userId, int pageNumber, int pageSize, bool? isPreorder)
         {
             var query = _orders
                 .Where(o => o.UserId == userId)
@@ -144,12 +147,14 @@ namespace Persistence.Repositories
                 query = query.Where(o => o.IsPreorder == isPreorder.Value);
             }
             var skip = (pageNumber - 1) * pageSize;
-
-            return await query
+            var totalItems = await query.CountAsync();
+            var items = await query
                 .OrderByDescending(o => o.Id)
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
+
+            return (items, totalItems);
         }
         public async Task<int> CountAllOrdersAsync()
         {

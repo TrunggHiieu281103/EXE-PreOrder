@@ -37,12 +37,12 @@ namespace Application.Features.Brands.Queries.GetAllBrand
             };
 
             // Lấy dữ liệu phân trang từ repo, cần bạn implement method này
-            var brands = await _brandRepository.GetBrandPagedReponseWithAssetsAsync(filter);
+            var (brands, totalItems) = await _brandRepository.GetBrandPagedReponseWithAssetsAsync(filter);
 
             // Map sang ViewModel
             var brandViewModels = _mapper.Map<IEnumerable<GetAllBrandsViewModel>>(brands);
 
-            return new PageResponse<IEnumerable<GetAllBrandsViewModel>>(brandViewModels, filter.PageNumber, filter.PageSize);
+            return new PageResponse<IEnumerable<GetAllBrandsViewModel>>(brandViewModels, filter.PageNumber, filter.PageSize,totalItems);
         }
     }
 }

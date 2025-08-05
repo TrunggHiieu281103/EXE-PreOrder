@@ -17,7 +17,7 @@ namespace Application.Interfaces.Repositories
         Task<Users> GetUserByIdWithAddressAsync(long userId);
         Task<bool> FindUserById(long userId);
         Task<Users> GetUserWithRolesByIdAsync(long userId);
-        Task<IReadOnlyList<Users>> GetPagedUserResponseAsync(GetAllUserParameter parameter);
+        Task<(IReadOnlyList<Users>, int TotalItems)> GetPagedUserResponseAsync(GetAllUserParameter parameter);
         Task<int> CountAllUsersAsync();
         Task<int> CountActiveUsersAsync();
         Task<int> CountInactiveUsersAsync();

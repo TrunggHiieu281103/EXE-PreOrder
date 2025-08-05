@@ -14,7 +14,7 @@ namespace Application.Interfaces.Repositories
     {
         Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(int pageNumber, int pageSize);
 
-        Task<IReadOnlyList<Brands>> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter);
+        Task<(IReadOnlyList<Brands> Items, int TotalItems)> GetBrandPagedReponseWithAssetsAsync(GetAllBrandsParameter filter);
     }
 
 }
