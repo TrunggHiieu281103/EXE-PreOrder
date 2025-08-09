@@ -56,17 +56,6 @@ public class EmailService : IEmailService
         return random.Next(0, 1000000).ToString("D6");
     }
 
-    // 2) Hàm tạo nội dung email (HTML)
-    private string GenerateEmailBody(string toEmail, string otp)
-    {
-        return $@"
-                <div style='font-family:Arial;'>
-                    <h3>Hello {toEmail},</h3>
-                    <p>Thank you for registering an account. Your OTP code is:<strong>{otp}</strong></p>
-                    <p>Please use this code to activate your account. The code will expire after 5 minutes.</p>
-                </div>";
-    }
-
     // 3) Hàm gửi OTP qua email
     public async Task SendOtpMail(string toEmail, string fromEmail, string otp)
     {
@@ -80,16 +69,7 @@ public class EmailService : IEmailService
 
         await SendEmailAsync(mailRequest);
     }
-    private string GenerateResetPassEmailBody(string toEmail, string otp)
-    {
-        return $@"
-                <div style='font-family:Arial;'>
-                    <h3>Hello {toEmail},</h3>
-                    <p>Please confirm to reset your password. Your OTP code is:<strong>{otp}</strong></p>
-                    <p>The code will expire after 5 minutes.</p>
-                </div>";
-    }
-
+    
     // 3) Hàm gửi OTP qua email
     public async Task SendResetPassOtpMail(string toEmail, string fromEmail, string otp)
     {
@@ -103,4 +83,66 @@ public class EmailService : IEmailService
 
         await SendEmailAsync(mailRequest);
     }
+
+    private string GenerateResetPassEmailBody(string toEmail, string otp)
+    {
+        return $@"
+    <div style='font-family:Arial, sans-serif; background-color:#e3f2fd; padding:20px;'>
+        <div style='max-width:600px; margin:auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.15);'>
+            
+            <!-- Header với nền xanh + ảnh Gundam -->
+            <div style='background-color:#0d47a1; text-align:center; padding:20px;'>
+                
+                <h2 style='color:white; margin:0;'>Password Reset</h2>
+            </div>
+
+            <!-- Banner hình Gundam -->
+            <div>
+                
+            </div>
+
+            <!-- Nội dung -->
+            <div style='padding:20px;'>
+                <p style='font-size:16px; color:#333;'>Hello <strong>{toEmail}</strong>,</p>
+                <p style='font-size:15px; color:#555;'>We received a request to reset your password. Your OTP code is:</p>
+                <div style='text-align:center; margin:20px 0;'>
+                    <span style='display:inline-block; font-size:22px; font-weight:bold; color:#fff; background:#0d47a1; padding:10px 20px; border-radius:5px; letter-spacing:2px;'>{otp}</span>
+                </div>
+                <p style='font-size:14px; color:#777;'>⚠ This code will expire in 5 minutes.</p>
+            </div>
+        </div>
+    </div>";
+    }
+
+    private string GenerateEmailBody(string toEmail, string otp)
+    {
+        return $@"
+    <div style='font-family:Arial, sans-serif; background-color:#e3f2fd; padding:20px;'>
+        <div style='max-width:600px; margin:auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.15);'>
+            
+            <!-- Header với nền xanh + ảnh Gundam -->
+            <div style='background-color:#0d47a1; text-align:center; padding:20px;'>
+               
+                <h2 style='color:white; margin:0;'>Welcome to Nhieu Thu Hay</h2>
+            </div>
+
+            <!-- Banner hình Gundam -->
+            <div>
+                
+            </div>
+
+            <!-- Nội dung -->
+            <div style='padding:20px;'>
+                <p style='font-size:16px; color:#333;'>Hello <strong>{toEmail}</strong>,</p>
+                <p style='font-size:15px; color:#555;'>Thank you for registering an account. Your OTP code is:</p>
+                <div style='text-align:center; margin:20px 0;'>
+                    <span style='display:inline-block; font-size:22px; font-weight:bold; color:#fff; background:#0d47a1; padding:10px 20px; border-radius:5px; letter-spacing:2px;'>{otp}</span>
+                </div>
+                <p style='font-size:14px; color:#777;'>Please use this code to activate your account. The code will expire after 5 minutes.</p>
+            </div>
+        </div>
+    </div>";
+    }
+
+
 }
